@@ -111,15 +111,3 @@ Puzzle redefines accounting for the modern era, helping businesses operate with 
 ## Questions or Feature Requests?
 
 We’re here to help! Reach out at [integrations@puzzle.io](mailto:integrations@puzzle.io) to share ideas, ask questions, and connect with other users.
-
----
-
-### 🔥 **This version is fully aligned with your Mintlify setup**:
-
-1. **Mintlify UI Components**:
-   - `<AccordionGroup>` for collapsible sections (API benefits, onboarding steps).
-   - `<CardGroup>` for **user-specific solutions** (Accounting, Tech, E-commerce).
-   
-2. **Scannable, Developer-Friendly Structure**:
-   - Key points in bullet lists.
-   - Clear na
