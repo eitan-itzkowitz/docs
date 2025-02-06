@@ -84,9 +84,14 @@ Each API endpoint delivers **flexibility, precision, and scalability**, leveragi
   description="Connect Puzzle seamlessly with existing systems."
 />
 
-## Join Us in Shaping the Future
+## Ready to Get Started?
 
-Puzzle redefines accounting for the modern era, helping businesses operate with agility, precision, and strategic foresight. Whether you’re running a firm, building technology, or scaling e-commerce, Puzzle **simplifies complexity and empowers growth**.
+Set up your integration and explore what’s possible with the Puzzle API.
+
+<Callout title="Start Building with Puzzle" icon="rocket">
+  Get your keys to the Puzzle ecosystem with just a few steps. 
+  <Button href="/getting-started" variant="primary">Get Started</Button>
+</Callout>
 
 ## Questions or Feature Requests?
 
