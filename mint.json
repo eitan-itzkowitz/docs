@@ -32,7 +32,7 @@
     {
       "group": "Get Started",
       "pages": [
-        "quickstart",
+        "getting-started",
         "development"
       ]
     },
