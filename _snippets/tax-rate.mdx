@@ -1,0 +1,32 @@
+---
+title: "Tax Rate Model"
+description: "Defines how taxes are structured within the bookkeeping system."
+---
+
+## Tax Rate Model
+
+The **TaxRate** object stores tax configuration details, including jurisdiction, calculation type, and effective dates.
+
+### **Schema**
+```json
+{
+  "id": "taxrate-sales-CA",
+  "createdAt": "2023-01-01T00:00:00Z",
+  "updatedAt": "2024-01-15T12:00:00Z",
+  "removedAt": null,
+  "company": {
+    "id": "company-987abc123def",
+    "legalName": "Bright Smiles Orthodontics"
+  },
+  "displayName": "California Sales Tax",
+  "taxType": "sales_tax",
+  "jurisdictionType": "State",
+  "jurisdictionName": "California",
+  "calculationType": "percentage_flat",
+  "calculation_parameters": {
+    "percentageRate": 7.5
+  },
+  "effectiveDate": "2023-01-01T00:00:00Z",
+  "expirationDate": null,
+  "description": "Sales tax for services provided in the state of California."
+}
