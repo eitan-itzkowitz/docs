@@ -1,15 +1,15 @@
 {
   "$schema": "https://mintlify.com/schema.json",
-  "name": "Starter Kit",
+  "name": "Developer Docs",
   "logo": {
     "dark": "/logo/dark.svg",
     "light": "/logo/light.svg"
   },
   "favicon": "/favicon.svg",
   "colors": {
-    "primary": "#211f35",
+    "primary": "#50FAAB",
     "light": "#d1d1d5",
-    "dark": "#181729",
+    "dark": "#211F35",
     "anchors": {
       "from": "#211f35",
       "to": "#d1d1d5"
