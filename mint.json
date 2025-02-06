@@ -27,8 +27,8 @@
   },
   "tabs": [
     {
-      "name": "Getting Started",
-      "url": "getting-started"
+      "name": "API Documentation",
+      "url": "api-reference"
     }
   ],
   "anchors": [
