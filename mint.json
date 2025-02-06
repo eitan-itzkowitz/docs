@@ -3,8 +3,8 @@
   "name": "Puzzle API Docs",
   "homepage": "https://puzzle-finance.mintlify.app/index",
   "logo": {
-    "dark": "/symbol_puzzle_512x512.png",
-    "light": "/symbol_puzzle_512x512.png"
+    "dark": "/logo/dark.svg",
+    "light": "/logo/light.svg"
   },
   "favicon": "/symbol_puzzle_512x512.png",
   "colors": {
