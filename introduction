@@ -62,7 +62,7 @@ Each API endpoint delivers **flexibility, precision, and scalability**, leveragi
 
 <FeatureBlock
   title="Flexible COA"
-  icon="file-stack"
+  icon="folder-tree"
   description="Bring your own Chart of Accounts and enhance it with automation."
 />
 
