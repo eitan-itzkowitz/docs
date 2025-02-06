@@ -58,12 +58,31 @@ Puzzle isn’t just an API—it’s a **reimagined General Ledger** for modern a
 
 ## How Puzzle’s Tools Power the API
 
-Each API endpoint delivers **flexibility, precision, and scalability**, leveraging Puzzle’s modular architecture:
+Each API endpoint delivers **flexibility, precision, and scalability**, leveraging Puzzle’s modular architecture.
 
-- **Flexible COA**: Bring your own Chart of Accounts and enhance it with automation.
-- **Subledgers**: Maintain granular operational data while keeping your General Ledger clean.
-- **High-Confidence Data Management**: Validate, enrich, and align data dynamically.
-- **Integration-Ready Architecture**: Connect Puzzle seamlessly with existing systems.
+<FeatureBlock
+  title="Flexible COA"
+  icon="file-stack"
+  description="Bring your own Chart of Accounts and enhance it with automation."
+/>
+
+<FeatureBlock
+  title="Subledgers"
+  icon="layers"
+  description="Maintain granular operational data while keeping your General Ledger clean."
+/>
+
+<FeatureBlock
+  title="High-Confidence Data"
+  icon="check-circle"
+  description="Validate, enrich, and align data dynamically."
+/>
+
+<FeatureBlock
+  title="Integration-Ready"
+  icon="plug"
+  description="Connect Puzzle seamlessly with existing systems."
+/>
 
 ## Get Started in 3 Steps
 
