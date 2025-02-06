@@ -32,65 +32,86 @@
     {
       "group": "Get Started",
       "pages": [
-        { "title": "Welcome", "href": "/welcome" },
-        { "title": "About Puzzle", "href": "/about-puzzle" },
-        { "title": "Credential Setup", "href": "/credential-setup" },
-        { "title": "Use Cases", "href": "/use-cases" }
+        "welcome",
+        "about-puzzle",
+        "credential-setup",
+        "use-cases"
       ]
     },
     {
       "group": "API Documentation",
       "pages": [
-        { "title": "Introduction", "href": "/api-reference/introduction" },
-        { "title": "Authentication", "href": "/api-reference/authentication" },
-        { "title": "Error Handling", "href": "/api-reference/error-handling" },
-        { "title": "Testing", "href": "/api-reference/introduction-to-testing" }
+        "api-reference/introduction",
+        "api-reference/authentication",
+        "api-reference/error-handling",
+        "api-reference/introduction-to-testing"
       ]
     },
     {
       "group": "Endpoints",
       "pages": [
-        { "group": "Accounting", "pages": [
-          { "title": "General Ledger", "href": "/api-reference/endpoints/general-ledger" },
-          { "title": "Subledger", "href": "/api-reference/endpoints/subledger" },
-          { "title": "Chart of Accounts", "href": "/api-reference/endpoints/chart-of-accounts" },
-          { "title": "Reconciliation", "href": "/api-reference/endpoints/reconciliation" },
-          { "title": "Journal Entries", "href": "/api-reference/endpoints/journal-entries" },
-          { "title": "Fixed Assets", "href": "/api-reference/endpoints/fixed-assets" }
-        ]},
-        { "group": "Revenue", "pages": [
-          { "title": "Invoices", "href": "/api-reference/endpoints/invoices" },
-          { "title": "Customers", "href": "/api-reference/endpoints/customers" },
-          { "title": "Products", "href": "/api-reference/endpoints/products" },
-          { "title": "Revenue Recognition", "href": "/api-reference/endpoints/revenue-recognition" },
-          { "title": "AR Aging", "href": "/api-reference/endpoints/ar-aging" },
-          { "title": "Invoice Payments", "href": "/api-reference/endpoints/invoice-payments" }
-        ]},
-        { "group": "Expenses", "pages": [
-          { "title": "Bills", "href": "/api-reference/endpoints/bills" },
-          { "title": "Vendors", "href": "/api-reference/endpoints/vendors" },
-          { "title": "Prepaid Expenses", "href": "/api-reference/endpoints/prepaid-expenses" },
-          { "title": "AP Aging", "href": "/api-reference/endpoints/ap-aging" },
-          { "title": "Bill Payments", "href": "/api-reference/endpoints/bill-payments" }
-        ]},
-        { "group": "Payroll", "pages": [
-          { "title": "Payroll Reconciliation", "href": "/api-reference/endpoints/payroll-reconciliation" },
-          { "title": "Payroll Sync", "href": "/api-reference/endpoints/payroll-sync" },
-          { "title": "Tax Payments", "href": "/api-reference/endpoints/tax-payments" }
-        ]},
-        { "group": "Settings", "pages": [
-          { "title": "Accounting Policies", "href": "/api-reference/endpoints/accounting-policies" },
-          { "title": "Rules and Automations", "href": "/api-reference/endpoints/rules-and-automations" }
-        ]},
-        { "group": "Accountant Tools", "pages": [
-          { "title": "Checklists", "href": "/api-reference/endpoints/checklists" },
-          { "title": "Messages", "href": "/api-reference/endpoints/messages" },
-          { "title": "Notifications", "href": "/api-reference/endpoints/notifications" },
-          { "title": "Categorization Requests", "href": "/api-reference/endpoints/categorization-requests" }
-        ]},
-        { "group": "Financial Reports", "pages": [
-          { "title": "Financial Statements", "href": "/api-reference/endpoints/financial-statements" }
-        ]}
+        {
+          "group": "Accounting",
+          "pages": [
+            "api-reference/endpoints/general-ledger",
+            "api-reference/endpoints/subledger",
+            "api-reference/endpoints/chart-of-accounts",
+            "api-reference/endpoints/reconciliation",
+            "api-reference/endpoints/journal-entries",
+            "api-reference/endpoints/fixed-assets"
+          ]
+        },
+        {
+          "group": "Revenue",
+          "pages": [
+            "api-reference/endpoints/invoices",
+            "api-reference/endpoints/customers",
+            "api-reference/endpoints/products",
+            "api-reference/endpoints/revenue-recognition",
+            "api-reference/endpoints/ar-aging",
+            "api-reference/endpoints/invoice-payments"
+          ]
+        },
+        {
+          "group": "Expenses",
+          "pages": [
+            "api-reference/endpoints/bills",
+            "api-reference/endpoints/vendors",
+            "api-reference/endpoints/prepaid-expenses",
+            "api-reference/endpoints/ap-aging",
+            "api-reference/endpoints/bill-payments"
+          ]
+        },
+        {
+          "group": "Payroll",
+          "pages": [
+            "api-reference/endpoints/payroll-reconciliation",
+            "api-reference/endpoints/payroll-sync",
+            "api-reference/endpoints/tax-payments"
+          ]
+        },
+        {
+          "group": "Settings",
+          "pages": [
+            "api-reference/endpoints/accounting-policies",
+            "api-reference/endpoints/rules-and-automations"
+          ]
+        },
+        {
+          "group": "Accountant Tools",
+          "pages": [
+            "api-reference/endpoints/checklists",
+            "api-reference/endpoints/messages",
+            "api-reference/endpoints/notifications",
+            "api-reference/endpoints/categorization-requests"
+          ]
+        },
+        {
+          "group": "Financial Reports",
+          "pages": [
+            "api-reference/endpoints/financial-statements"
+          ]
+        }
       ]
     }
   ],
