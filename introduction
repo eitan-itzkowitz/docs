@@ -1,0 +1,106 @@
+---
+title: "Welcome to the Puzzle API"
+description: "Integrate Puzzle to power modern accounting workflows with automation, real-time insights, and seamless financial management."
+---
+
+# Welcome to the Puzzle API
+
+Congratulations on taking the first step toward integrating Puzzle into your workflow! Whether you're scaling operations or creating tailored solutions, our API is here to make accounting **smarter, faster, and more efficient** for today’s dynamic businesses.
+
+## What is Puzzle?
+
+Puzzle isn’t just an API—it’s a **reimagined General Ledger** for modern accounting. Like QBO or NetSuite, Puzzle provides the foundational financial infrastructure businesses rely on, but with a critical difference: 
+
+✅ **Modular, data-first design** integrates seamlessly with your workflows.  
+✅ **Automates complexity**—from categorization to accruals.  
+✅ **Delivers precision and clarity** at every step.  
+
+## Why Use the Puzzle API?
+
+<AccordionGroup>
+  <Accordion icon="puzzle-piece" title="Seamlessly Integrate">
+    Connect Puzzle with your systems for a unified and efficient workflow.
+  </Accordion>
+  <Accordion icon="bolt" title="Automate Complex Processes">
+    Streamline accruals, categorization, and reconciliation, enabling you to focus on high-value activities.
+  </Accordion>
+  <Accordion icon="wrench" title="Customize Solutions">
+    Tailor Puzzle’s capabilities to fit your specific operational and business needs.
+  </Accordion>
+  <Accordion icon="chart-line-up" title="Unlock Real-Time Insights">
+    Gain actionable intelligence from financial and operational data to drive smarter decisions.
+  </Accordion>
+</AccordionGroup>
+
+## Tailored Solutions for Every User
+
+### Built for Accounting Firms, Embedded Tech, and E-Commerce
+
+<CardGroup>
+
+<Card title="For Accounting Firms" icon="briefcase" href="#for-accounting-firms">
+  Automate workflows, enhance transparency, and improve financial accuracy for your clients.
+</Card>
+
+<Card title="For Accountants & Bookkeepers" icon="receipt" href="#for-accountants">
+  Reduce manual effort with automated categorization, reconciliation, and reporting.
+</Card>
+
+<Card title="For Embedded Tech Partners" icon="layers" href="#for-tech-partners">
+  Embed accounting capabilities and enable seamless financial data exchange.
+</Card>
+
+<Card title="For E-Commerce" icon="shopping-cart" href="#for-ecommerce">
+  Automate revenue recognition, cash application, and three-way matching.
+</Card>
+
+</CardGroup>
+
+## How Puzzle’s Tools Power the API
+
+Each API endpoint delivers **flexibility, precision, and scalability**, leveraging Puzzle’s modular architecture:
+
+- **Flexible COA**: Bring your own Chart of Accounts and enhance it with automation.
+- **Subledgers**: Maintain granular operational data while keeping your General Ledger clean.
+- **High-Confidence Data Management**: Validate, enrich, and align data dynamically.
+- **Integration-Ready Architecture**: Connect Puzzle seamlessly with existing systems.
+
+## Get Started in 3 Steps
+
+<AccordionGroup>
+
+<Accordion icon="user-plus" title="1. Sign Up for Partner Access">
+  Gain access to API resources, sandbox environments, and technical documentation.
+</Accordion>
+
+<Accordion icon="rectangle-terminal" title="2. Explore our Sandbox">
+  Use guides, code samples, and tutorials to connect with Puzzle’s capabilities.
+</Accordion>
+
+<Accordion icon="rocket" title="3. Get Provisioned for Production Access">
+  Work with our CPAs, Engineers, and account specialists for a smooth deployment.
+</Accordion>
+
+</AccordionGroup>
+
+[**Get Started Now**](#)
+
+## Join Us in Shaping the Future
+
+Puzzle redefines accounting for the modern era, helping businesses operate with agility, precision, and strategic foresight. Whether you’re running a firm, building technology, or scaling e-commerce, Puzzle **simplifies complexity and empowers growth**.
+
+## Questions or Feature Requests?
+
+We’re here to help! Reach out at [integrations@puzzle.io](mailto:integrations@puzzle.io) to share ideas, ask questions, and connect with other users.
+
+---
+
+### 🔥 **This version is fully aligned with your Mintlify setup**:
+
+1. **Mintlify UI Components**:
+   - `<AccordionGroup>` for collapsible sections (API benefits, onboarding steps).
+   - `<CardGroup>` for **user-specific solutions** (Accounting, Tech, E-commerce).
+   
+2. **Scannable, Developer-Friendly Structure**:
+   - Key points in bullet lists.
+   - Clear na
