@@ -2,3 +2,45 @@
 title: "API Onboarding Form"
 description: "Request API credentials and share your use case for Puzzle."
 ---
+
+import { Form } from "mintlify/components";
+import { Input } from "mintlify/components";
+import { Select } from "mintlify/components";
+import { Checkbox } from "mintlify/components";
+import { Textarea } from "mintlify/components";
+import { Button } from "mintlify/components";
+
+# API Onboarding Form
+
+Fill out this form to request API credentials and help us understand your use case.
+
+<Form
+  name="api-onboarding"
+  method="POST"
+  action="https://your-form-endpoint.com"
+>
+
+## 1️⃣ Basic Information
+
+<Input name="company_name" label="Company Name" required />
+<Input name="primary_contact" label="Primary Contact Name" required />
+<Input name="email" label="Email Address" type="email" required />
+<Input name="phone" label="Phone Number" type="tel" />
+<Input name="role" label="Role/Title" />
+<Select name="company_size" label="Company Size" required>
+  <option value="solo">Solo Practitioner</option>
+  <option value="2-10">2–10 Employees</option>
+  <option value="11-50">11–50 Employees</option>
+  <option value="51+">51+ Employees</option>
+</Select>
+
+## 2️⃣ Use Case Exploration
+
+<Checkbox
+  name="use_cases"
+  label="What are your primary use cases for the Puzzle API?"
+  options={[
+    "Streamlining accounting workflows for an accounting firm",
+    "Automating reconciliation and categorization for bookkeeping",
+    "Embedding accounting capabilities into an external platform",
+    "Revenue recognition and cash applicati
