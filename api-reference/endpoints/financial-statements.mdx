@@ -1,5 +1,158 @@
 ---
-title: 'Financial Statements'
-description: 'Description of your new file.'
+title: Financial Statements
+description: Retrieve financial statements for an e-commerce business.
+openapi: "GET /financial-statements"
 ---
 
+import { TryIt } from '@mintlify/components';
+
+## Retrieve Financial Statements
+
+Fetch financial statements such as balance sheet, income statement, and cash flow statement.
+
+<TryIt />
+
+### **GET** `/financial-statements`
+
+#### 🔹 **Authorizations**
+| Name           | Type   | Location | Required | Description |
+|---------------|--------|----------|----------|-------------|
+| Authorization | string | Header   | ✅       | Bearer authentication header of the form `Bearer <token>` |
+
+#### 🔹 **Query Parameters**
+| Name        | Type   | Required | Description |
+|------------|--------|----------|-------------|
+| `start_date` | string (YYYY-MM-DD) | ✅ | Start date of the financial statement period. |
+| `end_date` | string (YYYY-MM-DD) | ✅ | End date of the financial statement period. |
+| `type`  | string | ✅ | Type of statement: `balance-sheet`, `income-statement`, or `cash-flow`. |
+
+#### 🔹 **Response**
+**200 - application/json**
+```json
+{
+  "financial_statement": {
+    "type": "balance-sheet",
+    "start_date": "2024-01-01",
+    "end_date": "2024-01-31",
+    "data": [
+      {
+        "account": "Cash",
+        "value": 25000
+      },
+      {
+        "account": "Accounts Receivable",
+        "value": 8000
+      },
+      {
+        "account": "Inventory",
+        "value": 12000
+      },
+      {
+        "account": "Accounts Payable",
+        "value": -5000
+      },
+      {
+        "account": "Owner's Equity",
+        "value": 40000
+      }
+    ]
+  }
+}
+🔹 Example Requests
+cURL
+sh
+Copy
+Edit
+curl --request GET \
+  --url "https://api.puzzle.com/v1/financial-statements?start_date=2024-01-01&end_date=2024-01-31&type=balance-sheet" \
+  --header "Authorization: Bearer <token>"
+Python
+python
+Copy
+Edit
+import requests
+
+url = "https://api.puzzle.com/v1/financial-statements"
+params = {"start_date": "2024-01-01", "end_date": "2024-01-31", "type": "balance-sheet"}
+headers = {"Authorization": "Bearer <token>"}
+
+response = requests.get(url, params=params, headers=headers)
+print(response.json())
+JavaScript (fetch)
+javascript
+Copy
+Edit
+fetch("https://api.puzzle.com/v1/financial-statements?start_date=2024-01-01&end_date=2024-01-31&type=balance-sheet", {
+  method: "GET",
+  headers: {
+    "Authorization": "Bearer <token>"
+  }
+})
+  .then(response => response.json())
+  .then(data => console.log(data));
+Income Statement Example
+json
+Copy
+Edit
+{
+  "financial_statement": {
+    "type": "income-statement",
+    "start_date": "2024-01-01",
+    "end_date": "2024-01-31",
+    "data": [
+      {
+        "account": "Revenue - Online Sales",
+        "value": 75000
+      },
+      {
+        "account": "Revenue - Wholesale",
+        "value": 20000
+      },
+      {
+        "account": "Cost of Goods Sold",
+        "value": -35000
+      },
+      {
+        "account": "Shipping Expenses",
+        "value": -5000
+      },
+      {
+        "account": "Marketing Expenses",
+        "value": -7000
+      },
+      {
+        "account": "Net Profit",
+        "value": 48000
+      }
+    ]
+  }
+}
+Cash Flow Statement Example
+json
+Copy
+Edit
+{
+  "financial_statement": {
+    "type": "cash-flow",
+    "start_date": "2024-01-01",
+    "end_date": "2024-01-31",
+    "data": [
+      {
+        "account": "Operating Cash Flow",
+        "value": 55000
+      },
+      {
+        "account": "Investing Cash Flow",
+        "value": -15000
+      },
+      {
+        "account": "Financing Cash Flow",
+        "value": 10000
+      },
+      {
+        "account": "Net Cash Flow",
+        "value": 50000
+      }
+    ]
+  }
+}
