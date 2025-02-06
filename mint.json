@@ -31,7 +31,7 @@
     {
       "group": "Get Started",
       "pages": [
-        "introduction",
+        "index",  // This ensures the introduction page is the homepage
         "quickstart",
         "development"
       ]
