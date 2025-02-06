@@ -39,9 +39,12 @@
       ]
     },
     {
-      "group": "Documentation",
+      "group": "API Documentation",
       "pages": [
-        "api-reference/introduction"
+        "api-reference/introduction",
+        "api-reference/authentication",
+        "api-reference/endpoints",
+        "api-reference/error-handling"
       ]
     }
   ],
