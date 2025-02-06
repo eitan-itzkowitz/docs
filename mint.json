@@ -3,10 +3,10 @@
   "name": "Puzzle API Docs",
   "homepage": "https://puzzle-finance.mintlify.app/index",
   "logo": {
-    "dark": "/logo/dark.svg",
-    "light": "/logo/light.svg"
+    "dark": "/symbol_puzzle_512x512.png",
+    "light": "/symbol_puzzle_512x512.png"
   },
-  "favicon": "/favicon.svg",
+  "favicon": "/symbol_puzzle_512x512.png",
   "colors": {
     "primary": "#50FAAB",
     "light": "#d1d1d5",
