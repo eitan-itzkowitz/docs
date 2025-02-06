@@ -62,25 +62,25 @@ Each API endpoint delivers **flexibility, precision, and scalability**, leveragi
 
 <FeatureBlock
   title="Flexible COA"
-  icon="folder-tree"
+  icon="list"
   description="Bring your own Chart of Accounts and enhance it with automation."
 />
 
 <FeatureBlock
   title="Subledgers"
-  icon="layers"
+  icon="folder-tree"
   description="Maintain granular operational data while keeping your General Ledger clean."
 />
 
 <FeatureBlock
   title="High-Confidence Data"
-  icon="check-circle"
+  icon="calculator"
   description="Validate, enrich, and align data dynamically."
 />
 
 <FeatureBlock
   title="Integration-Ready"
-  icon="plug"
+  icon="arrows-to-circle"
   description="Connect Puzzle seamlessly with existing systems."
 />
 
