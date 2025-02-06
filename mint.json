@@ -1,6 +1,6 @@
 {
   "$schema": "https://mintlify.com/schema.json",
-  "name": "Developer Docs",
+  "name": "Puzzle API Docs",
   "homepage": "https://puzzle-finance.mintlify.app/index",
   "logo": {
     "dark": "/logo/dark.svg",
