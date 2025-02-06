@@ -32,43 +32,19 @@
     {
       "group": "Get Started",
       "pages": [
-        {
-          "title": "Welcome",
-          "href": "/welcome"
-        },
-        {
-          "title": "About Puzzle",
-          "href": "/about-puzzle"
-        },
-        {
-          "title": "Credential Setup",
-          "href": "/credential-setup"
-        },
-        {
-          "title": "Use Cases",
-          "href": "/use-cases"
-        }
+        { "title": "Welcome", "href": "/welcome" },
+        { "title": "About Puzzle", "href": "/about-puzzle" },
+        { "title": "Credential Setup", "href": "/credential-setup" },
+        { "title": "Use Cases", "href": "/use-cases" }
       ]
     },
     {
       "group": "API Documentation",
       "pages": [
-        {
-          "title": "Introduction",
-          "href": "/api-reference/introduction"
-        },
-        {
-          "title": "Authentication",
-          "href": "/api-reference/authentication"
-        },
-        {
-          "title": "Error Handling",
-          "href": "/api-reference/error-handling"
-        },
-        {
-          "title": "Testing",
-          "href": "/api-reference/introduction-to-testing"
-        }
+        { "title": "Introduction", "href": "/api-reference/introduction" },
+        { "title": "Authentication", "href": "/api-reference/authentication" },
+        { "title": "Error Handling", "href": "/api-reference/error-handling" },
+        { "title": "Testing", "href": "/api-reference/introduction-to-testing" }
       ]
     },
     {
@@ -131,8 +107,10 @@
           ]
         },
         {
-          "title": "Financial Statements",
-          "href": "/api-reference/endpoints/financial-statements"
+          "group": "Financial Reports",
+          "pages": [
+            { "title": "Financial Statements", "href": "/api-reference/endpoints/financial-statements" }
+          ]
         }
       ]
     }
