@@ -1,6 +1,7 @@
 {
   "$schema": "https://mintlify.com/schema.json",
   "name": "Puzzle API Docs",
+  "openapi": "api-reference/openapi.json",
   "homepage": "https://puzzle-finance.mintlify.app",
   "logo": {
     "dark": "/logo/dark.svg",
@@ -25,8 +26,7 @@
   "tabs": [
     {
       "name": "API Reference",
-      "url": "api-reference",
-      "openapi": "api-reference/openapi.json"
+      "url": "api-reference"
     }
   ],
   "navigation": [
@@ -47,6 +47,73 @@
         "api-reference/error-handling",
         "api-reference/introduction-to-testing"
       ]
+    },
+    {
+      "group": "Endpoints",
+      "pages": [
+        {
+          "group": "Accounting",
+          "pages": [
+            "api-reference/endpoints/general-ledger",
+            "api-reference/endpoints/subledger",
+            "api-reference/endpoints/chart-of-accounts",
+            "api-reference/endpoints/reconciliation",
+            "api-reference/endpoints/journal-entries",
+            "api-reference/endpoints/fixed-assets"
+          ]
+        },
+        {
+          "group": "Revenue",
+          "pages": [
+            "api-reference/endpoints/invoices",
+            "api-reference/endpoints/customers",
+            "api-reference/endpoints/products",
+            "api-reference/endpoints/revenue-recognition",
+            "api-reference/endpoints/ar-aging",
+            "api-reference/endpoints/invoice-payments"
+          ]
+        },
+        {
+          "group": "Expenses",
+          "pages": [
+            "api-reference/endpoints/bills",
+            "api-reference/endpoints/vendors",
+            "api-reference/endpoints/prepaid-expenses",
+            "api-reference/endpoints/ap-aging",
+            "api-reference/endpoints/bill-payments"
+          ]
+        },
+        {
+          "group": "Payroll",
+          "pages": [
+            "api-reference/endpoints/payroll-reconciliation",
+            "api-reference/endpoints/payroll-sync",
+            "api-reference/endpoints/tax-payments"
+          ]
+        },
+        {
+          "group": "Settings",
+          "pages": [
+            "api-reference/endpoints/accounting-policies",
+            "api-reference/endpoints/rules-and-automations"
+          ]
+        },
+        {
+          "group": "Accountant Tools",
+          "pages": [
+            "api-reference/endpoints/checklists",
+            "api-reference/endpoints/messages",
+            "api-reference/endpoints/notifications",
+            "api-reference/endpoints/categorization-requests"
+          ]
+        },
+        {
+          "group": "Financial Reports",
+          "pages": [
+            "api-reference/endpoints/financial-statements"
+          ]
+        }
+      ]
     }
   ],
   "footerSocials": {
@@ -54,3 +121,5 @@
     "linkedin": "https://linkedin.com/company/puzzlefin"
   }
 }
+
+
