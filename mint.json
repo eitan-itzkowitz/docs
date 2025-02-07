@@ -49,7 +49,6 @@
     },
     {
       "group": "Endpoints",
-      "openapi": "api-reference/openapi.json",
       "pages": [
         {
           "group": "Accounting",
