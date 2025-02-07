@@ -360,7 +360,7 @@
     "/linkToken": {
       "post": {
         "operationId": "createTemporaryLinkToken",
-        "description": "This authentication method has been deprecated. Please use the Authentication endpoints instead. Additional details can be found here.\n\nCreates a link token that can be used to authenticate a user when directing them to the connection flow. The token expires after 30 minutes.\n\nAfter obtaining your link token, create a link to Puzzle so the user can connect their Puzzle account.\n\n<a \n  href=\"https://staging.southparkdata.com/connect/{your_company_name}\n\t?token={link_token}\n\t&redirect_uri={your_redirect_uri}\"\n>\n  Connect your Puzzle account\n</a>\n\nThey will see your welcome page and an opportunity to log in or sign up with Puzzle.",
+        "description": "This authentication method has been deprecated. Please use the Authentication endpoints instead. Additional details can be found here.\n\nCreates a link token that can be used to authenticate a user when directing them to the connection flow. The token expires after 30 minutes.\n\nAfter obtaining your link token, create a link to Puzzle so the user can connect their Puzzle account.\n\n\u003Ca \n  href=\"https://staging.southparkdata.com/connect/{your_company_name}\n\t?token={link_token}\n\t&redirect_uri={your_redirect_uri}\"\n\u003E\n  Connect your Puzzle account\n\u003C/a\u003E\n\nThey will see your welcome page and an opportunity to log in or sign up with Puzzle.",
         "summary": "Fetch a Link Token | Puzzle API",
         "requestBody": {
           "content": {
