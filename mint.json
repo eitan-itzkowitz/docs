@@ -25,7 +25,8 @@
   "tabs": [
     {
       "name": "API Reference",
-      "url": "api-reference"
+      "url": "api-reference",
+      "openapi": "api-reference/openapi.json"
     }
   ],
   "navigation": [
@@ -46,15 +47,6 @@
         "api-reference/error-handling",
         "api-reference/introduction-to-testing"
       ]
-    },
-    {
-      "group": "Endpoints",
-      "openapi": {
-        "file": "api-reference/openapi.json",
-        "paths": [
-          "/company/:id/accounts"
-        ]
-      }
     }
   ],
   "footerSocials": {
