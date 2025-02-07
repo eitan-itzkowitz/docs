@@ -84,3 +84,64 @@ curl https://api.puzzle.com/v1/financial-statements \
     "end_date": "2024-02-29",
     "type": "income-statement"
   }'
+
+Example Response
+{
+  "type": "income-statement",
+  "start_date": "2024-01-01",
+  "end_date": "2024-02-29",
+  "lines": [
+    {
+      "id": "total_revenue",
+      "name": "Total Revenue",
+      "type": "rollup",
+      "amountType": "credit",
+      "intervals": [
+        { "amount": 152340.75, "currency": "USD" },
+        { "amount": 143220.50, "currency": "USD" }
+      ]
+    },
+    {
+      "id": "shopify_sales",
+      "parentId": "total_revenue",
+      "name": "Shopify Sales",
+      "type": "account",
+      "amountType": "credit",
+      "intervals": [
+        { "amount": 128450.00, "currency": "USD" },
+        { "amount": 119875.25, "currency": "USD" }
+      ]
+    },
+    {
+      "id": "operating_expenses",
+      "name": "Operating Expenses",
+      "type": "rollup",
+      "amountType": "debit",
+      "intervals": [
+        { "amount": -84320.00, "currency": "USD" },
+        { "amount": -79210.50, "currency": "USD" }
+      ]
+    },
+    {
+      "id": "shipping_costs",
+      "parentId": "operating_expenses",
+      "name": "Shipping Costs",
+      "type": "account",
+      "amountType": "debit",
+      "intervals": [
+        { "amount": -12345.75, "currency": "USD" },
+        { "amount": -11892.40, "currency": "USD" }
+      ]
+    },
+    {
+      "id": "net_profit",
+      "name": "Net Profit",
+      "type": "rollup",
+      "amountType": "credit",
+      "intervals": [
+        { "amount": 68020.75, "currency": "USD" },
+        { "amount": 64010.00, "currency": "USD" }
+      ]
+    }
+  ]
+}
