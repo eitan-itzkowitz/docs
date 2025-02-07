@@ -33,15 +33,28 @@
       "group": "Get Started",
       "pages": [
         "welcome",
-        "about-puzzle"
+        "about-puzzle",
+        "credential-setup",
+        "use-cases"
       ]
     },
     {
       "group": "API Documentation",
       "pages": [
         "api-reference/introduction",
-        "api-reference/authentication"
+        "api-reference/authentication",
+        "api-reference/error-handling",
+        "api-reference/introduction-to-testing"
       ]
+    },
+    {
+      "group": "Endpoints",
+      "openapi": {
+        "file": "api-reference/openapi.json",
+        "paths": [
+          "/company/:id/accounts"
+        ]
+      }
     }
   ],
   "footerSocials": {
