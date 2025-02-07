@@ -22,13 +22,6 @@
     "name": "Site",
     "url": "https://puzzle.io"
   },
-  "tabs": [
-    {
-      "name": "API Reference",
-      "url": "api-reference",
-      "openapi": "/openapi.json"
-    }
-  ],
   "navigation": [
     {
       "group": "Get Started",
