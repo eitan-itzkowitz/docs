@@ -1,79 +1,86 @@
 ---
 title: Financial Statements
-description: Retrieve structured financial statements for an e-commerce business.
+description: Retrieve financial statements such as balance sheets, income statements, and cash flow statements for an e-commerce business.
 openapi: "GET /financial-statements"
 ---
 
 import { TryIt } from '@mintlify/components';
+import '../../_snippets/live.mdx';
 
-## Retrieve Financial Statements
-
-Fetch financial statements such as balance sheet, income statement, and cash activity report.
+# Retrieve Financial Statements
 
 <TryIt />
 
 ### **GET** `/financial-statements`
 
-#### 🔹 **Authorizations**
-| Name           | Type   | Location | Required | Description |
-|---------------|--------|----------|----------|-------------|
-| Authorization | string | Header   | Required | Bearer authentication header of the form `Bearer <token>` |
-
-#### 🔹 **Query Parameters**
-| Name        | Type   | Required | Description |
-|------------|--------|----------|-------------|
-| `start_date` | string (YYYY-MM-DD) | Required | Start date of the financial statement period. |
-| `end_date` | string (YYYY-MM-DD) | Required | End date of the financial statement period. |
-| `type`  | string | Required | Type of statement: `balance-sheet`, `income-statement`, or `cash-activity-report`. |
+[!tip] Live  
+This endpoint is fully operational.
 
 ---
 
-## **Response Schema**
-```json
-{
-  "lines": [
-    {
-      "id": "d1e3f5b7-38fa-4a2d-9e4d-3c73c9b9eabc",
-      "parentId": null,
-      "childIds": ["a9c24d72-bc52-46e9-8d8c-108dc856b64f"],
-      "depth": 0,
-      "name": "Total Revenue",
-      "type": "rollup",
-      "amountType": "credit",
-      "intervals": [
-        { "amount": { "amount": 152340.75, "currency": "USD" } },
-        { "amount": { "amount": 143220.50, "currency": "USD" } }
-      ]
-    },
-    {
-      "id": "b342d28a-3c65-44f5-95e3-19a6a5b53f92",
-      "parentId": null,
-      "childIds": [],
-      "depth": 0,
-      "name": "Operating Expenses",
-      "type": "rollup",
-      "amountType": "debit",
-      "intervals": [
-        { "amount": { "amount": -84320.00, "currency": "USD" } },
-        { "amount": { "amount": -79210.50, "currency": "USD" } }
-      ]
-    }
-  ],
-  "properties": {
-    "basis": "accrual",
-    "currency": "USD",
-    "key": "income_statement",
-    "name": "Income Statement",
-    "intervals": [
-      { "key": "current_period", "periods": ["2024-01", "2024-02"] },
-      { "key": "year_to_date", "periods": ["2024-Q1"] }
-    ]
-  }
-}
+## **Request Parameters**
 
-Field Definitions
-Financial Statement Structure
-Each financial statement is structured into individual lines, representing account groups, accounts, or rollup categories.
+| Parameter   | Type                 | Required | Description |
+|------------|----------------------|----------|-------------|
+| `start_date`  | `string (YYYY-MM-DD)` | **✅ Required** | Start date of the statement period. |
+| `end_date`    | `string (YYYY-MM-DD)` | **✅ Required** | End date of the statement period. |
+| `type`        | `string`             | **✅ Required** | Type of statement: `balance-sheet`, `income-statement`, `cash-flow`. |
 
-Key Properties
-<table> <thead> <tr> <th>Field</th> <th>Type</th> <th>Description</th> </tr> </thead> <tbody> <tr> <td><code>id</code></td> <td>string</td> <td>Unique identifier for this statement line.</td> </tr> <tr> <td><code>parentId</code></td> <td>string or null</td> <td>If present, this line belongs to a parent grouping. Null for top-level lines.</td> </tr> <tr> <td><code>childIds</code></td> <td>array of string</td> <td>IDs of child lines under this line.</td> </tr> <tr> <td><code>depth</code></td> <td>integer</td> <td>Depth level in hierarchy. Used for indentation.</td> </tr> <tr> <td><code>name</code></td> <td>string</td> <td>Human-readable label (e.g., "Total Revenue", "Shipping Costs").</td> </tr> <tr> <td><code>type</code></td> <td>enum</td> <td>One of: <code>rollup</code> (aggregated totals), <code>parent_account_group</code> (subgroup of accounts), or <code>account</code> (individual account).</td> </tr> <tr> <td><code>amountType</code></td> <td>enum</td> <td>One of: <code>credit</code> (e.g., revenue) or <code>debit</code> (e.g., expenses).</td> </tr> <tr> <td><code>intervals</code></td> <td>array</td> <td>Reported values for each requested period.</td> </tr> </tbody> </table>
+---
+
+## **Response Schema**  
+
+### **FinancialStatement Object**
+
+| Field         | Type             | Required | Description |
+|--------------|----------------|----------|-------------|
+| `type`       | `string`         | **✅ Required** | The financial statement type (e.g., `balance-sheet`). |
+| `start_date` | `string (YYYY-MM-DD)` | **✅ Required** | Start date of the period. |
+| `end_date`   | `string (YYYY-MM-DD)` | **✅ Required** | End date of the period. |
+| `lines`      | `array of objects` | **✅ Required** | List of statement line items. |
+
+---
+
+### **Line Object**
+
+| Field       | Type               | Required | Description |
+|------------|--------------------|----------|-------------|
+| `id`       | `string`           | **✅ Required** | Unique identifier for the statement line. |
+| `parentId` | `string or null`   | **❌ Optional** | Parent line grouping (if applicable). |
+| `childIds` | `array of strings` | **❌ Optional** | Child lines under this grouping. |
+| `depth`    | `integer`          | **✅ Required** | Depth level for hierarchy indentation. |
+| `name`     | `string`           | **✅ Required** | Display label (e.g., `"Total Revenue"`). |
+| `type`     | `enum`             | **✅ Required** | `rollup` (totals), `parent_account_group`, `account`. |
+| `amountType` | `enum`            | **✅ Required** | `credit` (revenue) or `debit` (expenses). |
+| `intervals` | `array`            | **✅ Required** | Reported values per period. |
+
+---
+
+## **Monetary Values**
+Uses the **MonetaryValue** model.
+
+### **MonetaryValue Object**
+| Field      | Type    | Required | Description |
+|-----------|--------|----------|-------------|
+| `amount`  | `number` | **✅ Required** | Financial amount with up to 2 decimals. |
+| `currency` | `string` | **✅ Required** | ISO 4217 currency code (`USD`, `EUR`). |
+
+:::info  
+- **Supports positive & negative values** (negative = refunds, expenses).  
+- **Currency follows ISO 4217 standards**.  
+:::
+
+---
+
+## **Example: Income Statement for a Shopify Seller**
+
+### **Example Request**
+```sh
+curl https://api.puzzle.com/v1/financial-statements \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "start_date": "2024-01-01",
+    "end_date": "2024-02-29",
+    "type": "income-statement"
+  }'
