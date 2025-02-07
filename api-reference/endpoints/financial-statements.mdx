@@ -70,37 +70,3 @@ Fetch financial statements such as balance sheet, income statement, and cash act
     ]
   }
 }
-Field Definitions
-lines
-Each financial statement is structured into individual lines, representing account groups, accounts, or rollup categories.
-
-Key Properties
-Field	Type	Description
-id	string	Unique identifier for this statement line.
-parentId	string or null	If present, this line belongs to a parent grouping. Null for top-level lines.
-childIds	array of string	IDs of child lines under this line.
-depth	integer	Depth level in hierarchy. Used for indentation.
-name	string	Human-readable label (e.g., "Total Revenue", "Shipping Costs").
-type	enum	rollup (aggregated totals), parent_account_group (subgroup of accounts), or account (individual account).
-amountType	enum	credit (e.g., revenue) or debit (e.g., expenses).
-intervals	array	Reported values for each requested period.
-Monetary Values
-Uses the MonetaryValue model:
-{
-  "amount": 1234.56,
-  "currency": "USD"
-}
-Supports positive and negative values (negative = refunds, expenses).
-Currency follows ISO 4217 standard (e.g., USD, EUR).
-Example Use Case
-For an e-commerce store selling apparel on Shopify, the Income Statement for January and February might show:
-
-Total Revenue: $152,340.75 (Jan) → $143,220.50 (Feb)
-Shopify Sales: $128,450.00 → $119,875.25
-Operating Expenses: $(84,320.00) → $(79,210.50)
-Shipping Costs: $(12,345.75) → $(11,892.40)
-Net Profit: $68,020.75 → $64,010.00
-Next Steps
-Retrieve a financial statement via GET /financial-statements
-Filter by reporting periods (e.g., 2024-01, 2024-Q1)
-Format amounts using MonetaryValue
