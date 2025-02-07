@@ -70,3 +70,10 @@ Fetch financial statements such as balance sheet, income statement, and cash act
     ]
   }
 }
+
+Field Definitions
+Financial Statement Structure
+Each financial statement is structured into individual lines, representing account groups, accounts, or rollup categories.
+
+Key Properties
+<table> <thead> <tr> <th>Field</th> <th>Type</th> <th>Description</th> </tr> </thead> <tbody> <tr> <td><code>id</code></td> <td>string</td> <td>Unique identifier for this statement line.</td> </tr> <tr> <td><code>parentId</code></td> <td>string or null</td> <td>If present, this line belongs to a parent grouping. Null for top-level lines.</td> </tr> <tr> <td><code>childIds</code></td> <td>array of string</td> <td>IDs of child lines under this line.</td> </tr> <tr> <td><code>depth</code></td> <td>integer</td> <td>Depth level in hierarchy. Used for indentation.</td> </tr> <tr> <td><code>name</code></td> <td>string</td> <td>Human-readable label (e.g., "Total Revenue", "Shipping Costs").</td> </tr> <tr> <td><code>type</code></td> <td>enum</td> <td>One of: <code>rollup</code> (aggregated totals), <code>parent_account_group</code> (subgroup of accounts), or <code>account</code> (individual account).</td> </tr> <tr> <td><code>amountType</code></td> <td>enum</td> <td>One of: <code>credit</code> (e.g., revenue) or <code>debit</code> (e.g., expenses).</td> </tr> <tr> <td><code>intervals</code></td> <td>array</td> <td>Reported values for each requested period.</td> </tr> </tbody> </table>
