@@ -1,6 +1,6 @@
 ---
 title: Financial Statements
-description: Retrieve financial statements for an e-commerce business.
+description: Retrieve structured financial statements for an e-commerce business.
 openapi: "GET /financial-statements"
 ---
 
@@ -8,7 +8,7 @@ import { TryIt } from '@mintlify/components';
 
 ## Retrieve Financial Statements
 
-Fetch financial statements such as balance sheet, income statement, and cash flow statement.
+Fetch financial statements such as balance sheet, income statement, and cash activity report.
 
 <TryIt />
 
@@ -17,44 +17,90 @@ Fetch financial statements such as balance sheet, income statement, and cash flo
 #### 🔹 **Authorizations**
 | Name           | Type   | Location | Required | Description |
 |---------------|--------|----------|----------|-------------|
-| Authorization | string | Header   | ✅       | Bearer authentication header of the form `Bearer <token>` |
+| Authorization | string | Header   | Required | Bearer authentication header of the form `Bearer <token>` |
 
 #### 🔹 **Query Parameters**
 | Name        | Type   | Required | Description |
 |------------|--------|----------|-------------|
-| `start_date` | string (YYYY-MM-DD) | ✅ | Start date of the financial statement period. |
-| `end_date` | string (YYYY-MM-DD) | ✅ | End date of the financial statement period. |
-| `type`  | string | ✅ | Type of statement: `balance-sheet`, `income-statement`, or `cash-flow`. |
+| `start_date` | string (YYYY-MM-DD) | Required | Start date of the financial statement period. |
+| `end_date` | string (YYYY-MM-DD) | Required | End date of the financial statement period. |
+| `type`  | string | Required | Type of statement: `balance-sheet`, `income-statement`, or `cash-activity-report`. |
 
-#### 🔹 **Response**
-**200 - application/json**
+---
+
+## **Response Schema**
 ```json
 {
-  "financial_statement": {
-    "type": "balance-sheet",
-    "start_date": "2024-01-01",
-    "end_date": "2024-01-31",
-    "data": [
-      {
-        "account": "Cash",
-        "value": 25000
-      },
-      {
-        "account": "Accounts Receivable",
-        "value": 8000
-      },
-      {
-        "account": "Inventory",
-        "value": 12000
-      },
-      {
-        "account": "Accounts Payable",
-        "value": -5000
-      },
-      {
-        "account": "Owner's Equity",
-        "value": 40000
-      }
+  "lines": [
+    {
+      "id": "d1e3f5b7-38fa-4a2d-9e4d-3c73c9b9eabc",
+      "parentId": null,
+      "childIds": ["a9c24d72-bc52-46e9-8d8c-108dc856b64f"],
+      "depth": 0,
+      "name": "Total Revenue",
+      "type": "rollup",
+      "amountType": "credit",
+      "intervals": [
+        { "amount": { "amount": 152340.75, "currency": "USD" } },
+        { "amount": { "amount": 143220.50, "currency": "USD" } }
+      ]
+    },
+    {
+      "id": "b342d28a-3c65-44f5-95e3-19a6a5b53f92",
+      "parentId": null,
+      "childIds": [],
+      "depth": 0,
+      "name": "Operating Expenses",
+      "type": "rollup",
+      "amountType": "debit",
+      "intervals": [
+        { "amount": { "amount": -84320.00, "currency": "USD" } },
+        { "amount": { "amount": -79210.50, "currency": "USD" } }
+      ]
+    }
+  ],
+  "properties": {
+    "basis": "accrual",
+    "currency": "USD",
+    "key": "income_statement",
+    "name": "Income Statement",
+    "intervals": [
+      { "key": "current_period", "periods": ["2024-01", "2024-02"] },
+      { "key": "year_to_date", "periods": ["2024-Q1"] }
     ]
   }
 }
+Field Definitions
+lines
+Each financial statement is structured into individual lines, representing account groups, accounts, or rollup categories.
+
+Key Properties
+Field	Type	Description
+id	string	Unique identifier for this statement line.
+parentId	string or null	If present, this line belongs to a parent grouping. Null for top-level lines.
+childIds	array of string	IDs of child lines under this line.
+depth	integer	Depth level in hierarchy. Used for indentation.
+name	string	Human-readable label (e.g., "Total Revenue", "Shipping Costs").
+type	enum	rollup (aggregated totals), parent_account_group (subgroup of accounts), or account (individual account).
+amountType	enum	credit (e.g., revenue) or debit (e.g., expenses).
+intervals	array	Reported values for each requested period.
+Monetary Values
+Uses the MonetaryValue model:
+{
+  "amount": 1234.56,
+  "currency": "USD"
+}
+Supports positive and negative values (negative = refunds, expenses).
+Currency follows ISO 4217 standard (e.g., USD, EUR).
+Example Use Case
+For an e-commerce store selling apparel on Shopify, the Income Statement for January and February might show:
+
+Total Revenue: $152,340.75 (Jan) → $143,220.50 (Feb)
+Shopify Sales: $128,450.00 → $119,875.25
+Operating Expenses: $(84,320.00) → $(79,210.50)
+Shipping Costs: $(12,345.75) → $(11,892.40)
+Net Profit: $68,020.75 → $64,010.00
+Next Steps
+Retrieve a financial statement via GET /financial-statements
+Filter by reporting periods (e.g., 2024-01, 2024-Q1)
+Format amounts using MonetaryValue
