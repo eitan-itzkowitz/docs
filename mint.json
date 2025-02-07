@@ -49,7 +49,9 @@
     },
     {
       "group": "Endpoints",
-      "pages": []
+      "pages": [
+        "api-reference/endpoints/index"
+      ]
     }
   ],
   "footerSocials": {
