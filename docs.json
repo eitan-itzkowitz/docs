@@ -33,9 +33,6 @@
       }
     ]
   },
-  "api": {
-    "openapi": "/openapi.json"
-  },
   "footer": {
     "socials": {
       "x": "https://x.com/puzzlefin",
