@@ -25,8 +25,7 @@
   "tabs": [
     {
       "name": "API Reference",
-      "url": "api-reference",
-      "openapi": "api-reference/openapi.json"
+      "url": "api-reference"
     }
   ],
   "navigation": [
@@ -34,23 +33,15 @@
       "group": "Get Started",
       "pages": [
         "welcome",
-        "about-puzzle",
-        "credential-setup",
-        "use-cases"
+        "about-puzzle"
       ]
     },
     {
       "group": "API Documentation",
       "pages": [
         "api-reference/introduction",
-        "api-reference/authentication",
-        "api-reference/error-handling",
-        "api-reference/introduction-to-testing"
+        "api-reference/authentication"
       ]
-    },
-    {
-      "group": "Endpoints",
-      "openapi": "api-reference/openapi.json"
     }
   ],
   "footerSocials": {
