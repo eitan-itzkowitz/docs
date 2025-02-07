@@ -25,7 +25,8 @@
   "tabs": [
     {
       "name": "API Reference",
-      "url": "api-reference"
+      "url": "api-reference",
+      "openapi": "api-reference/openapi.json"
     }
   ],
   "navigation": [
@@ -39,7 +40,7 @@
       ]
     },
     {
-      "group": "API Documentation - 1",
+      "group": "API Documentation",
       "pages": [
         "api-reference/introduction",
         "api-reference/authentication",
