@@ -4,144 +4,125 @@ description: Retrieve financial statements such as balance sheets, income statem
 openapi: "GET /financial-statements"
 ---
 
-import { TryIt } from '@mintlify/components';
-import '../../_snippets/live.mdx';
+Retrieve Financial Statements
+GET /financial-statements
+Fetch structured financial statements, including balance sheets, income statements, and cash activity reports.
 
-# Retrieve Financial Statements
+Request Parameters
+Pass the following query parameters in the request.
 
-<TryIt />
+Query Parameters
+type | string | Required
+The type of financial statement. Possible values: balance_sheet, income_statement, cash_activity_report.
 
-### **GET** `/financial-statements`
+basis | string | Required
+The accounting basis for the report. Options: cash, accrual.
 
-[!tip] Live  
-This endpoint is fully operational.
+start_date | string | Required
+The start date for the financial statement in YYYY-MM-DD format.
 
----
+end_date | string | Required
+The end date for the financial statement in YYYY-MM-DD format.
 
-## **Request Parameters**
+interval | string | Required
+The reporting frequency. Options: monthly, quarterly, yearly.
 
-| Parameter   | Type                 | Required | Description |
-|------------|----------------------|----------|-------------|
-| `start_date`  | `string (YYYY-MM-DD)` | **✅ Required** | Start date of the statement period. |
-| `end_date`    | `string (YYYY-MM-DD)` | **✅ Required** | End date of the statement period. |
-| `type`        | `string`             | **✅ Required** | Type of statement: `balance-sheet`, `income-statement`, `cash-flow`. |
+Response Structure
+Returns a JSON object representing the requested financial statement.
 
----
+Financial Statement Object
+type | string | Required
+The type of financial statement returned. Possible values: balance_sheet, income_statement, cash_activity_report.
 
-## **Response Schema**  
+basis | string | Required
+The accounting basis of the statement: cash or accrual.
 
-### **FinancialStatement Object**
+currency | string | Required
+The currency code in ISO 4217 format (e.g., USD).
 
-| Field         | Type             | Required | Description |
-|--------------|----------------|----------|-------------|
-| `type`       | `string`         | **✅ Required** | The financial statement type (e.g., `balance-sheet`). |
-| `start_date` | `string (YYYY-MM-DD)` | **✅ Required** | Start date of the period. |
-| `end_date`   | `string (YYYY-MM-DD)` | **✅ Required** | End date of the period. |
-| `lines`      | `array of objects` | **✅ Required** | List of statement line items. |
+key | string | Required
+A unique identifier for the statement type.
 
----
+name | string | Required
+The human-readable name of the financial statement (e.g., "Income Statement").
 
-### **Line Object**
+intervals | array | Required
+The reporting periods included in the response.
 
-| Field       | Type               | Required | Description |
-|------------|--------------------|----------|-------------|
-| `id`       | `string`           | **✅ Required** | Unique identifier for the statement line. |
-| `parentId` | `string or null`   | **❌ Optional** | Parent line grouping (if applicable). |
-| `childIds` | `array of strings` | **❌ Optional** | Child lines under this grouping. |
-| `depth`    | `integer`          | **✅ Required** | Depth level for hierarchy indentation. |
-| `name`     | `string`           | **✅ Required** | Display label (e.g., `"Total Revenue"`). |
-| `type`     | `enum`             | **✅ Required** | `rollup` (totals), `parent_account_group`, `account`. |
-| `amountType` | `enum`            | **✅ Required** | `credit` (revenue) or `debit` (expenses). |
-| `intervals` | `array`            | **✅ Required** | Reported values per period. |
+Interval Object (Nested in intervals)
+key | string | Required
+A unique key identifying the reporting interval.
 
----
+periods | array | Required
+A list of periods covered by this interval (e.g., ["2024-01", "2024-02"]).
 
-## **Monetary Values**
-Uses the **MonetaryValue** model.
+Line Item Object (Nested in lines)
+id | string | Required
+Unique identifier for the statement line.
 
-### **MonetaryValue Object**
-| Field      | Type    | Required | Description |
-|-----------|--------|----------|-------------|
-| `amount`  | `number` | **✅ Required** | Financial amount with up to 2 decimals. |
-| `currency` | `string` | **✅ Required** | ISO 4217 currency code (`USD`, `EUR`). |
+parentId | string \| null | Optional
+The ID of the parent line if this is a subcategory. null for top-level items.
 
-:::info  
-- **Supports positive & negative values** (negative = refunds, expenses).  
-- **Currency follows ISO 4217 standards**.  
-:::
+childIds | array | Optional
+An array of child line IDs if this line is a parent category.
 
----
+depth | integer | Required
+The hierarchy level of the line within the financial statement.
 
-## **Example: Income Statement for a Shopify Seller**
+name | string | Required
+The label for this line (e.g., "Total Revenue").
 
-### **Example Request**
-```sh
-curl https://api.puzzle.com/v1/financial-statements \
-  -H "Authorization: Bearer YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "start_date": "2024-01-01",
-    "end_date": "2024-02-29",
-    "type": "income-statement"
-  }'
+type | string | Required
+Indicates whether this line represents a summary (rollup), a grouping of accounts (parent_account_group), or an individual account.
+
+amountType | string | Required
+Specifies whether this line is a credit or debit.
+
+intervals | array | Required
+Financial values for each period in the response.
+
+Monetary Value Object (Nested in intervals)
+monetary_value.amount | string | Required
+The financial amount for this line, returned as a string for precision.
+
+monetary_value.currency | string | Required
+The currency in which the amount is reported.
 
 Example Response
 {
-  "type": "income-statement",
-  "start_date": "2024-01-01",
-  "end_date": "2024-02-29",
+  "type": "income_statement",
+  "basis": "cash",
+  "currency": "USD",
+  "key": "income_statement",
+  "name": "Income Statement",
+  "intervals": [
+    {
+      "key": "2024-Q1",
+      "periods": ["2024-01", "2024-02", "2024-03"]
+    }
+  ],
   "lines": [
     {
-      "id": "total_revenue",
+      "id": "12345",
+      "parentId": null,
+      "childIds": ["67890"],
+      "depth": 0,
       "name": "Total Revenue",
       "type": "rollup",
       "amountType": "credit",
       "intervals": [
-        { "amount": 152340.75, "currency": "USD" },
-        { "amount": 143220.50, "currency": "USD" }
-      ]
-    },
-    {
-      "id": "shopify_sales",
-      "parentId": "total_revenue",
-      "name": "Shopify Sales",
-      "type": "account",
-      "amountType": "credit",
-      "intervals": [
-        { "amount": 128450.00, "currency": "USD" },
-        { "amount": 119875.25, "currency": "USD" }
-      ]
-    },
-    {
-      "id": "operating_expenses",
-      "name": "Operating Expenses",
-      "type": "rollup",
-      "amountType": "debit",
-      "intervals": [
-        { "amount": -84320.00, "currency": "USD" },
-        { "amount": -79210.50, "currency": "USD" }
-      ]
-    },
-    {
-      "id": "shipping_costs",
-      "parentId": "operating_expenses",
-      "name": "Shipping Costs",
-      "type": "account",
-      "amountType": "debit",
-      "intervals": [
-        { "amount": -12345.75, "currency": "USD" },
-        { "amount": -11892.40, "currency": "USD" }
-      ]
-    },
-    {
-      "id": "net_profit",
-      "name": "Net Profit",
-      "type": "rollup",
-      "amountType": "credit",
-      "intervals": [
-        { "amount": 68020.75, "currency": "USD" },
-        { "amount": 64010.00, "currency": "USD" }
+        {
+          "monetary_value": {
+            "amount": "152340.75",
+            "currency": "USD"
+          }
+        }
       ]
     }
   ]
 }
+Example Request
+curl "https://api.puzzle.com/v1/financial-statements?type=income_statement&basis=cash&start_date=2024-01-01&end_date=2024-01-31&interval=monthly" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json"
+
