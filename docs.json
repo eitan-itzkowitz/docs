@@ -38,5 +38,22 @@
       "x": "https://x.com/puzzlefin",
       "linkedin": "https://linkedin.com/company/puzzlefin"
     }
-  }
+  },
+  "api": {
+    "baseUrl": "https://api.puzzle.com",
+    "auth": {
+      "method": "bearer"
+    }
+  },
+  "topbarLinks": [
+    {
+      "name": "Support",
+      "url": "mailto:api@puzzle.io"
+    }
+  ],
+  "topbarCtaButton": {
+    "name": "Visit Site",
+    "url": "https://puzzle.io"
+  },
+  "versions": ["v1", "v2"]
 }
