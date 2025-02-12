@@ -1,4 +1,37 @@
 ---
 title: Response Codes
 ---
-<Note>This adds a note in the content</Note>
+
+import { Tabs, Tab } from '@mintlify/components'
+
+<Tabs>
+  <Tab title="Live">
+    <Check>Live</Check>
+
+    ## Overview
+    Puzzle’s API uses standard HTTP status codes to indicate success or failure. Below is a breakdown of commonly returned response codes.
+
+    ## Standard HTTP Response Codes
+    - `200 OK` – Request was successful.
+    - `400 Bad Request` – The request was malformed.
+    - `401 Unauthorized` – Authentication failed or missing.
+    - `403 Forbidden` – Authorization failed.
+    - `404 Not Found` – Resource doesn’t exist.
+    - `500 Internal Server Error` – Unexpected issue on our side.
+
+    ## Custom Response Codes
+    If applicable, Puzzle may introduce additional response codes for specific cases.
+
+  </Tab>
+
+  <Tab title="Exploratory">
+    <Note>Exploratory</Note>
+
+    ## Overview
+    This section outlines potential future adjustments to response handling.
+
+    ## Proposed Changes
+    - More granular 4xx codes to improve error specificity.
+    - Additional metadata in response bodies for enhanced debugging.
+  </Tab>
+</Tabs>
