@@ -9,6 +9,10 @@
   },
   "favicon": "/symbol_puzzle_512x512.png",
   "navigation": {
+    "languages": [],
+    "versions": [],
+    "dropdowns": [],
+    "anchors": [],
     "tabs": [
       {
         "tab": "Documentation",
@@ -99,18 +103,6 @@
                 "group": "Financial Reports",
                 "pages": [
                   "api-reference/endpoints/financial-statements"
-                ]
-              }
-            ]
-          },
-          {
-            "group": "Response Codes",
-            "pages": [
-              {
-                "page": "api-reference/response-codes",
-                "versions": [
-                  "1.0",
-                  "1.1"
                 ]
               }
             ]
