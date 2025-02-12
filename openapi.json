@@ -1,1 +1,56 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Puzzle API",
+    "version": "1.1"
+  },
+  "paths": {
+    "/users": {
+      "get": {
+        "summary": "Get users",
+        "tags": ["Accounting"],
+        "responses": {
+          "200": { "$ref": "#/components/responses/Success200" }
+        }
+      }
+    },
+    "/invoices": {
+      "get": {
+        "summary": "Retrieve invoices",
+        "tags": ["Revenue"],
+        "responses": {
+          "200": { "$ref": "#/components/responses/Success200" }
+        }
+      }
+    },
+    "/bills": {
+      "get": {
+        "summary": "Retrieve bills",
+        "tags": ["Expenses"],
+        "responses": {
+          "200": { "$ref": "#/components/responses/Success200" }
+        }
+      }
+    }
+  },
+  "components": {
+    "responses": {
+      "Success200": {
+        "description": "Successful response",
+        "x-status": "live",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResponseBody"
+            }
+          }
+        }
+      }
+    },
+    "schemas": {
+      "ResponseBody": {
+        "type": "object",
+        "properties": {
+          "success": { "type": "boolean", "example": true },
+          "data": { "type": "object"
 
