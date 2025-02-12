@@ -102,29 +102,17 @@
                 ]
               }
             ]
-          }
-        ]
-      }
-    ],
-    "versions": [
-      {
-        "version": "1.0",
-        "groups": [
+          },
           {
-            "group": "API Reference",
+            "group": "Response Codes",
             "pages": [
-              "api-reference/response-codes"
-            ]
-          }
-        ]
-      },
-      {
-        "version": "1.1",
-        "groups": [
-          {
-            "group": "API Reference",
-            "pages": [
-              "api-reference/response-codes"
+              {
+                "page": "api-reference/response-codes",
+                "versions": [
+                  "1.0",
+                  "1.1"
+                ]
+              }
             ]
           }
         ]
