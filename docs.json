@@ -43,7 +43,7 @@
           },
           {
             "group": "Endpoints",
-            "openapi": "openapi.json"
+            "pages": []
           }
         ]
       }
@@ -54,7 +54,7 @@
     "dark": "/logo/dark.svg"
   },
   "api": {
-    "openapi": "openapi.json"
+    "openapi": "./openapi.json"
   },
   "navbar": {
     "links": [
