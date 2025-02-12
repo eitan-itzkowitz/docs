@@ -43,7 +43,15 @@
           },
           {
             "group": "Endpoints",
-            "pages": []
+            "pages": [
+              { "openapi": "Accounting" },
+              { "openapi": "Revenue" },
+              { "openapi": "Expenses" },
+              { "openapi": "Payroll" },
+              { "openapi": "Settings" },
+              { "openapi": "Accountant Tools" },
+              { "openapi": "Financial Reports" }
+            ]
           }
         ]
       }
@@ -54,7 +62,7 @@
     "dark": "/logo/dark.svg"
   },
   "api": {
-    "openapi": "./openapi.json"
+    "openapi": "openapi.json"
   },
   "navbar": {
     "links": [
