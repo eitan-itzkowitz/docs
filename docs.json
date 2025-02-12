@@ -37,7 +37,8 @@
               "api-reference/introduction",
               "api-reference/authentication",
               "api-reference/error-handling",
-              "api-reference/introduction-to-testing"
+              "api-reference/introduction-to-testing",
+              "api-reference/response-codes"
             ]
           },
           {
