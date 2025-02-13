@@ -19,6 +19,7 @@
         "groups": [
           {
             "group": "Get Started",
+            "collapsible": true,
             "pages": [
               "welcome",
               "about-puzzle",
@@ -33,6 +34,7 @@
         "groups": [
           {
             "group": "API Documentation",
+            "collapsible": true,
             "pages": [
               "api-reference/introduction",
               "api-reference/authentication",
@@ -43,6 +45,7 @@
           },
           {
             "group": "Expenses",
+            "collapsible": true,
             "pages": [
               "api-reference/endpoints/bills"
             ]
