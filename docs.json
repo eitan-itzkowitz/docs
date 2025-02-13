@@ -43,18 +43,20 @@
           },
           {
             "group": "Endpoints",
-            "pages": [
-              "api-reference/endpoints/users",
-              "api-reference/endpoints/invoices",
-              "api-reference/endpoints/bills"
+            "groups": [
+              {
+                "group": "Accounting",
+                "pages": ["api-reference/endpoints/users"]
+              },
+              {
+                "group": "Revenue",
+                "pages": ["api-reference/endpoints/invoices"]
+              },
+              {
+                "group": "Expenses",
+                "pages": ["api-reference/endpoints/bills"]
+              }
             ]
-          },
-          {
-            "group": "Other Endpoints",
-            "openapi": {
-              "source": "./openapi.json",
-              "directory": "api-reference"
-            }
           }
         ]
       }
@@ -64,9 +66,7 @@
     "light": "/logo/light.svg",
     "dark": "/logo/dark.svg"
   },
-  "api": {
-    "openapi": "./openapi.json"
-  },
+  "api": {},
   "navbar": {
     "links": [
       {
