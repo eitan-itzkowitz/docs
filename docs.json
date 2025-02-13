@@ -1,33 +1,6 @@
 {
-  "$schema": "https://mintlify.com/docs.json",
-  "theme": "mint",
-  "name": "Puzzle API Docs",
-  "colors": {
-    "primary": "#50FAAB",
-    "light": "#d1d1d5",
-    "dark": "#211F35"
-  },
-  "favicon": "/symbol_puzzle_512x512.png",
   "navigation": {
-    "languages": [],
-    "versions": [],
-    "dropdowns": [],
-    "anchors": [],
     "tabs": [
-      {
-        "tab": "Documentation",
-        "groups": [
-          {
-            "group": "Get Started",
-            "pages": [
-              "welcome",
-              "about-puzzle",
-              "credential-setup",
-              "use-cases"
-            ]
-          }
-        ]
-      },
       {
         "tab": "API Reference",
         "groups": [
@@ -43,36 +16,15 @@
           },
           {
             "group": "Endpoints",
-            "pages": []
+            "pages": [
+              { "openapi": "Accounting" }
+            ]
           }
         ]
       }
     ]
   },
-  "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
-  },
   "api": {
     "openapi": "./openapi.json"
-  },
-  "navbar": {
-    "links": [
-      {
-        "label": "Support",
-        "href": "mailto:api@puzzle.io"
-      }
-    ],
-    "primary": {
-      "type": "button",
-      "label": "Site",
-      "href": "https://puzzle.io"
-    }
-  },
-  "footer": {
-    "socials": {
-      "x": "https://x.com/puzzlefin",
-      "linkedin": "https://linkedin.com/company/puzzlefin"
-    }
   }
 }
