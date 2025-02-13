@@ -116,7 +116,9 @@
     "light": "/logo/light.svg",
     "dark": "/logo/dark.svg"
   },
-  "api": {},
+  "api": {
+    "openapi": {}
+  },
   "navbar": {
     "links": [
       {
