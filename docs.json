@@ -43,10 +43,23 @@
           },
           {
             "group": "Endpoints",
-            "openapi": {
-              "source": "./openapi.json",
-              "directory": "api-reference"
-            }
+            "groups": [
+              {
+                "group": "Accounting",
+                "pages": [
+                  "api-reference/endpoints/users",
+                  "api-reference/endpoints/general-ledger",
+                  "api-reference/endpoints/subledger"
+                ]
+              },
+              {
+                "group": "Revenue",
+                "pages": [
+                  "api-reference/endpoints/invoices",
+                  "api-reference/endpoints/customers"
+                ]
+              }
+            ]
           }
         ]
       }
