@@ -12,7 +12,7 @@
     "languages": [],
     "versions": [],
     "dropdowns": [],
-    "anchors": [],  <-- ✅ Ensures Mintlify doesn’t break anchor-based navigation
+    "anchors": [],
     "tabs": [
       {
         "tab": "Documentation",
