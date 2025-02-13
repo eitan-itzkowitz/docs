@@ -131,3 +131,140 @@ components:
         - jurisdictionType
         - jurisdictionName
         - calculationType
+
+    Bill:
+      type: object
+      title: Bill
+      description: |
+        The Bill object represents a single record of expenses incurred by the company.
+        Each bill is linked to exactly one vendor, contains one or more bill line items, and has a due date.
+        The total amount of the bill is derived from the sum of its associated line items, plus shipping charges, 
+        adjusted by bill-level taxes and discounts. Attachments and payment details provide additional tracking and context.
+      properties:
+        id:
+          type: string
+          description: A unique identifier for the bill. This is auto-generated and immutable.
+        company:
+          type: object
+          description: References the company associated with the bill.
+          properties:
+            id: { type: string }
+            legalName: { type: string }
+        createdAt:
+          type: string
+          format: date-time
+          description: The timestamp when the bill was created.
+        updatedAt:
+          type: string
+          format: date-time
+          description: The timestamp when the bill was last updated.
+        vendor:
+          type: object
+          description: References the vendor associated with the bill.
+          properties:
+            id: { type: string }
+            name: { type: string }
+        issueDate:
+          type: string
+          format: date
+          description: The date the bill was issued.
+        dueDate:
+          type: string
+          format: date
+          description: The date the bill is due for payment.
+        externalId:
+          type: string
+          description: |
+            An external reference ID for the bill, often used for integration with third-party systems 
+            or ERP platforms for tracking and reconciliation purposes.
+        description:
+          type: string
+          description: A brief description or memo about the bill.
+        billLines:
+          type: array
+          description: A list of one or more line items associated with the bill.
+          items:
+            type: object
+            properties:
+              id: { type: string }
+              description: { type: string }
+              amount: { $ref: "#/components/schemas/MonetaryValue" }
+        billLevelTaxes:
+          type: array
+          description: Taxes applied at the bill level.
+          items:
+            type: object
+            properties:
+              id: { type: string }
+              taxedAmount: { $ref: "#/components/schemas/MonetaryValue" }
+              taxAmount: { $ref: "#/components/schemas/MonetaryValue" }
+              taxRate: { $ref: "#/components/schemas/TaxRate" }
+        billLevelDiscounts:
+          type: array
+          description: Discounts applied at the bill level.
+          items:
+            type: object
+            properties:
+              id: { type: string }
+              amount: { $ref: "#/components/schemas/MonetaryValue" }
+        shippingLines:
+          type: array
+          description: Shipping and handling charges associated with the bill.
+          items:
+            type: object
+            properties:
+              id: { type: string }
+              subtotal: { $ref: "#/components/schemas/MonetaryValue" }
+              taxAmount: { $ref: "#/components/schemas/MonetaryValue" }
+              total: { $ref: "#/components/schemas/MonetaryValue" }
+        payments:
+          type: array
+          description: A list of payments applied to this bill.
+          items:
+            type: object
+            properties:
+              id: { type: string }
+              date: { type: string, format: date }
+              amount: { $ref: "#/components/schemas/MonetaryValue" }
+              method: { type: string, description: "Payment method used." }
+        status:
+          type: string
+          enum:
+            - Deleted
+            - Draft
+            - Posted
+            - Voided
+            - Paid
+          description: Represents the current status of the bill.
+        dueStatus:
+          type: string
+          enum:
+            - Current
+            - Overdue
+          description: Indicates whether the bill is currently due or overdue.
+        paidAt:
+          type: string
+          format: date-time
+          description: The timestamp when the bill was fully paid.
+        files:
+          type: array
+          description: A list of files attached to the bill, such as receipts, invoices, or supplementary documents.
+          items:
+            type: object
+            properties:
+              id: { type: string }
+              filename: { type: string }
+              contentType: { type: string }
+              size: { type: integer }
+              isDeleted: { type: boolean }
+              downloadInfo: { type: string }
+      required:
+        - id
+        - company
+        - createdAt
+        - vendor
+        - issueDate
+        - dueDate
+        - billLines
+        - status
+        - dueStatus
