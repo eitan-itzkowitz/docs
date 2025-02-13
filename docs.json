@@ -36,13 +36,6 @@
                       "api-reference/endpoints/general-ledger",
                       "api-reference/endpoints/subledger"
                     ]
-                  },
-                  {
-                    "group": "Reconciliation",
-                    "pages": [
-                      "api-reference/endpoints/reconciliation",
-                      "api-reference/endpoints/journal-entries"
-                    ]
                   }
                 ]
               },
@@ -50,44 +43,7 @@
                 "group": "Revenue",
                 "pages": [
                   "api-reference/endpoints/invoices",
-                  "api-reference/endpoints/customers",
-                  "api-reference/endpoints/products"
-                ]
-              },
-              {
-                "group": "Expenses",
-                "pages": [
-                  "api-reference/endpoints/bills",
-                  "api-reference/endpoints/vendors",
-                  "api-reference/endpoints/prepaid-expenses"
-                ]
-              },
-              {
-                "group": "Payroll",
-                "pages": [
-                  "api-reference/endpoints/payroll-reconciliation",
-                  "api-reference/endpoints/tax-payments"
-                ]
-              },
-              {
-                "group": "Settings",
-                "pages": [
-                  "api-reference/endpoints/accounting-policies",
-                  "api-reference/endpoints/rules-and-automations"
-                ]
-              },
-              {
-                "group": "Accountant Tools",
-                "pages": [
-                  "api-reference/endpoints/checklists",
-                  "api-reference/endpoints/messages",
-                  "api-reference/endpoints/notifications"
-                ]
-              },
-              {
-                "group": "Financial Reports",
-                "pages": [
-                  "api-reference/endpoints/financial-statements"
+                  "api-reference/endpoints/customers"
                 ]
               }
             ]
@@ -107,7 +63,13 @@
     "dark": "/logo/dark.svg"
   },
   "api": {
-    "openapi": "./openapi.json"
+    "mdx": {
+      "server": "https://api.puzzle.io",
+      "auth": {
+        "method": "key",
+        "name": "x-api-key"
+      }
+    }
   },
   "navbar": {
     "links": [
