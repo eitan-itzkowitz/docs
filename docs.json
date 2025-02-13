@@ -42,9 +42,9 @@
             ]
           },
           {
-            "group": "Expenses",
+            "group": "Endpoints",
             "pages": [
-              "api-reference/expenses/bills"
+              "api-reference/endpoints/bills"
             ]
           }
         ]
