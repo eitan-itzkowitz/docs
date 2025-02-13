@@ -8,7 +8,6 @@
     "/users": {
       "get": {
         "summary": "Retrieve Users",
-        "description": "Fetch a list of users.",
         "tags": ["Accounting"],
         "responses": {
           "200": {
@@ -22,6 +21,7 @@
     "responses": {
       "Success200": {
         "description": "Successful response",
+        "x-status": "live",
         "content": {
           "application/json": {
             "schema": {
@@ -35,8 +35,5 @@
         }
       }
     }
-  },
-  "tags": [
-    { "name": "Accounting", "description": "Accounting-related endpoints" }
-  ]
+  }
 }
