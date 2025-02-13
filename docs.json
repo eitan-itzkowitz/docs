@@ -8,24 +8,7 @@
     "dark": "#211F35"
   },
   "favicon": "/symbol_puzzle_512x512.png",
-  "navigation": {
-    "languages": [],
-    "versions": [],
-    "dropdowns": [],
-    "anchors": [],
-    "tabs": [
-      {
-        "tab": "Documentation",
-        "groups": [
-          {
-            "group": "Get Started",
-            "pages": [
-              "welcome",
-              "about-puzzle",
-              "credential-setup",
-              "use-cases"
-            ]
-          }
+  "navigation": {"languages": [], "versions": [], "dropdowns": [], "anchors": [], "tabs": [{"tab": "Documentation", "groups": [{"group": "Get Started", "pages": ["welcome", "about-puzzle", "credential-setup", "use-cases"]}]}]}, {"tab": "API Reference", "groups": [{"group": "API Documentation", "pages": ["api-reference/introduction", "api-reference/authentication", "api-reference/error-handling", "api-reference/introduction-to-testing", "api-reference/response-codes"]}, {"group": "Endpoints", "pages": [{"openapi": "Accounting"}]}]}]}
         ]
       },
       {
@@ -43,9 +26,7 @@
           },
           {
             "group": "Endpoints",
-            "pages": [
-              { "openapi": "Accounting" }
-            ]
+            "openapi": "./openapi.json"
           }
         ]
       }
