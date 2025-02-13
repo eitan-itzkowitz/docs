@@ -5,10 +5,34 @@
     "version": "1.1"
   },
   "paths": {
-    "/users": {
+    "/v1.0/users": {
       "get": {
-        "summary": "Retrieve Users",
+        "summary": "Retrieve Users (v1.0)",
         "tags": ["Accounting"],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/Success200"
+          }
+        }
+      }
+    },
+    "/v1.1/users": {
+      "get": {
+        "summary": "Retrieve Users (v1.1)",
+        "description": "Updated version with pagination support.",
+        "tags": ["Accounting"],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "example": 1
+            },
+            "description": "Page number for paginated results."
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/Success200"
@@ -35,5 +59,8 @@
         }
       }
     }
-  }
+  },
+  "tags": [
+    { "name": "Accounting", "description": "Accounting-related endpoints" }
+  ]
 }
