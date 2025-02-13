@@ -1,335 +1,199 @@
 ---
-components:
-  schemas:
-    TaxRate:
-      type: object
-      title: TaxRate
-      description: "Represents tax configurations for a company, including 
-jurisdiction, calculation method, and parameters."
-      properties:
-        id:
+---
+    # ENTITY TYPE
+        entityType:
           type: string
-          description: "A unique identifier for the tax rate."
-        createdAt:
+          title: entityType
+          description: The legal entity type of the company, impacting tax 
+reporting and compliance.
+          enum:
+        - cCorp
+        - llc
+        - partnership
+        - sCorp
+        - soleProprietorship
+        - professionalServiceCorporation
+
+    # INDUSTRY
+        industry:
           type: string
-          format: date-time
-          description: "Timestamp when the tax rate was created."
-        updatedAt:
-          type: string
-          format: date-time
-          description: "Timestamp when the tax rate was last updated."
-        removedAt:
-          type: string
-          format: date-time
-          nullable: true
-          description: "Timestamp when the tax rate was removed. Null if 
-active."
+          title: industry
+          description: Represents the industry or sector the company operates 
+in.
+          enum:
+        - realEstate
+        - restaurant
+        - healthcare
+        - other
+        - consumerOnPremise
+        - retail
+        - professionalServices
+        - homeServices
+        - legal
+        - saas
+        - manufacturing
+        - shortTermRental
+        - construction
+        - transportation
+        - ecommerce
+        - finance
+
+    # CONTRACT TERMS (NEW)
+        contractTerms:
+          type: object
+          title: contractTerms
+          description: Defines contract-related terms associated with a billing 
+model.
+          properties:
+            contractLengthMonths:
+              type: integer
+              description: Duration of the contract in months.
+              example: 12
+            paymentTerms:
+              type: string
+              description: Payment terms associated with the billing type.
+              enum:
+            - prepaid
+            - postpaid
+            autoRenewal:
+              type: boolean
+              description: Whether the contract auto-renews at the end of the 
+term.
+              example: true
+            cancellationPolicy:
+              type: string
+              description: Policy regarding contract cancellation.
+              example: "Requires 30 days' notice for termination."
+
+    # BILLING MODEL (NOW REFERENCES CONTRACT TERMS)
+        billingModel:
+          type: array
+          title: billingModel
+          description: Represents the types of billing structures a company can 
+have.
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+                description: The billing method applied.
+                enum:
+              - annualSubscription
+              - monthlySubscription
+              - addOns
+              - hourlyBilling
+              - transactionBased
+              - usageBased
+              - other
+              - fixedFee
+
+    # COMPANY
         company:
           type: object
-          description: "Reference to the company associated with this tax rate."
+          title: company
+          description: |
+        The Company model defines core details about a company using the 
+platform.
+        It includes legal, financial, and operational details, supporting 
+integrations and reporting.
+          required:
+        - id
+        - industry
+        - billingModel
+        - entityType
+        - legalName
+        - timeZone
+        - address
           properties:
             id:
               type: string
+              description: A unique identifier for the company, auto-generated 
+by the system.
+            industry:
+              $ref  $ref: "#/components/schemas/Industry"
+            billingModel:
+              $ref  $ref: "#/components/schemas/BillingModel"
+            entityType:
+              $ref  $ref: "#/components/schemas/EntityType"
             legalName:
               type: string
-        displayName:
-          type: string
-          description: "The display name of the tax rate, such as 'California 
-Sales Tax'."
-        taxType:
-          type: string
-          description: "Defines the nature of the tax."
-          enum:
-            - payroll_employer
-            - payroll_withholding
-            - sales_tax
-            - value_added_tax
-            - income_tax
-            - franchise_tax
-            - excise_tax
-            - real_property_tax
-            - customs_duty
-        jurisdictionType:
-          type: string
-          description: "The jurisdiction where this tax applies."
-          enum:
-            - Federal
-            - State
-            - City
-            - County
-            - Province
-            - Other
-        jurisdictionName:
-          type: string
-          description: "The specific name of the jurisdiction where the tax 
-applies."
-        calculationType:
-          type: string
-          description: "Specifies how the tax is calculated."
-          enum:
-            - percentage_flat
-            - percentage_progressive
-            - flat_per_tier
-            - flat_per_unit
-            - flat
-        calculationParameters:
-          type: object
-          description: "Calculation-specific parameters for this tax rate."
-          properties:
-            percentageRate:
-              type: number
-              format: double
-              description: "The flat percentage rate for taxes like sales_tax."
-              example: 7.25
-            tiers:
-              type: array
-              description: "Details for progressive or tiered taxes."
-              items:
-                type: object
-                properties:
-                  upperLimit:
-                    type: number
-                    description: "The maximum value for this tier."
-                    example: 10000
-                  rate:
-                    type: number
-                    description: "The percentage or flat rate for this tier."
-                    example: 10
-            unitRate:
-              type: number
-              format: double
-              description: "The rate applied per unit for unit-based taxes like 
-payroll_employer."
-              example: 7.5
-            unit:
+              description: The company’s registered legal name.
+            dba:
               type: string
-              description: "The unit of measure for unit-based taxes."
-              example: employee
-            cap:
-              type: number
-              description: "The maximum taxable amount for capped percentage 
-calculations."
-              example: 14200
-        effectiveDate:
-          type: string
-          format: date-time
-          description: "The start date for the tax rate."
-        expirationDate:
-          type: string
-          format: date-time
-          nullable: true
-          description: "The end date for the tax rate, if applicable."
-      required:
-        - id
-        - createdAt
-        - company
-        - displayName
-        - jurisdictionType
-        - jurisdictionName
-        - calculationType
-  Address:
-    type: object
-    title: Address
-    description: "Structured address information for entities like Customers, 
-Vendors, and Companies."
-    properties:
-      id:
+              description: The company’s "doing business as" name, if different 
+from the legal name.
+            timeZone:
+              type: string
+              description: The company’s primary timezone, used for scheduling 
+and reporting purposes.
+            email:
+              type: string
+              description: The company’s primary email address for 
+correspondence.
+            accountingFirm:
+              type: string
+              description: The name of the accounting firm associated with the 
+company, if applicable.
+            hasHistoricalData:
+              type: boolean
+              description: Indicates whether the company has historical 
+financial data.
+              example: true
+            phoneNumber:
+              type: string
+              description: The company’s primary phone number.
+            address:
+                $ref: "#/components/schemas/address"
+            website:
+              type: string
+              description: The company’s website URL.
+            partnerReferrer:
+              type: string
+              description: Identifies how the company was referred to the 
+platform.
+      Industry:
         type: string
-        description: "Unique identifier for the address."
-      street:
-        type: string
-        description: "Primary street address, including building number."
-      addressLine2:
-        type: string
-        description: "Additional details such as apartment, suite, or unit 
-number."
-      city:
-        type: string
-        description: "City or locality of the address."
-      state:
-        type: string
-        description: "State, province, or region (e.g., 'CA' or 'California')."
-      postalCode:
-        type: string
-        description: "ZIP or postal code."
-      country:
-        type: string
-        description: "Country in ISO 3166-1 alpha-2 format (e.g., 'US')."
-      timeZone:
-        type: string
-        description: "Time zone associated with the address."
-      coordinates:
-        type: object
-        description: "Geographic coordinates (latitude/longitude)."
-        properties:
-          latitude:
-            type: number
-            format: double
-            description: "Latitude of the address."
-          longitude:
-            type: number
-            format: double
-            description: "Longitude of the address."
-    required: ["id", "street", "city", "state", "postalCode", "country"]
-  FileUpload:
-    type: object
-    title: FileUpload
-    description: "Manages files linked to Vendors, Bills, and Customers, 
-supporting uploads, retrieval, and metadata updates."
-    properties:
-      id:
-        type: string
-        description: "Unique identifier for the file."
-      filename:
-        type: string
-        description: "Original filename from upload."
-      contentType:
-        type: string
-        description: "MIME type (e.g., 'application/pdf')."
-      size:
-        type: integer
-        description: "File size in bytes."
-      downloadInfo:
-        type: string
-        description: "Direct URL or API endpoint for retrieving the file."
-      associatedEntity:
-        type: string
+        description: Represents the industry or sector the company operates in.
         enum:
-          - bill
-          - customer
-          - manualJournalEntry
-          - reconciliation
-          - transaction
-          - ledger_reconciliation
-          - vendor
-        description: "Entity the file is associated with."
-      isDeleted:
-        type: boolean
-        description: "Indicates if the file is marked as deleted."
-      createdAt:
+      - realEstate
+      - restaurant
+      - healthcare
+      - other
+      - consumerOnPremise
+      - retail
+      - professionalServices
+      - homeServices
+      - legal
+      - saas
+      - manufacturing
+      - shortTermRental
+      - construction
+      - transportation
+      - ecommerce
+      - finance
+
+      BillingModel:
+        type: array
+        description: The types of billing plans associated with the company.
+        items:
+          type: string
+          enum:
+        - annualSubscription
+        - monthlySubscription
+        - addOns
+        - hourlyBilling
+        - transactionBased
+        - usageBased
+        - other
+        - fixedFee
+
+      EntityType:
         type: string
-        format: date-time
-        description: "Timestamp of upload."
-      updatedAt:
-        type: string
-        format: date-time
-        description: "Timestamp of last metadata update."
-    required: ["id", "filename", "contentType", "size", "downloadInfo", 
-"associatedEntity"]
-  MonetaryValue:
-    type: object
-    title: MonetaryValue
-    description: "Represents a monetary amount in a specific currency."
-    properties:
-      amount:
-        type: number
-        format: double
-        description: "Monetary amount, formatted to two decimal places."
-      currency:
-        type: string
-        pattern: "^[A-Z]{3}$"
-        description: "ISO 4217 currency code (e.g., 'USD')."
-    required: ["amount", "currency"]
-  Address:
-    type: object
-    title: Address
-    description: "Structured address information for entities like Customers, 
-Vendors, and Companies."
-    properties:
-      id:
-        type: string
-        description: "Unique identifier for the address."
-      street:
-        type: string
-        description: "Primary street address, including building number."
-      addressLine2:
-        type: string
-        description: "Additional details such as apartment, suite, or unit 
-number."
-      city:
-        type: string
-        description: "City or locality of the address."
-      state:
-        type: string
-        description: "State, province, or region (e.g., 'CA' or 'California')."
-      postalCode:
-        type: string
-        description: "ZIP or postal code."
-      country:
-        type: string
-        description: "Country in ISO 3166-1 alpha-2 format (e.g., 'US')."
-      timeZone:
-        type: string
-        description: "Time zone associated with the address."
-      coordinates:
-        type: object
-        description: "Geographic coordinates (latitude/longitude)."
-        properties:
-          latitude:
-            type: number
-            format: double
-            description: "Latitude of the address."
-          longitude:
-            type: number
-            format: double
-            description: "Longitude of the address."
-    required: ["id", "street", "city", "state", "postalCode", "country"]
-  FileUpload:
-    type: object
-    title: FileUpload
-    description: "Manages files linked to Vendors, Bills, and Customers, 
-supporting uploads, retrieval, and metadata updates."
-    properties:
-      id:
-        type: string
-        description: "Unique identifier for the file."
-      filename:
-        type: string
-        description: "Original filename from upload."
-      contentType:
-        type: string
-        description: "MIME type (e.g., 'application/pdf')."
-      size:
-        type: integer
-        description: "File size in bytes."
-      downloadInfo:
-        type: string
-        description: "Direct URL or API endpoint for retrieving the file."
-      associatedEntity:
-        type: string
+        description: The legal entity type of the company.
         enum:
-          - bill
-          - customer
-          - manualJournalEntry
-          - reconciliation
-          - transaction
-          - ledger_reconciliation
-          - vendor
-        description: "Entity the file is associated with."
-      isDeleted:
-        type: boolean
-        description: "Indicates if the file is marked as deleted."
-      createdAt:
-        type: string
-        format: date-time
-        description: "Timestamp of upload."
-      updatedAt:
-        type: string
-        format: date-time
-        description: "Timestamp of last metadata update."
-    required: ["id", "filename", "contentType", "size", "downloadInfo", 
-"associatedEntity"]
-  MonetaryValue:
-    type: object
-    title: MonetaryValue
-    description: "Represents a monetary amount in a specific currency."
-    properties:
-      amount:
-        type: number
-        format: double
-        description: "Monetary amount, formatted to two decimal places."
-      currency:
-        type: string
-        pattern: "^[A-Z]{3}$"
-        description: "ISO 4217 currency code (e.g., 'USD')."
-    required: ["amount", "currency"]
+      - cCorp
+      - llc
+      - partnership
+      - sCorp
+      - soleProprietorship
+      - professionalServiceCorporation
