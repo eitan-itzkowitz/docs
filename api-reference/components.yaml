@@ -1,0 +1,133 @@
+components:
+  schemas:
+    MonetaryValue:
+      type: object
+      title: MonetaryValue
+      description: "A standardized format for monetary values, including amount and currency."
+      properties:
+        amount:
+          type: number
+          format: double
+          description: "The monetary amount, formatted as a numeric value with up to two decimal places. Negative values represent credits or refunds."
+          examples: [1234.56, -500]
+        currency:
+          type: string
+          pattern: "^[A-Z]{3}$"
+          description: "The currency in which the amount is denominated, following the ISO 4217 standard (e.g., USD, EUR, GBP)."
+          examples: ["USD", "EUR"]
+      required: ["amount", "currency"]
+
+    TaxRate:
+      type: object
+      title: TaxRate
+      description: "Represents tax configurations for a company, including jurisdiction, calculation method, and parameters."
+      properties:
+        id:
+          type: string
+          description: "A unique identifier for the tax rate."
+        createdAt:
+          type: string
+          format: date-time
+          description: "Timestamp when the tax rate was created."
+        updatedAt:
+          type: string
+          format: date-time
+          description: "Timestamp when the tax rate was last updated."
+        removedAt:
+          type: string
+          format: date-time
+          description: "Timestamp when the tax rate was removed. Null if active."
+        company:
+          type: object
+          description: "Reference to the company associated with this tax rate."
+          properties:
+            id: { type: string }
+            legalName: { type: string }
+        displayName:
+          type: string
+          description: "The display name of the tax rate, such as 'California Sales Tax'."
+        taxType:
+          type: string
+          description: "Defines the nature of the tax."
+          enum:
+            - payroll_employer
+            - payroll_withholding
+            - sales_tax
+            - value_added_tax
+            - income_tax
+            - franchise_tax
+            - excise_tax
+            - real_property_tax
+            - customs_duty
+        jurisdictionType:
+          type: string
+          description: "The jurisdiction where this tax applies."
+          enum:
+            - Federal
+            - State
+            - City
+            - County
+            - Province
+            - Other
+        jurisdictionName:
+          type: string
+          description: "The specific name of the jurisdiction where the tax applies."
+        calculationType:
+          type: string
+          description: "Specifies how the tax is calculated."
+          enum:
+            - percentage_flat
+            - percentage_progressive
+            - flat_per_tier
+            - flat_per_unit
+            - flat
+        calculation_parameters:
+          type: object
+          description: "Calculation-specific parameters for this tax rate."
+          properties:
+            percentageRate:
+              type: number
+              description: "The flat percentage rate for taxes like sales_tax."
+              example: 7.25
+            tiers:
+              type: array
+              description: "Details for progressive or tiered taxes."
+              items:
+                type: object
+                properties:
+                  upperLimit:
+                    type: number
+                    description: "The maximum value for this tier."
+                    example: 10000
+                  rate:
+                    type: number
+                    description: "The percentage or flat rate for this tier."
+                    example: 10
+            unitRate:
+              type: number
+              description: "The rate applied per unit for unit-based taxes like payroll_employer."
+              example: 7.5
+            unit:
+              type: string
+              description: "The unit of measure for unit-based taxes."
+              example: employee
+            cap:
+              type: number
+              description: "The maximum taxable amount for capped percentage calculations."
+              example: 14200
+        effectiveDate:
+          type: string
+          format: date-time
+          description: "The start date for the tax rate."
+        expirationDate:
+          type: string
+          format: date-time
+          description: "The end date for the tax rate, if applicable."
+      required:
+        - id
+        - createdAt
+        - company
+        - displayName
+        - jurisdictionType
+        - jurisdictionName
+        - calculationType
