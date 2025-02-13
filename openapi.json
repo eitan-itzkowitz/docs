@@ -1,214 +1,32 @@
-{
-  "openapi": "3.0.3",
-  "info": {
-    "title": "Puzzle API",
-    "version": "1.0"
-  },
-  "paths": {
-    "/bills": {
-      "get": {
-        "summary": "Retrieve Bills",
-        "description": "Retrieve a list of bills recorded in the accounting system.",
-        "tags": ["Expenses"],
-        "parameters": [
-          {
-            "name": "status",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "string",
-              "enum": ["Draft", "Posted", "Paid", "Voided"],
-              "example": "Posted"
-            },
-            "description": "Filter bills by status."
-          },
-          {
-            "name": "vendor",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "string",
-              "example": "vendor-orthosupplies-001"
-            },
-            "description": "Filter bills by vendor ID."
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "x-status": "live",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "success": { "type": "boolean", "example": true },
-                    "data": {
-                      "type": "array",
-                      "items": { "$ref": "#/components/schemas/Bill" }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  },
-  "components": {
-    "schemas": {
-      "Bill": {
-        "type": "object",
-        "title": "Bill",
-        "description": "Represents a company expense record, linked to a vendor and containing line items.",
-        "properties": {
-          "id": {
-            "type": "string",
-            "description": "Unique identifier for the bill."
-          },
-          "createdAt": {
-            "type": "string",
-            "format": "date-time",
-            "description": "Timestamp when the bill was created."
-          },
-          "updatedAt": {
-            "type": "string",
-            "format": "date-time",
-            "description": "Timestamp when the bill was last updated."
-          },
-          "vendor": {
-            "type": "object",
-            "description": "Vendor associated with the bill.",
-            "properties": {
-              "id": { "type": "string" },
-              "name": { "type": "string" }
-            }
-          },
-          "issueDate": {
-            "type": "string",
-            "format": "date",
-            "description": "Date the bill was issued."
-          },
-          "dueDate": {
-            "type": "string",
-            "format": "date",
-            "description": "Date the bill is due."
-          },
-          "billLines": {
-            "type": "array",
-            "description": "Line items associated with the bill.",
-            "items": {
-              "type": "object",
-              "properties": {
-                "id": { "type": "string" },
-                "description": { "type": "string" },
-                "amount": { "$ref": "#/components/schemas/MonetaryValue" }
-              }
-            }
-          },
-          "billLevelTaxes": {
-            "type": "array",
-            "description": "Taxes applied at the bill level.",
-            "items": {
-              "type": "object",
-              "properties": {
-                "id": { "type": "string" },
-                "taxedAmount": { "$ref": "#/components/schemas/MonetaryValue" },
-                "taxAmount": { "$ref": "#/components/schemas/MonetaryValue" }
-              }
-            }
-          },
-          "billLevelDiscounts": {
-            "type": "array",
-            "description": "Discounts applied at the bill level.",
-            "items": {
-              "type": "object",
-              "properties": {
-                "id": { "type": "string" },
-                "amount": { "$ref": "#/components/schemas/MonetaryValue" }
-              }
-            }
-          },
-          "shippingLines": {
-            "type": "array",
-            "description": "Shipping and handling charges associated with the bill.",
-            "items": {
-              "type": "object",
-              "properties": {
-                "id": { "type": "string" },
-                "subtotal": { "$ref": "#/components/schemas/MonetaryValue" },
-                "taxAmount": { "$ref": "#/components/schemas/MonetaryValue" },
-                "total": { "$ref": "#/components/schemas/MonetaryValue" }
-              }
-            }
-          },
-          "payments": {
-            "type": "array",
-            "description": "A list of payments applied to this bill.",
-            "items": {
-              "type": "object",
-              "properties": {
-                "id": { "type": "string" },
-                "date": { "type": "string", "format": "date" },
-                "amount": { "$ref": "#/components/schemas/MonetaryValue" },
-                "method": { "type": "string", "description": "Payment method used." }
-              }
-            }
-          },
-          "status": {
-            "type": "string",
-            "enum": ["Deleted", "Draft", "Posted", "Voided", "Paid"],
-            "description": "Current status of the bill."
-          },
-          "dueStatus": {
-            "type": "string",
-            "enum": ["Current", "Overdue"],
-            "description": "Indicates if the bill is due or overdue."
-          },
-          "paidAt": {
-            "type": "string",
-            "format": "date-time",
-            "description": "The timestamp when the bill was fully paid."
-          },
-          "files": {
-            "type": "array",
-            "description": "A list of files attached to the bill, such as receipts, invoices, or supplementary documents.",
-            "items": {
-              "type": "object",
-              "properties": {
-                "id": { "type": "string" },
-                "filename": { "type": "string" },
-                "contentType": { "type": "string" },
-                "size": { "type": "integer" },
-                "isDeleted": { "type": "boolean" },
-                "downloadInfo": { "type": "string" }
-              }
-            }
-          }
-        },
-        "required": ["id", "vendor", "issueDate", "dueDate", "billLines", "status"]
-      },
-      "MonetaryValue": {
-        "type": "object",
-        "title": "MonetaryValue",
-        "description": "A standardized format for monetary values, including amount and currency.",
-        "properties": {
-          "amount": {
-            "type": "number",
-            "format": "double",
-            "description": "The monetary amount, formatted as a numeric value with up to two decimal places. Negative values represent credits or refunds.",
-            "examples": [1234.56, -500]
-          },
-          "currency": {
-            "type": "string",
-            "pattern": "^[A-Z]{3}$",
-            "description": "The currency in which the amount is denominated, following the ISO 4217 standard (e.g., USD, EUR, GBP).",
-            "examples": ["USD", "EUR"]
-          }
-        },
-        "required": ["amount", "currency"]
-      }
-    }
-  }
-}
+openapi: 3.0.3
+info:
+  title: Puzzle API
+  version: "1.0"
+
+paths:
+  /bills:
+    get:
+      summary: "Retrieve Bills"
+      description: "Retrieve a list of bills recorded in the accounting system."
+      tags: ["Expenses"]
+      responses:
+        "200":
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success: { type: boolean, example: true }
+                  data:
+                    type: array
+                    items: { $ref: "#/components/schemas/Bill" }
+
+components:
+  schemas:
+    Bill:
+      $ref: "./api-reference/components.yaml#/components/schemas/Bill"
+    MonetaryValue:
+      $ref: "./api-reference/components.yaml#/components/schemas/MonetaryValue"
+    TaxRate:
+      $ref: "./api-reference/components.yaml#/components/schemas/TaxRate"
