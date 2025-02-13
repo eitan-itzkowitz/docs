@@ -30,7 +30,6 @@
       },
       {
         "tab": "API Reference",
-        "openapi": "./openapi.json",
         "groups": [
           {
             "group": "API Documentation",
@@ -60,11 +59,7 @@
                   "api-reference/endpoints/customers"
                 ]
               }
-            ],
-            "openapi": {
-              "source": "./openapi.json",
-              "directory": "api-reference"
-            }
+            ]
           }
         ]
       }
