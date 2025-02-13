@@ -7,28 +7,13 @@
   "paths": {
     "/users": {
       "get": {
-        "summary": "Get users",
+        "summary": "Retrieve Users",
+        "description": "Fetch a list of users.",
         "tags": ["Accounting"],
         "responses": {
-          "200": { "$ref": "#/components/responses/Success200" }
-        }
-      }
-    },
-    "/invoices": {
-      "get": {
-        "summary": "Retrieve invoices",
-        "tags": ["Revenue"],
-        "responses": {
-          "200": { "$ref": "#/components/responses/Success200" }
-        }
-      }
-    },
-    "/bills": {
-      "get": {
-        "summary": "Retrieve bills",
-        "tags": ["Expenses"],
-        "responses": {
-          "200": { "$ref": "#/components/responses/Success200" }
+          "200": {
+            "$ref": "#/components/responses/Success200"
+          }
         }
       }
     }
@@ -37,20 +22,21 @@
     "responses": {
       "Success200": {
         "description": "Successful response",
-        "x-status": "live",
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/ResponseBody"
+              "type": "object",
+              "properties": {
+                "success": { "type": "boolean", "example": true },
+                "data": { "type": "array", "items": { "type": "object" } }
+              }
             }
           }
         }
       }
-    },
-    "schemas": {
-      "ResponseBody": {
-        "type": "object",
-        "properties": {
-          "success": { "type": "boolean", "example": true },
-          "data": { "type": "object"
-
+    }
+  },
+  "tags": [
+    { "name": "Accounting", "description": "Accounting-related endpoints" }
+  ]
+}
