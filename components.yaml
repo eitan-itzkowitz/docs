@@ -1,10 +1,11 @@
-
+---
 components:
   schemas:
     TaxRate:
       type: object
       title: TaxRate
-      description: "Represents tax configurations for a company, including jurisdiction, calculation method, and parameters."
+      description: "Represents tax configurations for a company, including 
+jurisdiction, calculation method, and parameters."
       properties:
         id:
           type: string
@@ -21,7 +22,8 @@ components:
           type: string
           format: date-time
           nullable: true
-          description: "Timestamp when the tax rate was removed. Null if active."
+          description: "Timestamp when the tax rate was removed. Null if 
+active."
         company:
           type: object
           description: "Reference to the company associated with this tax rate."
@@ -32,7 +34,8 @@ components:
               type: string
         displayName:
           type: string
-          description: "The display name of the tax rate, such as 'California Sales Tax'."
+          description: "The display name of the tax rate, such as 'California 
+Sales Tax'."
         taxType:
           type: string
           description: "Defines the nature of the tax."
@@ -58,7 +61,8 @@ components:
             - Other
         jurisdictionName:
           type: string
-          description: "The specific name of the jurisdiction where the tax applies."
+          description: "The specific name of the jurisdiction where the tax 
+applies."
         calculationType:
           type: string
           description: "Specifies how the tax is calculated."
@@ -94,7 +98,8 @@ components:
             unitRate:
               type: number
               format: double
-              description: "The rate applied per unit for unit-based taxes like payroll_employer."
+              description: "The rate applied per unit for unit-based taxes like 
+payroll_employer."
               example: 7.5
             unit:
               type: string
@@ -102,7 +107,8 @@ components:
               example: employee
             cap:
               type: number
-              description: "The maximum taxable amount for capped percentage calculations."
+              description: "The maximum taxable amount for capped percentage 
+calculations."
               example: 14200
         effectiveDate:
           type: string
@@ -121,3 +127,209 @@ components:
         - jurisdictionType
         - jurisdictionName
         - calculationType
+  Address:
+    type: object
+    title: Address
+    description: "Structured address information for entities like Customers, 
+Vendors, and Companies."
+    properties:
+      id:
+        type: string
+        description: "Unique identifier for the address."
+      street:
+        type: string
+        description: "Primary street address, including building number."
+      addressLine2:
+        type: string
+        description: "Additional details such as apartment, suite, or unit 
+number."
+      city:
+        type: string
+        description: "City or locality of the address."
+      state:
+        type: string
+        description: "State, province, or region (e.g., 'CA' or 'California')."
+      postalCode:
+        type: string
+        description: "ZIP or postal code."
+      country:
+        type: string
+        description: "Country in ISO 3166-1 alpha-2 format (e.g., 'US')."
+      timeZone:
+        type: string
+        description: "Time zone associated with the address."
+      coordinates:
+        type: object
+        description: "Geographic coordinates (latitude/longitude)."
+        properties:
+          latitude:
+            type: number
+            format: double
+            description: "Latitude of the address."
+          longitude:
+            type: number
+            format: double
+            description: "Longitude of the address."
+    required: ["id", "street", "city", "state", "postalCode", "country"]
+  FileUpload:
+    type: object
+    title: FileUpload
+    description: "Manages files linked to Vendors, Bills, and Customers, 
+supporting uploads, retrieval, and metadata updates."
+    properties:
+      id:
+        type: string
+        description: "Unique identifier for the file."
+      filename:
+        type: string
+        description: "Original filename from upload."
+      contentType:
+        type: string
+        description: "MIME type (e.g., 'application/pdf')."
+      size:
+        type: integer
+        description: "File size in bytes."
+      downloadInfo:
+        type: string
+        description: "Direct URL or API endpoint for retrieving the file."
+      associatedEntity:
+        type: string
+        enum:
+          - bill
+          - customer
+          - manualJournalEntry
+          - reconciliation
+          - transaction
+          - ledger_reconciliation
+          - vendor
+        description: "Entity the file is associated with."
+      isDeleted:
+        type: boolean
+        description: "Indicates if the file is marked as deleted."
+      createdAt:
+        type: string
+        format: date-time
+        description: "Timestamp of upload."
+      updatedAt:
+        type: string
+        format: date-time
+        description: "Timestamp of last metadata update."
+    required: ["id", "filename", "contentType", "size", "downloadInfo", 
+"associatedEntity"]
+  MonetaryValue:
+    type: object
+    title: MonetaryValue
+    description: "Represents a monetary amount in a specific currency."
+    properties:
+      amount:
+        type: number
+        format: double
+        description: "Monetary amount, formatted to two decimal places."
+      currency:
+        type: string
+        pattern: "^[A-Z]{3}$"
+        description: "ISO 4217 currency code (e.g., 'USD')."
+    required: ["amount", "currency"]
+  Address:
+    type: object
+    title: Address
+    description: "Structured address information for entities like Customers, 
+Vendors, and Companies."
+    properties:
+      id:
+        type: string
+        description: "Unique identifier for the address."
+      street:
+        type: string
+        description: "Primary street address, including building number."
+      addressLine2:
+        type: string
+        description: "Additional details such as apartment, suite, or unit 
+number."
+      city:
+        type: string
+        description: "City or locality of the address."
+      state:
+        type: string
+        description: "State, province, or region (e.g., 'CA' or 'California')."
+      postalCode:
+        type: string
+        description: "ZIP or postal code."
+      country:
+        type: string
+        description: "Country in ISO 3166-1 alpha-2 format (e.g., 'US')."
+      timeZone:
+        type: string
+        description: "Time zone associated with the address."
+      coordinates:
+        type: object
+        description: "Geographic coordinates (latitude/longitude)."
+        properties:
+          latitude:
+            type: number
+            format: double
+            description: "Latitude of the address."
+          longitude:
+            type: number
+            format: double
+            description: "Longitude of the address."
+    required: ["id", "street", "city", "state", "postalCode", "country"]
+  FileUpload:
+    type: object
+    title: FileUpload
+    description: "Manages files linked to Vendors, Bills, and Customers, 
+supporting uploads, retrieval, and metadata updates."
+    properties:
+      id:
+        type: string
+        description: "Unique identifier for the file."
+      filename:
+        type: string
+        description: "Original filename from upload."
+      contentType:
+        type: string
+        description: "MIME type (e.g., 'application/pdf')."
+      size:
+        type: integer
+        description: "File size in bytes."
+      downloadInfo:
+        type: string
+        description: "Direct URL or API endpoint for retrieving the file."
+      associatedEntity:
+        type: string
+        enum:
+          - bill
+          - customer
+          - manualJournalEntry
+          - reconciliation
+          - transaction
+          - ledger_reconciliation
+          - vendor
+        description: "Entity the file is associated with."
+      isDeleted:
+        type: boolean
+        description: "Indicates if the file is marked as deleted."
+      createdAt:
+        type: string
+        format: date-time
+        description: "Timestamp of upload."
+      updatedAt:
+        type: string
+        format: date-time
+        description: "Timestamp of last metadata update."
+    required: ["id", "filename", "contentType", "size", "downloadInfo", 
+"associatedEntity"]
+  MonetaryValue:
+    type: object
+    title: MonetaryValue
+    description: "Represents a monetary amount in a specific currency."
+    properties:
+      amount:
+        type: number
+        format: double
+        description: "Monetary amount, formatted to two decimal places."
+      currency:
+        type: string
+        pattern: "^[A-Z]{3}$"
+        description: "ISO 4217 currency code (e.g., 'USD')."
+    required: ["amount", "currency"]
