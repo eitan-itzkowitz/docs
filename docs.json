@@ -43,10 +43,9 @@
           },
           {
             "group": "Endpoints",
-            "openapi": {
-              "source": "./openapi.json",
-              "directory": "api-reference"
-            }
+            "pages": [
+              "api-reference/endpoints/users"
+            ]
           }
         ]
       }
