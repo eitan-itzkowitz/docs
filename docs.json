@@ -10,35 +10,17 @@
   "favicon": "/symbol_puzzle_512x512.png",
   "navigation": {
     "languages": [],
-    "versions": [],
     "dropdowns": [],
-    "anchors": [],
-    "tabs": [
+    "anchors": [
       {
-        "tab": "Documentation",
+        "anchor": "API Reference",
+        "icon": "cloud",
         "groups": [
           {
-            "group": "Get Started",
+            "group": "Authentication",
             "pages": [
-              "welcome",
-              "about-puzzle",
-              "credential-setup",
-              "use-cases"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "API Reference",
-        "groups": [
-          {
-            "group": "API Documentation",
-            "pages": [
-              "api-reference/introduction",
               "api-reference/authentication",
-              "api-reference/error-handling",
-              "api-reference/introduction-to-testing",
-              "api-reference/response-codes"
+              "api-reference/error-handling"
             ]
           },
           {
@@ -48,17 +30,72 @@
                 "group": "Accounting",
                 "pages": [
                   "api-reference/endpoints/users",
-                  "api-reference/endpoints/general-ledger",
-                  "api-reference/endpoints/subledger"
+                  {
+                    "group": "Ledger",
+                    "pages": [
+                      "api-reference/endpoints/general-ledger",
+                      "api-reference/endpoints/subledger"
+                    ]
+                  },
+                  {
+                    "group": "Reconciliation",
+                    "pages": [
+                      "api-reference/endpoints/reconciliation",
+                      "api-reference/endpoints/journal-entries"
+                    ]
+                  }
                 ]
               },
               {
                 "group": "Revenue",
                 "pages": [
                   "api-reference/endpoints/invoices",
-                  "api-reference/endpoints/customers"
+                  "api-reference/endpoints/customers",
+                  "api-reference/endpoints/products"
+                ]
+              },
+              {
+                "group": "Expenses",
+                "pages": [
+                  "api-reference/endpoints/bills",
+                  "api-reference/endpoints/vendors",
+                  "api-reference/endpoints/prepaid-expenses"
+                ]
+              },
+              {
+                "group": "Payroll",
+                "pages": [
+                  "api-reference/endpoints/payroll-reconciliation",
+                  "api-reference/endpoints/tax-payments"
+                ]
+              },
+              {
+                "group": "Settings",
+                "pages": [
+                  "api-reference/endpoints/accounting-policies",
+                  "api-reference/endpoints/rules-and-automations"
+                ]
+              },
+              {
+                "group": "Accountant Tools",
+                "pages": [
+                  "api-reference/endpoints/checklists",
+                  "api-reference/endpoints/messages",
+                  "api-reference/endpoints/notifications"
+                ]
+              },
+              {
+                "group": "Financial Reports",
+                "pages": [
+                  "api-reference/endpoints/financial-statements"
                 ]
               }
+            ]
+          },
+          {
+            "group": "Response Codes",
+            "pages": [
+              "api-reference/response-codes"
             ]
           }
         ]
