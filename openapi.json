@@ -1,9 +1,4 @@
 {
-  "openapi": "3.0.3",
-  "info": {
-    "title": "Puzzle API",
-    "version": "1.1"
-  },
   "paths": {
     "/v1.0/bills": {
       "get": {
@@ -32,16 +27,6 @@
               "example": "Posted"
             },
             "description": "Filter bills by status."
-          },
-          {
-            "name": "vendor",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "string",
-              "example": "vendor-orthosupplies-001"
-            },
-            "description": "Filter bills by vendor ID."
           }
         ],
         "responses": {
@@ -51,104 +36,5 @@
         }
       }
     }
-  },
-  "components": {
-    "schemas": {
-      "Bill": {
-        "type": "object",
-        "title": "Bill",
-        "description": "Represents a company expense record, linked to a vendor and containing line items.",
-        "properties": {
-          "id": {
-            "type": "string",
-            "description": "Unique identifier for the bill."
-          },
-          "createdAt": {
-            "type": "string",
-            "format": "date-time",
-            "description": "Timestamp when the bill was created."
-          },
-          "updatedAt": {
-            "type": "string",
-            "format": "date-time",
-            "description": "Timestamp when the bill was last updated."
-          },
-          "vendor": {
-            "type": "object",
-            "description": "Vendor associated with the bill.",
-            "properties": {
-              "id": { "type": "string" },
-              "name": { "type": "string" }
-            }
-          },
-          "issueDate": {
-            "type": "string",
-            "format": "date",
-            "description": "Date the bill was issued."
-          },
-          "dueDate": {
-            "type": "string",
-            "format": "date",
-            "description": "Date the bill is due."
-          },
-          "externalId": {
-            "type": "string",
-            "description": "External reference ID for integrations."
-          },
-          "billLines": {
-            "type": "array",
-            "description": "Line items associated with the bill.",
-            "items": {
-              "type": "object",
-              "properties": {
-                "id": { "type": "string" },
-                "description": { "type": "string" },
-                "amount": {
-                  "type": "object",
-                  "properties": {
-                    "value": { "type": "string", "example": "5000.00" },
-                    "currency": { "type": "string", "example": "USD" }
-                  }
-                }
-              }
-            }
-          },
-          "status": {
-            "type": "string",
-            "enum": ["Deleted", "Draft", "Posted", "Voided", "Paid"],
-            "description": "Current status of the bill."
-          },
-          "dueStatus": {
-            "type": "string",
-            "enum": ["Current", "Overdue"],
-            "description": "Indicates if the bill is due or overdue."
-          }
-        },
-        "required": ["id", "vendor", "issueDate", "dueDate", "billLines", "status"]
-      }
-    },
-    "responses": {
-      "Success200": {
-        "description": "Successful response",
-        "x-status": "live",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "success": { "type": "boolean", "example": true },
-                "data": {
-                  "type": "array",
-                  "items": { "$ref": "#/components/schemas/Bill" }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  },
-  "tags": [
-    { "name": "Expenses", "description": "Endpoints related to business expenses and payables." }
-  ]
+  }
 }
