@@ -63,72 +63,27 @@
         "title": "Bill",
         "description": "Represents a company expense record, linked to a vendor and containing line items.",
         "properties": {
-          "id": {
-            "type": "string",
-            "description": "Unique identifier for the bill."
-          },
-          "createdAt": {
-            "type": "string",
-            "format": "date-time",
-            "description": "Timestamp when the bill was created."
-          },
-          "updatedAt": {
-            "type": "string",
-            "format": "date-time",
-            "description": "Timestamp when the bill was last updated."
-          },
-          "vendor": {
-            "type": "object",
-            "description": "Vendor associated with the bill.",
-            "properties": {
-              "id": { "type": "string" },
-              "name": { "type": "string" }
-            }
-          },
-          "issueDate": {
-            "type": "string",
-            "format": "date",
-            "description": "Date the bill was issued."
-          },
-          "dueDate": {
-            "type": "string",
-            "format": "date",
-            "description": "Date the bill is due."
-          },
-          "billLines": {
-            "type": "array",
-            "description": "Line items associated with the bill.",
-            "items": {
-              "type": "object",
-              "properties": {
-                "id": { "type": "string" },
-                "description": { "type": "string" },
-                "amount": {
-                  "type": "object",
-                  "properties": {
-                    "value": { "type": "string", "example": "5000.00" },
-                    "currency": { "type": "string", "example": "USD" }
-                  }
-                }
-              }
-            }
-          },
-          "status": {
-            "type": "string",
-            "enum": ["Deleted", "Draft", "Posted", "Voided", "Paid"],
-            "description": "Current status of the bill."
-          },
-          "dueStatus": {
-            "type": "string",
-            "enum": ["Current", "Overdue"],
-            "description": "Indicates if the bill is due or overdue."
-          }
+          "id": { "type": "string", "description": "Unique identifier for the bill." },
+          "company": { "type": "string", "description": "References the company associated with the bill." },
+          "createdAt": { "type": "string", "format": "date-time", "description": "Timestamp when the bill was created." },
+          "updatedAt": { "type": "string", "format": "date-time", "description": "Timestamp when the bill was last updated." },
+          "vendor": { "type": "object", "description": "Vendor associated with the bill.", "properties": { "id": { "type": "string" }, "name": { "type": "string" } } },
+          "issueDate": { "type": "string", "format": "date", "description": "Date the bill was issued." },
+          "dueDate": { "type": "string", "format": "date", "description": "Date the bill is due." },
+          "externalId": { "type": "string", "description": "External reference ID for integrations." },
+          "description": { "type": "string", "description": "Brief description or memo about the bill." },
+          "billLines": { "type": "array", "description": "Line items associated with the bill.", "items": { "type": "object", "properties": { "id": { "type": "string" }, "description": { "type": "string" } } } },
+          "billLevelTaxes": { "type": "array", "description": "Taxes applied at the bill level.", "items": { "type": "object", "properties": { "id": { "type": "string" }, "taxedAmount": { "type": "object" } } } },
+          "billLevelDiscounts": { "type": "array", "description": "Discounts applied at the bill level.", "items": { "type": "object", "properties": { "id": { "type": "string" }, "amount": { "type": "object" } } } },
+          "shippingLines": { "type": "array", "description": "Shipping and handling charges associated with the bill.", "items": { "type": "object", "properties": { "id": { "type": "string" }, "total": { "type": "object" } } } },
+          "payments": { "type": "array", "description": "A list of payments applied to the bill.", "items": { "type": "object", "properties": { "id": { "type": "string" }, "amount": { "type": "object" } } } },
+          "status": { "type": "string", "enum": ["Deleted", "Draft", "Posted", "Voided", "Paid"], "description": "Current status of the bill." },
+          "dueStatus": { "type": "string", "enum": ["Current", "Overdue"], "description": "Indicates if the bill is due or overdue." },
+          "paidAt": { "type": "string", "format": "date-time", "description": "Timestamp when the bill was fully paid." },
+          "files": { "type": "array", "description": "A list of attached files (e.g., receipts, invoices).", "items": { "type": "object", "properties": { "id": { "type": "string" }, "filename": { "type": "string" } } } }
         },
-        "required": ["id", "vendor", "issueDate", "dueDate", "billLines", "status"]
+        "required": ["id", "company", "createdAt", "vendor", "issueDate", "dueDate", "billLines", "status", "dueStatus"]
       }
     }
-  },
-  "tags": [
-    { "name": "Expenses", "description": "Endpoints related to business expenses and payables." }
-  ]
+  }
 }
