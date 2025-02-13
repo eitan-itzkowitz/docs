@@ -9,18 +9,32 @@
   },
   "favicon": "/symbol_puzzle_512x512.png",
   "navigation": {
-    "languages": [],
-    "dropdowns": [],
-    "anchors": [
+    "tabs": [
       {
-        "anchor": "API Reference",
-        "icon": "cloud",
+        "tab": "Documentation",
         "groups": [
           {
-            "group": "Authentication",
+            "group": "Get Started",
             "pages": [
+              "welcome",
+              "about-puzzle",
+              "credential-setup",
+              "use-cases"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "API Reference",
+        "groups": [
+          {
+            "group": "API Documentation",
+            "pages": [
+              "api-reference/introduction",
               "api-reference/authentication",
-              "api-reference/error-handling"
+              "api-reference/error-handling",
+              "api-reference/introduction-to-testing",
+              "api-reference/response-codes"
             ]
           },
           {
@@ -30,13 +44,8 @@
                 "group": "Accounting",
                 "pages": [
                   "api-reference/endpoints/users",
-                  {
-                    "group": "Ledger",
-                    "pages": [
-                      "api-reference/endpoints/general-ledger",
-                      "api-reference/endpoints/subledger"
-                    ]
-                  }
+                  "api-reference/endpoints/general-ledger",
+                  "api-reference/endpoints/subledger"
                 ]
               },
               {
@@ -47,22 +56,36 @@
                 ]
               }
             ]
-          },
-          {
-            "group": "Response Codes",
-            "pages": [
-              "api-reference/response-codes"
-            ]
           }
         ]
       }
-    ]
+    ],
+    "global": {
+      "anchors": [
+        {
+          "anchor": "Support",
+          "href": "mailto:api@puzzle.io",
+          "icon": "mail"
+        },
+        {
+          "anchor": "Changelog",
+          "href": "https://puzzle.io/changelog",
+          "icon": "clock"
+        },
+        {
+          "anchor": "GitHub",
+          "href": "https://github.com/puzzle",
+          "icon": "github"
+        }
+      ]
+    }
   },
   "logo": {
     "light": "/logo/light.svg",
     "dark": "/logo/dark.svg"
   },
   "api": {
+    "openapi": "openapi.json",
     "mdx": {
       "server": "https://api.puzzle.io",
       "auth": {
@@ -76,18 +99,23 @@
       {
         "label": "Support",
         "href": "mailto:api@puzzle.io"
+      },
+      {
+        "label": "Login",
+        "href": "https://puzzle.io/login"
       }
     ],
     "primary": {
       "type": "button",
-      "label": "Site",
+      "label": "Get Started",
       "href": "https://puzzle.io"
     }
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/puzzlefin",
-      "linkedin": "https://linkedin.com/company/puzzlefin"
+      "github": "https://github.com/puzzle",
+      "linkedin": "https://linkedin.com/company/puzzlefin",
+      "x": "https://x.com/puzzlefin"
     }
   }
 }
