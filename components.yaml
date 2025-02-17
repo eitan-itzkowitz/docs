@@ -1361,7 +1361,7 @@ CategorizationLog:
       type: object
       title: Vendor
       description: >-
-        Represents counterparties for expenses and payables, including suppliers, service providers, 
+        Represents counterparties for expenses and payables, including suppliers, service providers,
         and contractors. Supports external mappings and compliance tracking (e.g., 1099 eligibility).
       required:
         - id
