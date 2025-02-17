@@ -450,6 +450,10 @@ components:
             $ref: "#/components/schemas/Permission"
           description: >-
             A list of permissions assigned to the user for this entity.
+         effectivePeriod:
+          $ref: "#/components/schemas/EffectiveDate"
+          description: >-
+            The time period during which this permission set is active.
 
     # ENTITY ROLE
     EntityRole:
@@ -490,6 +494,11 @@ components:
           $ref: "#/components/schemas/Role"
           description: >-
             The user’s designated role within the entity.
+         effectivePeriod:
+          $ref: "#/components/schemas/EffectiveDate"
+          description: >-
+            The time period during which this permission set is active.
+
     # EFFECTIVE DATE
     EffectiveDate:
       type: object
