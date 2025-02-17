@@ -739,3 +739,79 @@ components:
               description: >-
                 The longitude of the address.
               format: float
+    # ENTITIES
+    Entities:
+      type: object
+      title: Entities
+      description: >-
+        Represents an entity within the system, allowing consistent reference across various models.
+      required:
+        - id
+        - name
+        - model
+        - domain
+      properties:
+        id:
+          type: string
+          description: >-
+            The unique identifier for the entity instance.
+        name:
+          type: string
+          description: >-
+            The name of the entity (e.g., "customer", "invoice", "transaction").
+        model:
+          type: string
+          description: >-
+            The schema or model this entity is associated with (e.g., "Customer", "Transaction").
+        domain:
+          type: string
+          description: >-
+            The source system that owns this entity (e.g., "PuzzleLedger", "PuzzleGateway", "QBO", "Stripe").
+      examples:
+        - id: "cust123"
+          name: "customer"
+          model: "Customer"
+          domain: "PuzzleLedger"
+        - id: "txn567"
+          name: "transaction"
+          model: "Transaction"
+          domain: "Stripe"
+
+    # EXTERNAL ID
+    ExternalID:
+      type: object
+      title: ExternalID
+      description: >-
+        Provides mapping for entities that exist across multiple systems.
+      required:
+        - id
+        - externalId
+        - externalSystem
+        - entityId
+      properties:
+        id:
+          type: string
+          description: >-
+            The unique identifier for this mapping.
+        externalId:
+          type: string
+          description: >-
+            The identifier used in an external system (e.g., "QBO-1234", "Stripe-5678").
+        externalSystem:
+          type: string
+          description: >-
+            The name of the external system that owns this ID (e.g., "QuickBooks", "Stripe").
+        entityId:
+          type: string
+          description: >-
+            The internal entity this external ID maps to.
+          $ref: "#/components/schemas/Entities"
+      examples:
+        - id: "ext-001"
+          externalId: "QBO-1234"
+          externalSystem: "QuickBooks"
+          entityId: "cust123"
+        - id: "ext-002"
+          externalId: "Stripe-5678"
+          externalSystem: "Stripe"
+          entityId: "txn567"
