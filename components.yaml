@@ -459,7 +459,7 @@ components:
       type: object
       title: ReportingClass
       description: >-
-        A Reporting Class is a grouping mechanism for Segments used to categorize 
+        A Reporting Class is a grouping mechanism for Segments used to categorize
         transactions for financial reporting purposes.
 
         **Common Use Cases:**
@@ -518,10 +518,10 @@ components:
       type: object
       title: Segment
       description: >-
-        A Segment represents a detailed subcategory within a Reporting Class, used 
+        A Segment represents a detailed subcategory within a Reporting Class, used
         to further classify financial transactions.
 
-        Each Reporting Class consists of multiple Segments that define finer 
+        Each Reporting Class consists of multiple Segments that define finer
         categorizations.
 
       required:
