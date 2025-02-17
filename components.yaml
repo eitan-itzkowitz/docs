@@ -117,7 +117,7 @@ components:
             - USD
             - EUR
 
-  # TAX RATE
+    # TAX RATE
     TaxRate:
       type: object
       title: TaxRate
