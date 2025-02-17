@@ -632,3 +632,48 @@ components:
           $ref: "#/components/schemas/Segment"
           description: >-
             (Optional) If applicable, references a parent Segment for hierarchical structuring.
+    # COMPANY-FIRM RELATIONSHIP
+    CompanyFirm:
+      type: object
+      title: CompanyFirm
+      description: >-
+        Defines the relationship between a Company and a Firm. 
+        - A company may have multiple firm relationships at the same time.
+        - Each firm can have different roles, such as tax preparation or advisory.
+        - Historical relationships are maintained using effective dating.
+      required:
+        - id
+        - companyId
+        - firmId
+        - role
+        - effective
+      properties:
+        id:
+          type: string
+          description: >-
+            A unique identifier for this Company-Firm relationship.
+        companyId:
+          type: string
+          description: >-
+            The company associated with this relationship.
+          $ref: "#/components/schemas/Company"
+        firmId:
+          type: string
+          description: >-
+            The firm providing services to the company.
+          $ref: "#/components/schemas/Firm"
+        role:
+          type: string
+          description: >-
+            Defines the firm's role in relation to the company.
+          enum:
+            - accounting
+            - audit
+            - tax
+            - advisory
+            - generalBackOffice
+            - other
+        effective:
+          $ref: "#/components/schemas/EffectiveDate"
+          description: >-
+            Specifies when the relationship started and, if applicable, ended.
