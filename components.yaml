@@ -957,9 +957,12 @@ components:
         type: string
         enum:
           - asset
+          - contra-asset
           - liability
+          - contra-liability
           - equity
           - revenue
+          - contra-revenue
           - expense
         description: >-
           The high-level classification for the ledger account.
@@ -1015,9 +1018,9 @@ components:
           Default mappings for this category when a company is onboarded.
         items:
           type: string
-  CategoryMapping:
+  LedgerAccountMapping:
     type: object
-    title: CategoryMapping
+    title: LedgerAccountMapping
     description: >-
       Defines how ledger accounts map to standardized account categories.
     required:
@@ -1155,7 +1158,7 @@ components:
           - bill
       lastFour:
         type: string
-  AccountMapping:
+  FinancialAccountMapping:
     type: object
     title: AccountMapping
     description: >-
