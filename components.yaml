@@ -682,7 +682,7 @@ components:
       type: object
       title: Address
       description: >-
-        Represents structured address information used across various entities, including Companies and Firms. 
+        Represents structured address information used across various entities, including Companies and Firms.
         Ensures consistency and supports integration with third-party geolocation or mapping services.
       required:
         - id
