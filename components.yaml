@@ -637,7 +637,7 @@ components:
       type: object
       title: CompanyFirm
       description: >-
-        Defines the relationship between a Company and a Firm. 
+        Defines the relationship between a Company and a Firm.
         - A company may have multiple firm relationships at the same time.
         - Each firm can have different roles, such as tax preparation or advisory.
         - Historical relationships are maintained using effective dating.
