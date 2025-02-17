@@ -6,7 +6,7 @@ components:
       type: string
       title: EntityType
       description: >-
-        The legal entity type of the company, impacting tax reporting and 
+        The legal entity type of the company, impacting tax reporting and
         compliance.
       enum:
         - cCorp
@@ -93,7 +93,8 @@ components:
       type: object
       title: MonetaryValue
       description: >-
-        A standardized format for monetary values, including amount and currency.
+        A standardized format for monetary values, including amount and
+        currency.
       required:
         - amount
         - currency
@@ -102,7 +103,7 @@ components:
           type: number
           format: double
           description: >-
-            The monetary amount, formatted as a numeric value with up to two 
+            The monetary amount, formatted as a numeric value with up to two
             decimal places. Negative values represent credits or refunds.
           examples:
             - 1234.56
@@ -110,7 +111,7 @@ components:
         currency:
           type: string
           description: >-
-            The currency used, following the ISO 4217 standard (e.g., USD, EUR). (e.g., USD, EUR, GBP).
+            The currency used, following the ISO 4217 standard (e.g., USD, EUR, GBP).
           pattern: '^[A-Z]{3}$'
           examples:
             - USD
@@ -121,8 +122,8 @@ components:
       type: object
       title: TaxRate
       description: >-
-        The Tax Rate model documents tax configurations for a company. It
-        provides details about tax rates, including their type, jurisdiction,
+        The Tax Rate model documents tax configurations for a company.
+        It provides details about tax rates, including their type, jurisdiction,
         calculation method, and parameters.
 
         **Effective Date Rules:**
