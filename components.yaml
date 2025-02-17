@@ -1,11 +1,11 @@
----
+components:
+  schemas:
     # ENTITY TYPE
-        entityType:
-          type: string
-          title: entityType
-          description: The legal entity type of the company, impacting tax 
-reporting and compliance.
-          enum:
+    EntityType:
+      type: string
+      title: EntityType
+      description: The legal entity type of the company, impacting tax reporting and compliance.
+      enum:
         - cCorp
         - llc
         - partnership
@@ -14,12 +14,11 @@ reporting and compliance.
         - professionalServiceCorporation
 
     # INDUSTRY
-        industry:
-          type: string
-          title: industry
-          description: Represents the industry or sector the company operates 
-in.
-          enum:
+    Industry:
+      type: string
+      title: Industry
+      description: Represents the industry or sector the company operates in.
+      enum:
         - realEstate
         - restaurant
         - healthcare
@@ -38,64 +37,55 @@ in.
         - finance
 
     # CONTRACT TERMS (NEW)
-        contractTerms:
-          type: object
-          title: contractTerms
-          description: Defines contract-related terms associated with a billing 
-model.
-          properties:
-            contractLengthMonths:
-              type: integer
-              description: Duration of the contract in months.
-              example: 12
-            paymentTerms:
-              type: string
-              description: Payment terms associated with the billing type.
-              enum:
+    ContractTerms:
+      type: object
+      title: ContractTerms
+      description: Defines contract-related terms associated with a billing model.
+      properties:
+        contractLengthMonths:
+          type: integer
+          description: Duration of the contract in months.
+          example: 12
+        paymentTerms:
+          type: string
+          description: Payment terms associated with the billing type.
+          enum:
             - prepaid
             - postpaid
-            autoRenewal:
-              type: boolean
-              description: Whether the contract auto-renews at the end of the 
-term.
-              example: true
-            cancellationPolicy:
-              type: string
-              description: Policy regarding contract cancellation.
-              example: "Requires 30 days' notice for termination."
+        autoRenewal:
+          type: boolean
+          description: Whether the contract auto-renews at the end of the term.
+          example: true
+        cancellationPolicy:
+          type: string
+          description: Policy regarding contract cancellation.
+          example: "Requires 30 days' notice for termination."
 
-    # BILLING MODEL (NOW REFERENCES CONTRACT TERMS)
-        billingModel:
-          type: array
-          title: billingModel
-          description: Represents the types of billing structures a company can 
-have.
-          items:
-            type: object
-            properties:
-              type:
-                type: string
-                description: The billing method applied.
-                enum:
-              - annualSubscription
-              - monthlySubscription
-              - addOns
-              - hourlyBilling
-              - transactionBased
-              - usageBased
-              - other
-              - fixedFee
+    # BILLING MODEL
+    BillingModel:
+      type: array
+      title: BillingModel
+      description: Represents the types of billing structures a company can have.
+      items:
+        type: string
+        enum:
+          - annualSubscription
+          - monthlySubscription
+          - addOns
+          - hourlyBilling
+          - transactionBased
+          - usageBased
+          - other
+          - fixedFee
 
     # COMPANY
-        company:
-          type: object
-          title: company
-          description: |
-        The Company model defines core details about a company using the 
-platform.
-        It includes legal, financial, and operational details, supporting 
-integrations and reporting.
-          required:
+    Company:
+      type: object
+      title: Company
+      description: |
+        The Company model defines core details about a company using the platform.
+        It includes legal, financial, and operational details, supporting integrations and reporting.
+      required:
         - id
         - industry
         - billingModel
@@ -103,96 +93,43 @@ integrations and reporting.
         - legalName
         - timeZone
         - address
-          properties:
-            id:
-              type: string
-              description: A unique identifier for the company, auto-generated 
-by the system.
-            industry:
-              $ref  $ref: "#/components/schemas/Industry"
-            billingModel:
-              $ref  $ref: "#/components/schemas/BillingModel"
-            entityType:
-              $ref  $ref: "#/components/schemas/EntityType"
-            legalName:
-              type: string
-              description: The company’s registered legal name.
-            dba:
-              type: string
-              description: The company’s "doing business as" name, if different 
-from the legal name.
-            timeZone:
-              type: string
-              description: The company’s primary timezone, used for scheduling 
-and reporting purposes.
-            email:
-              type: string
-              description: The company’s primary email address for 
-correspondence.
-            accountingFirm:
-              type: string
-              description: The name of the accounting firm associated with the 
-company, if applicable.
-            hasHistoricalData:
-              type: boolean
-              description: Indicates whether the company has historical 
-financial data.
-              example: true
-            phoneNumber:
-              type: string
-              description: The company’s primary phone number.
-            address:
-                $ref: "#/components/schemas/address"
-            website:
-              type: string
-              description: The company’s website URL.
-            partnerReferrer:
-              type: string
-              description: Identifies how the company was referred to the 
-platform.
-      Industry:
-        type: string
-        description: Represents the industry or sector the company operates in.
-        enum:
-      - realEstate
-      - restaurant
-      - healthcare
-      - other
-      - consumerOnPremise
-      - retail
-      - professionalServices
-      - homeServices
-      - legal
-      - saas
-      - manufacturing
-      - shortTermRental
-      - construction
-      - transportation
-      - ecommerce
-      - finance
-
-      BillingModel:
-        type: array
-        description: The types of billing plans associated with the company.
-        items:
+      properties:
+        id:
           type: string
-          enum:
-        - annualSubscription
-        - monthlySubscription
-        - addOns
-        - hourlyBilling
-        - transactionBased
-        - usageBased
-        - other
-        - fixedFee
-
-      EntityType:
-        type: string
-        description: The legal entity type of the company.
-        enum:
-      - cCorp
-      - llc
-      - partnership
-      - sCorp
-      - soleProprietorship
-      - professionalServiceCorporation
+          description: A unique identifier for the company, auto-generated by the system.
+        industry:
+          $ref: "#/components/schemas/Industry"
+        billingModel:
+          $ref: "#/components/schemas/BillingModel"
+        entityType:
+          $ref: "#/components/schemas/EntityType"
+        legalName:
+          type: string
+          description: The company’s registered legal name.
+        dba:
+          type: string
+          description: The company’s "doing business as" name, if different from the legal name.
+        timeZone:
+          type: string
+          description: The company’s primary timezone, used for scheduling and reporting purposes.
+        email:
+          type: string
+          description: The company’s primary email address for correspondence.
+        accountingFirm:
+          type: string
+          description: The name of the accounting firm associated with the company, if applicable.
+        hasHistoricalData:
+          type: boolean
+          description: Indicates whether the company has historical financial data.
+          example: true
+        phoneNumber:
+          type: string
+          description: The company’s primary phone number.
+        address:
+          $ref: "#/components/schemas/Address"
+        website:
+          type: string
+          description: The company’s website URL.
+        partnerReferrer:
+          type: string
+          description: Identifies how the company was referred to the platform.
