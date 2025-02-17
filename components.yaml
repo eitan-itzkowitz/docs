@@ -1233,3 +1233,99 @@ components:
           Historical ingestion periods.
         items:
           $ref: "#/components/schemas/EffectiveDate"
+BankTransaction:
+  type: object
+  title: BankTransaction
+  description: "Represents a financial transaction from a linked financial account, tracking metadata, categorization, and audit history."
+  required:
+    - id
+    - companyId
+    - financialAccountId
+    - amount
+    - date
+    - status
+  properties:
+    id:
+      type: string
+      description: "Unique identifier for the transaction."
+    companyId:
+      type: string
+      description: "The company to which this transaction belongs."
+    financialAccountId:
+      type: string
+      description: "The financial account from which this transaction originated."
+    amount:
+      type: number
+      format: float
+      description: "Transaction amount in the account’s currency."
+    date:
+      type: string
+      format: date
+      description: "Date of the transaction."
+    status:
+      type: string
+      enum: 
+        - pending
+        - posted
+        - voided
+      description: "Current status of the transaction."
+    categorization:
+      $ref: "#/components/schemas/CategorizationLog"
+    externalId:
+      type: string
+      description: "Unique transaction ID from an external system, if applicable."
+    objectMappings:
+      type: array
+      description: "Links this transaction to mapped objects (e.g., Ramp to Puzzle category mapping)."
+      items:
+        $ref: "#/components/schemas/ObjectMapping"
+    effectiveDate:
+      $ref: "#/components/schemas/EffectiveDate"
+    createdAt:
+      type: string
+      format: date-time
+      description: "Timestamp when the transaction was created."
+    updatedAt:
+      type: string
+      format: date-time
+      description: "Timestamp when the transaction was last updated."
+CategorizationLog:
+  type: object
+  title: CategorizationLog
+  description: "Logs categorization changes, including sources, mappings, and user actions."
+  required:
+    - transactionId
+    - previousCategory
+    - newCategory
+    - categorizedAt
+    - categorizedBy
+  properties:
+    transactionId:
+      type: string
+      description: "The transaction associated with this categorization."
+    previousCategory:
+      type: string
+      description: "The previous category assigned to the transaction."
+    newCategory:
+      type: string
+      description: "The new category assigned to the transaction."
+    categorizedAt:
+      type: string
+      format: date-time
+      description: "Timestamp of the categorization change."
+    categorizedBy:
+      type: object
+      description: "Tracks whether this categorization was system-inferred, rule-based, or user-driven."
+      properties:
+        objectType:
+          type: string
+          enum:
+            - USER
+            - RULE
+            - AI_SUGGESTION
+        objectId:
+          type: string
+          description: "The unique identifier of the user, rule, or AI model."
+    objectMappingId:
+      type: string
+      description: "References the ObjectMapping ID used for this categorization (if applicable)."
