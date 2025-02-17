@@ -408,7 +408,6 @@ components:
             - self
             - entityName
             - other
-
     # PERMISSION SET
     PermissionSet:
       type: object
@@ -416,7 +415,8 @@ components:
       description: >-
         Defines a set of permissions assigned to a user for a specific entity (Company or Firm).
         - A user can have multiple permission sets.
-        - Each user-entity pair can have only one permission set.
+        - Each user-entity pair can have only one permission set at a time.
+        - Permissions can be time-bound, allowing scheduled access changes.
       required:
         - id
         - userId
@@ -450,11 +450,10 @@ components:
             $ref: "#/components/schemas/Permission"
           description: >-
             A list of permissions assigned to the user for this entity.
-         effectivePeriod:
+        effectivePeriod:
           $ref: "#/components/schemas/EffectiveDate"
           description: >-
             The time period during which this permission set is active.
-
     # ENTITY ROLE
     EntityRole:
       type: object
@@ -462,7 +461,8 @@ components:
       description: >-
         Defines a user's role within a specific entity (Company or Firm).
         - A user can have multiple entity roles.
-        - Each user-entity pair can have only one assigned role.
+        - Each user-entity pair can have only one assigned role at a time.
+        - Roles can be time-bound, allowing scheduled transitions between roles.
       required:
         - id
         - userId
@@ -494,11 +494,10 @@ components:
           $ref: "#/components/schemas/Role"
           description: >-
             The user’s designated role within the entity.
-         effectivePeriod:
+        effectivePeriod:
           $ref: "#/components/schemas/EffectiveDate"
           description: >-
-            The time period during which this permission set is active.
-
+            The time period during which this role is active.
     # EFFECTIVE DATE
     EffectiveDate:
       type: object
