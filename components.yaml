@@ -170,6 +170,10 @@ components:
           $ref: "#/components/schemas/EntityType"
           description: >-
             The legal entity type of the company.
+        billingModel:
+          $ref: "#/components/schemas/BillingModel"
+          description: >-
+            The billing model defining the company's payment structure and subscription details.
         industry:
           $ref: "#/components/schemas/Industry"
           description: >-
