@@ -795,40 +795,68 @@ components:
           metadata:
             createdBy: "user-123"
             status: "active"
-    ObjectMapping:
-      type: object
-      title: ObjectMapping
+ObjectMapping:
+  type: object
+  title: ObjectMapping
+  description: >-
+    Defines how objects in external systems map to internal Puzzle objects.
+  required:
+    - id
+    - mappedFrom
+    - mappedTo
+  properties:
+    id:
+      type: string
       description: >-
-        Defines how objects in external systems map to internal Puzzle objects.
-      required:
-        - id
-        - mappedFrom
-        - mappedTo
-      properties:
-        id:
-          type: string
-          description: >-
-            A unique identifier for the mapping.
-        mappedFrom:
-          $ref: "#/components/schemas/Object"
-          description: >-
-            The external object being mapped.
-        mappedTo:
-          $ref: "#/components/schemas/Object"
-          description: >-
-            The internal Puzzle object it maps to.
-      examples:
-        - id: mapping-123
-          mappedFrom:
-            id: "qbo-123"
-            entityOwner: qbo
-            objectType: customer
-            schemaRef: "qbo_objects.yaml#/schemas/QBO_Customer"
-          mappedTo:
-            id: "puzzle-987"
-            entityOwner: puzzleLedger
-            objectType: customer
-            schemaRef: "components.yaml#/schemas/Customer"
+        A unique identifier for the mapping.
+    mappedFrom:
+      $ref: "#/components/schemas/Object"
+      description: >-
+        The external object being mapped.
+    mappedTo:
+      $ref: "#/components/schemas/Object"
+      description: >-
+        The internal Puzzle object it maps to.
+    mappingSource:
+      type: string
+      enum:
+        - system_rule
+        - user_override
+        - ai_suggestion
+      description: >-
+        The source of this mapping (e.g., automated system rule, user-defined override, or AI-assisted suggestion).
+    effectiveDate:
+      $ref: "#/components/schemas/EffectiveDate"
+      description: >-
+        The time range in which this mapping is valid.
+    createdAt:
+      type: string
+      format: date-time
+      description: >-
+        Timestamp when the mapping was created.
+    updatedAt:
+      type: string
+      format: date-time
+      description: >-
+        Timestamp when the mapping was last updated.
+  examples:
+    - id: mapping-123
+      mappedFrom:
+        id: "qbo-123"
+        entityOwner: qbo
+        objectType: customer
+        schemaRef: "qbo_objects.yaml#/schemas/QBO_Customer"
+      mappedTo:
+        id: "puzzle-987"
+        entityOwner: puzzleLedger
+        objectType: customer
+        schemaRef: "components.yaml#/schemas/Customer"
+      mappingSource: system_rule
+      effectiveDate:
+        startDate: "2024-01-01"
+        endDate: null
+      createdAt: "2024-01-01T12:00:00Z"
+      updatedAt: "2024-02-01T10:15:00Z"
     # FILE UPLOAD
     FileUpload:
       type: object
