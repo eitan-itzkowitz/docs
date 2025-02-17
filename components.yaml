@@ -218,35 +218,6 @@ components:
             $ref: "#/components/schemas/User"
           description: >-
             Users affiliated with the firm.
-        Represents an external firm providing services to client companies, such as accounting, legal, or consulting firms.
-      required:
-        - id
-        - name
-        - industry
-      properties:
-        id:
-          type: string
-          description: >-
-            A unique identifier for the firm.
-        name:
-          type: string
-          description: >-
-            The registered name of the firm.
-        industry:
-          type: string
-          enum:
-            - accounting
-            - legal
-            - payroll
-            - consulting
-          description: >-
-            The industry or sector in which the firm operates.
-        employees:
-          type: array
-          items:
-            $ref: "#/components/schemas/User"
-          description: >-
-            Users affiliated with the firm.
 
     # ROLE
     Role:
