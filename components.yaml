@@ -248,3 +248,180 @@ components:
           $ref: "#/components/schemas/Company"
           description: >-
             A reference to the company associated with this tax rate.
+
+    # COMPANY
+    Company:
+      type: object
+      title: Company
+      description: >-
+        Represents a company using the platform. Includes legal, financial, and operational details.
+      required:
+        - id
+        - name
+        - entityType
+        - industry
+      properties:
+        id:
+          type: string
+          description: >-
+            A unique identifier for the company.
+        name:
+          type: string
+          description: >-
+            The registered name of the company.
+        entityType:
+          $ref: "#/components/schemas/EntityType"
+          description: >-
+            The legal entity type of the company.
+        industry:
+          $ref: "#/components/schemas/Industry"
+          description: >-
+            The industry or sector in which the company operates.
+        address:
+          type: string
+          description: >-
+            The company’s primary business address.
+        website:
+          type: string
+          description: >-
+            The company’s official website.
+
+    # FIRM
+    Firm:
+      type: object
+      title: Firm
+      description: >-
+        Represents an external firm providing services to client companies, such as accounting, legal, or consulting firms.
+      required:
+        - id
+        - name
+        - industry
+      properties:
+        id:
+          type: string
+          description: >-
+            A unique identifier for the firm.
+        name:
+          type: string
+          description: >-
+            The registered name of the firm.
+        industry:
+          type: string
+          enum:
+            - accounting
+            - legal
+            - payroll
+            - consulting
+            - generalBackOffice
+          description: >-
+            The industry or sector in which the firm operates.
+        employees:
+          type: array
+          items:
+            $ref: "#/components/schemas/User"
+          description: >-
+            Users affiliated with the firm.
+        Represents an external firm providing services to client companies, such as accounting, legal, or consulting firms.
+      required:
+        - id
+        - name
+        - industry
+      properties:
+        id:
+          type: string
+          description: >-
+            A unique identifier for the firm.
+        name:
+          type: string
+          description: >-
+            The registered name of the firm.
+        industry:
+          type: string
+          enum:
+            - accounting
+            - legal
+            - payroll
+            - consulting
+          description: >-
+            The industry or sector in which the firm operates.
+        employees:
+          type: array
+          items:
+            $ref: "#/components/schemas/User"
+          description: >-
+            Users affiliated with the firm.
+
+    # ROLE
+    Role:
+      type: object
+      title: Role
+      description: >-
+        Defines a user's role within the system, categorizing their relationship to a company or firm.
+      properties:
+        roleType:
+          type: string
+          description: >-
+            The user's relationship to the company or firm.
+          enum:
+            - owner
+            - executive
+            - employee
+            - contractor
+            - consultant
+        function:
+          type: string
+          description: >-
+            The primary area of expertise or responsibility for the user.
+          enum:
+            - accounting
+            - finance
+            - operations
+            - technology
+            - legal
+            - admin
+
+    # USER
+    User:
+      type: object
+      title: User
+      description: >-
+        An individual with a credential in the system. Includes details about their role and affiliation.
+      required:
+        - id
+        - name
+        - email
+        - createdAt
+        - role
+      properties:
+        id:
+          type: string
+          description: >-
+            A unique identifier for the user.
+        name:
+          type: string
+          description: >-
+            The full name of the user.
+        email:
+          type: string
+          description: >-
+            The email address associated with the user.
+        createdAt:
+          type: string
+          format: date-time
+          description: >-
+            The date and time when the user was created.
+        updatedAt:
+          type: string
+          format: date-time
+          description: >-
+            The date and time when the user was last updated.
+        role:
+          $ref: "#/components/schemas/Role"
+          description: >-
+            The user's role, defining their function and relationship to a company or firm.
+        affiliatedWith:
+          oneOf:
+            - $ref: "#/components/schemas/Company"
+            - $ref: "#/components/schemas/Firm"
+          description: >-
+            The entity the user is associated with, either a company or a firm.
