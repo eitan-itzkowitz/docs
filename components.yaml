@@ -1497,3 +1497,73 @@ CategorizationLog:
           statusEffectiveDate:
             effectiveFrom: "2024-01-01"
           source: User
+InternalObjectReference:
+  type: object
+  title: InternalObjectReference
+  description: |
+    A reference to an object that exists within Puzzle’s system.
+    Used for linking internally stored objects like Puzzle Bills, Ledger Accounts, Vendors, etc.
+  required:
+    - id
+    - entityOwner
+    - objectType
+  properties:
+    id:
+      type: string
+      description: "The unique identifier for the internal Puzzle object."
+    entityOwner:
+      type: string
+      description: "Always `puzzleLedger`, `puzzleGateway`, or other internal domains."
+      enum:
+        - puzzleLedger
+        - puzzleGateway
+        - puzzleBilling
+    objectType:
+      type: string
+      description: "The type of object being referenced."
+      enum:
+        - Bill
+        - LedgerAccount
+        - Vendor
+        - Customer
+        - Payment
+    schemaRef:
+      type: string
+      description: "The schema definition this reference points to."
+      example: "components.yaml#/schemas/Bill"
+ExternalObjectReference:
+  type: object
+  title: ExternalObjectReference
+  description: |
+    A reference to an object that exists in an external system.
+    Used for linking objects from QuickBooks, NetSuite, Plaid, Stripe, etc.
+  required:
+    - id
+    - entityOwner
+    - objectType
+  properties:
+    id:
+      type: string
+      description: "The external system’s unique identifier for this object."
+    entityOwner:
+      type: string
+      description: |
+        The system where this object originates from (e.g., QBO, NetSuite, Stripe, Plaid).
+      enum:
+        - qbo
+        - netsuite
+        - plaid
+        - stripe
+    objectType:
+      type: string
+      description: "The type of external object being referenced."
+      enum:
+        - Bill
+        - LedgerAccount
+        - Vendor
+        - Customer
+        - Payment
+    schemaRef:
+      type: string
+      description: "The schema definition in the external system."
+      example: "qbo_objects.yaml#/schemas/QBO_Bill"
