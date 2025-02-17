@@ -1015,3 +1015,35 @@ components:
           Default mappings for this category when a company is onboarded.
         items:
           type: string
+  CategoryMapping:
+    type: object
+    title: CategoryMapping
+    description: >-
+      Defines how ledger accounts map to standardized account categories.
+    required:
+      - id
+      - companyId
+      - ledgerAccountId
+      - categoryId
+      - effectiveDates
+    properties:
+      id:
+        type: string
+        description: >-
+          A unique identifier for the category mapping.
+      companyId:
+        type: string
+        description: >-
+          The company associated with this mapping.
+      ledgerAccountId:
+        type: string
+        description: >-
+          The ledger account being mapped.
+      categoryId:
+        type: string
+        description: >-
+          The category to which this ledger account is mapped.
+      effectiveDates:
+        $ref: "#/components/schemas/EffectiveDate"
+        description: >-
+          The active period for this category mapping.
