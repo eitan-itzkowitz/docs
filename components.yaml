@@ -820,7 +820,7 @@ components:
       type: object
       title: FileUpload
       description: >-
-        The File Upload model allows for managing files associated with various entities, 
+        The File Upload model allows for managing files associated with various entities,
         such as Vendors, Bills, and Customers. It supports file uploads, retrieval, and metadata updates.
       required:
         - id
