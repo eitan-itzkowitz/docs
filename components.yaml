@@ -923,3 +923,68 @@ components:
               source: puzzleLedger
             - id: qb-bill-101
               source: qbo
+  LedgerAccount:
+    type: object
+    title: LedgerAccount
+    description: >-
+      Represents a company's chart of accounts. Includes financial reporting details
+      and supports hierarchical relationships.
+    required:
+      - id
+      - companyId
+      - displayName
+      - accountNumber
+      - accountType
+      - currency
+    properties:
+      id:
+        type: string
+        description: >-
+          A unique identifier for the ledger account.
+      companyId:
+        type: string
+        description: >-
+          The company associated with this ledger account.
+      displayName:
+        type: string
+        description: >-
+          The name of the ledger account.
+      accountNumber:
+        type: string
+        description: >-
+          The account number as it appears in financial reports.
+      accountType:
+        type: string
+        enum:
+          - asset
+          - liability
+          - equity
+          - revenue
+          - expense
+        description: >-
+          The high-level classification for the ledger account.
+      currency:
+        type: string
+        description: >-
+          The currency associated with this ledger account.
+        pattern: '^[A-Z]{3}$'
+      parentAccount:
+        type: string
+        description: >-
+          The parent ledger account, if applicable.
+      childAccounts:
+        type: array
+        description: >-
+          Any child accounts associated with this ledger account.
+        items:
+          type: string
+      effectiveStartDate:
+        type: string
+        format: date-time
+        description: >-
+          The date this ledger account became effective.
+      effectiveEndDate:
+        type: string
+        format: date-time
+        description: >-
+          The date this ledger account is no longer in effect (if applicable).
