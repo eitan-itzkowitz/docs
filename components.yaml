@@ -748,6 +748,7 @@ components:
         - id
         - objectType
         - entityOwner
+        - schemaRef
       properties:
         id:
           type: string
@@ -776,6 +777,12 @@ components:
             - transaction
             - reconciliation
             - journalEntry
+        schemaRef:
+          type: string
+          description: >-
+            A reference to the schema definition of this object.
+            - Internal example: `components.yaml#/schemas/Customer`
+            - External example: `qbo_objects.yaml#/schemas/QBO_Customer`
         metadata:
           type: object
           description: >-
@@ -784,6 +791,7 @@ components:
         - id: "cust-987"
           entityOwner: puzzleLedger
           objectType: customer
+          schemaRef: "components.yaml#/schemas/Customer"
           metadata:
             createdBy: "user-123"
             status: "active"
@@ -815,7 +823,9 @@ components:
             id: "qbo-123"
             entityOwner: qbo
             objectType: customer
+            schemaRef: "qbo_objects.yaml#/schemas/QBO_Customer"
           mappedTo:
             id: "puzzle-987"
             entityOwner: puzzleLedger
             objectType: customer
+            schemaRef: "components.yaml#/schemas/Customer"
