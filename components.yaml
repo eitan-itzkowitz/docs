@@ -891,3 +891,62 @@ components:
             id: bill-456
             entityType: bill
             entityHost: puzzleLedger
+    EntityMapping:
+      type: object
+      title: EntityMapping
+      description: >-
+        Defines a mapping between a Puzzle entity and an external system entity.
+        This ensures consistency across integrations and enables automated syncing.
+      required:
+        - id
+        - puzzleEntity
+        - externalEntity
+      properties:
+        id:
+          type: string
+          description: >-
+            A unique identifier for the mapping.
+        puzzleEntity:
+          $ref: "#/components/schemas/Entity"
+          description: >-
+            The internal Puzzle entity being mapped.
+        externalEntity:
+          $ref: "#/components/schemas/Entity"
+          description: >-
+            The corresponding entity in an external system, following the same structure.
+        lastSyncedAt:
+          type: string
+          format: date-time
+          description: >-
+            Timestamp of the last successful sync between Puzzle and the external system.
+        syncStatus:
+          type: string
+          enum:
+            - active
+            - pending
+            - failed
+          description: >-
+            The current status of the entity mapping.
+      examples:
+        - id: mapping-abc123
+          puzzleEntity:
+            entityType: customer
+            entityHost: puzzleLedger
+            entityId: cust123
+          externalEntity:
+            entityType: customer
+            entityHost: qbo
+            entityId: QBO-987654
+          lastSyncedAt: "2024-02-18T12:30:00Z"
+          syncStatus: active
+        - id: mapping-def456
+          puzzleEntity:
+            entityType: transaction
+            entityHost: puzzleGateway
+            entityId: txn789
+          externalEntity:
+            entityType: transaction
+            entityHost: stripe
+            entityId: ch_1NpXy2LsWj5fF
+          lastSyncedAt: "2024-02-18T12:45:00Z"
+          syncStatus: pending
