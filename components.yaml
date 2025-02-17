@@ -359,3 +359,44 @@ components:
             - self
             - entityName
             - other
+    # PERMISSION SET
+    PermissionSet:
+      type: object
+      title: PermissionSet
+      description: >-
+        Defines a set of permissions assigned to a user for a specific entity (Company or Firm).
+        - A user can have multiple permission sets.
+        - Each user-entity pair can have only one permission set.
+      required:
+        - id
+        - userId
+        - entityId
+        - entityType
+        - permissions
+      properties:
+        id:
+          type: string
+          description: >-
+            A unique identifier for the permission set.
+        userId:
+          type: string
+          description: >-
+            The user assigned to this permission set.
+          $ref: "#/components/schemas/User"
+        entityId:
+          type: string
+          description: >-
+            The entity this permission set applies to.
+        entityType:
+          type: string
+          enum:
+            - company
+            - firm
+          description: >-
+            Specifies whether this permission set applies to a Company or a Firm.
+        permissions:
+          type: array
+          items:
+            $ref: "#/components/schemas/Permission"
+          description: >-
+            A list of permissions assigned to the user for this entity.
