@@ -297,3 +297,65 @@ components:
             - $ref: "#/components/schemas/Firm"
           description: >-
             The entity the user is associated with, either a company or a firm.
+            
+    # PERMISSION
+    Permission:
+      type: object
+      title: Permission
+      description: >-
+        Defines user access control by specifying which financial modules 
+        a user can interact with and their allowed actions.
+
+        Some permissions imply additional access:
+        - `finalize` → automatically grants `view` and `create`
+        - `edit` → automatically grants `view`
+        - `void` → automatically grants `edit`
+        - `delete` must always be explicitly assigned
+      properties:
+        group:
+          type: string
+          description: >-
+            The financial data scope or module the permission applies to.
+          enum:
+            - financialStatements
+            - generalLedger
+            - bankTransactions
+            - bills
+            - invoices
+            - inbox
+        actions:
+          type: array
+          description: >-
+            The allowed actions within the specified scope.
+          items:
+            type: object
+            properties:
+              action:
+                type: string
+                enum:
+                  - view
+                  - create
+                  - finalize
+                  - edit
+                  - void
+                  - delete
+              implies:
+                type: array
+                description: >-
+                  Actions automatically granted when this action is assigned.
+                items:
+                  type: string
+                  enum:
+                    - view
+                    - create
+                    - edit
+        displayName:
+          type: string
+          description: >-
+            Defines how a user is identified when performing actions or 
+            sending messages. Used for firm employees to send messages 
+            on behalf of the firm if necessary.
+          enum:
+            - self
+            - entityName
+            - other
