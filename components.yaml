@@ -216,12 +216,6 @@ components:
             - generalBackOffice
           description: >-
             The industry or sector in which the firm operates.
-        employees:
-          type: array
-          items:
-            $ref: "#/components/schemas/User"
-          description: >-
-            Users affiliated with the firm.
 
     # ROLE
     Role:
@@ -287,16 +281,6 @@ components:
           format: date-time
           description: >-
             The date and time when the user was last updated.
-        role:
-          $ref: "#/components/schemas/Role"
-          description: >-
-            The user's role, defining their function and relationship to a company or firm.
-        affiliatedWith:
-          oneOf:
-            - $ref: "#/components/schemas/Company"
-            - $ref: "#/components/schemas/Firm"
-          description: >-
-            The entity the user is associated with, either a company or a firm.
 
     # PERMISSION
     Permission:
@@ -359,6 +343,7 @@ components:
             - self
             - entityName
             - other
+
     # PERMISSION SET
     PermissionSet:
       type: object
@@ -400,6 +385,7 @@ components:
             $ref: "#/components/schemas/Permission"
           description: >-
             A list of permissions assigned to the user for this entity.
+
     # ENTITY ROLE
     EntityRole:
       type: object
