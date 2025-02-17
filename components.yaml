@@ -1047,3 +1047,186 @@ components:
         $ref: "#/components/schemas/EffectiveDate"
         description: >-
           The active period for this category mapping.
+  FinancialInstitution:
+    type: object
+    title: FinancialInstitution
+    description: >-
+      Represents external financial institutions such as banks, payment processors, and payroll providers.
+      Institutions are used as sources for financial accounts and transactions.
+    required:
+      - id
+      - name
+      - entityHost
+      - sources
+    properties:
+      id:
+        type: string
+        description: >-
+          A unique identifier for the financial institution.
+      name:
+        type: string
+        description: >-
+          The display name of the institution (e.g., "Chase," "Stripe").
+      entityHost:
+        type: string
+        description: >-
+          The system that manages the financial institution.
+        enum:
+          - puzzleLedger
+          - puzzleGateway
+          - puzzleBilling
+          - plaid
+          - directIntegration
+          - manual
+      isSystemDefined:
+        type: boolean
+        description: >-
+          Indicates if this financial institution is predefined by the system (e.g., Stripe, Mercury).
+          If `false`, it was manually created by a user.
+      sources:
+        type: array
+        description: >-
+          The ingestion sources through which data is retrieved from this financial institution.
+        items:
+          type: string
+          enum:
+            - direct
+            - plaid
+            - manual
+      createdAt:
+        type: string
+        format: date-time
+        description: >-
+          The timestamp when this financial institution was created.
+      updatedAt:
+        type: string
+        format: date-time
+        description: >-
+          The timestamp when this financial institution was last updated.
+  FinancialAccount:
+    type: object
+    title: FinancialAccount
+    description: >-
+      Represents a financial account linked to an entity (e.g., a company or firm).
+      This model tracks balances, integration status, and ingestion sources.
+    required:
+      - id
+      - name
+      - associatedEntity
+      - financialInstitution
+      - accountType
+      - createdAt
+      - status
+    properties:
+      id:
+        type: string
+        description: >-
+          A unique identifier for the financial account.
+      name:
+        type: string
+        description: >-
+          The user-defined name of the financial account (e.g., "Main Checking Account").
+      associatedEntity:
+        $ref: "#/components/schemas/Entity"
+        description: >-
+          The entity that owns this financial account (e.g., a company or firm).
+      financialInstitution:
+        $ref: "#/components/schemas/FinancialInstitution"
+        description: >-
+          The financial institution associated with this account.
+      accountType:
+        type: string
+        description: >-
+          The high-level type of financial account.
+        enum:
+          - bank
+          - processor
+      subType:
+        type: string
+        description: >-
+          A more specific classification of the account type.
+        enum:
+          - checking
+          - savings
+          - brokerage
+          - creditCard
+          - payment
+          - payroll
+          - bill
+      lastFour:
+        type: string
+  AccountMapping:
+    type: object
+    title: AccountMapping
+    description: >-
+      Defines how a financial account maps to one or more ledger accounts.
+    required:
+      - financialAccountId
+      - ledgerAccountId
+      - mappingType
+    properties:
+      financialAccountId:
+        type: string
+        description: >-
+          References the financial account being mapped.
+      ledgerAccountId:
+        type: string
+        description: >-
+          References the ledger account to which transactions are assigned.
+      mappingType:
+        type: string
+        description: >-
+          Defines the type of mapping.
+        enum:
+          - direct
+          - clearing
+          - allocation
+  FdicCoverage:
+    type: object
+    title: FdicCoverage
+    description: >-
+      Represents FDIC coverage details for depository accounts.
+    required:
+      - depositoryTotal
+      - estimatedInsuranceCoverage
+      - status
+    properties:
+      depositoryTotal:
+        $ref: "#/components/schemas/MonetaryValue"
+        description: >-
+          The total balance of the account subject to FDIC coverage.
+      estimatedInsuranceCoverage:
+        $ref: "#/components/schemas/MonetaryValue"
+        description: >-
+          The estimated insured amount based on coverage limits.
+      status:
+        type: string
+        description: >-
+          The FDIC coverage status of the account.
+        enum:
+          - covered
+          - partiallyCovered
+          - notCovered
+  IngestionSource:
+    type: object
+    title: IngestionSource
+    description: >-
+      Represents the source of financial data ingestion for a financial account.
+    required:
+      - sourceType
+      - ingestionDates
+    properties:
+      sourceType:
+        type: string
+        description: >-
+          The method of ingestion.
+        enum:
+          - direct
+          - plaid
+          - manual
+      ingestionDates:
+        type: array
+        description: >-
+          Historical ingestion periods.
+        items:
+          $ref: "#/components/schemas/EffectiveDate"
