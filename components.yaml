@@ -6,7 +6,8 @@ components:
       type: string
       title: EntityType
       description: >-
-        The legal entity type of the company, impacting tax reporting and compliance.
+        The legal entity type of the company, impacting tax reporting and 
+        compliance.
       enum:
         - cCorp
         - llc
@@ -101,15 +102,16 @@ components:
           type: number
           format: double
           description: >-
-            The monetary amount, formatted as a numeric value with up to two decimal places.
-            Negative values represent credits or refunds.
+            The monetary amount, formatted as a numeric value with up to two 
+            decimal places. Negative values represent credits or refunds.
           examples:
             - 1234.56
             - -500
         currency:
           type: string
           description: >-
-            The currency in which the amount is denominated, following the ISO 4217 standard (e.g., USD, EUR, GBP).
+            The currency in which the amount is denominated, following the ISO 
+            4217 standard (e.g., USD, EUR, GBP).
           pattern: '^[A-Z]{3}$'
           examples:
             - USD
@@ -120,9 +122,11 @@ components:
       type: object
       title: TaxRate
       description: >-
-        The Tax Rate model is used to document and manage tax configurations for a company within the bookkeeping system.
-        This model provides details about specific tax rates, including their type, jurisdiction, calculation method, and associated parameters.
-        
+        The Tax Rate model is used to document and manage tax configurations 
+        for a company within the bookkeeping system. This model provides 
+        details about specific tax rates, including their type, jurisdiction, 
+        calculation method, and associated parameters.
+
         **Effective Date Rules:**
         - If no `effectiveDate` is set, the tax rate is assumed to be effective as of `createdAt`.
         - If multiple tax rates have overlapping `effectiveDate` ranges, all applicable rates will be considered.
@@ -156,12 +160,14 @@ components:
           type: string
           format: date-time
           description: >-
-            The start date for the tax rate. Transactions before this date are not subject to this tax rate.
+            The start date for the tax rate. Transactions before this date are 
+            not subject to this tax rate.
         expirationDate:
           type: string
           format: date-time
           description: >-
-            The end date for the tax rate, if applicable. Transactions after this date are not subject to this tax rate.
+            The end date for the tax rate, if applicable. Transactions after 
+            this date are not subject to this tax rate.
         supersededBy:
           type: string
           description: >-
