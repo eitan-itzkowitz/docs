@@ -297,13 +297,13 @@ components:
             - $ref: "#/components/schemas/Firm"
           description: >-
             The entity the user is associated with, either a company or a firm.
-            
+
     # PERMISSION
     Permission:
       type: object
       title: Permission
       description: >-
-        Defines user access control by specifying which financial modules 
+        Defines user access control by specifying which financial modules
         a user can interact with and their allowed actions.
 
         Some permissions imply additional access:
@@ -352,8 +352,8 @@ components:
         displayName:
           type: string
           description: >-
-            Defines how a user is identified when performing actions or 
-            sending messages. Used for firm employees to send messages 
+            Defines how a user is identified when performing actions or
+            sending messages. Used for firm employees to send messages
             on behalf of the firm if necessary.
           enum:
             - self
