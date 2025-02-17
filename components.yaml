@@ -988,3 +988,30 @@ components:
         format: date-time
         description: >-
           The date this ledger account is no longer in effect (if applicable).
+  AccountCategory:
+    type: object
+    title: AccountCategory
+    description: >-
+      Predefined financial account categories used for standardization across companies.
+    required:
+      - id
+      - categoryName
+    properties:
+      id:
+        type: string
+        description: >-
+          A unique identifier for the category.
+      categoryName:
+        type: string
+        description: >-
+          The name of the predefined financial category.
+      description:
+        type: string
+        description: >-
+          A brief description of this category.
+      defaultMappings:
+        type: array
+        description: >-
+          Default mappings for this category when a company is onboarded.
+        items:
+          type: string
