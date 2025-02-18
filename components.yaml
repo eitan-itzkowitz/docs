@@ -130,20 +130,7 @@ components:
     # ========== SECTION: LIST OPTIONS ==========
     # Defines reference lists embedded in other models.
 
-    # LEGAL ENTITY TYPE
-    LegalEntityType:
-      type: string
-      title: EntityType
-      description: >-
-        The legal entity type of the company, impacting tax reporting and
-        compliance.
-      enum:
-        - cCorp
-        - llc
-        - partnership
-        - sCorp
-        - soleProprietorship
-        - professionalServiceCorporation
+
 
     # INDUSTRY
     Industry:
@@ -393,6 +380,20 @@ components:
             - self
             - entityName
             - other
+        # LEGAL ENTITY TYPE
+    LegalEntityType:
+      type: string
+      title: EntityType
+      description: >-
+        The legal entity type of the company, impacting tax reporting and
+        compliance.
+      enum:
+        - cCorp
+        - llc
+        - partnership
+        - sCorp
+        - soleProprietorship
+        - professionalServiceCorporation
     
     ## --- Subsection: Subobjects ---
     # Supporting objects that extend core objects with additional functionality.
@@ -453,45 +454,7 @@ components:
           $ref: "#/components/schemas/EffectiveDate"
           description: >-
             The time period during which this permission set is active.
-    
-    ## --- Subsection: Object & Data Transformation ---
-    # Defines cross-object relationships and transformation rules.
-    
-    # ========== SECTION: ACCOUNTING STRUCTURES ==========
-    # Defines key accounting-related structures, including Chart of Accounts and 
-    # revenue recognition rules.
-    
-    ## --- Subsection: General Ledger & Financial Accounts ---
-    # Core financial account structures, including GL accounts and financial institutions.
-    
-    ## --- Subsection: Revenue Recognition & Prepaid Expenses ---
-    # Models handling revenue recognition schedules and prepaid expense amortization.
-    
-    # ========== SECTION: OPERATIONAL ENTITIES ==========
-    # Defines non-financial operational models such as user roles, firms, and access control.
-    
-    ## --- Subsection: User & Permissions ---
-    # Models governing user access, roles, and security structures.
-    
-    ## --- Subsection: Firms & Relationships ---
-    # Defines firms, clients, and inter-entity relationships.
-    
-    # ========== SECTION: SYSTEM & METADATA ==========
-    # Defines internal system components used for tracking changes, metadata, and 
-    # effective dating.
-    
-    ## --- Subsection: Effective Dates & Status Tracking ---
-    # Defines time-based validity and lifecycle status tracking.
-    
-    ## --- Subsection: System Metadata ---
-    # Metadata structures used for logging, auditing, and versioning.
-
-    
-    
-    
-    
-    
-    # ENTITY ROLE
+    # ROLE
     EntityRole:
       type: object
       title: EntityRole
@@ -535,6 +498,45 @@ components:
           $ref: "#/components/schemas/EffectiveDate"
           description: >-
             The time period during which this role is active.
+    
+    ## --- Subsection: Object & Data Transformation ---
+    # Defines cross-object relationships and transformation rules.
+    
+    # ========== SECTION: ACCOUNTING STRUCTURES ==========
+    # Defines key accounting-related structures, including Chart of Accounts and 
+    # revenue recognition rules.
+    
+    ## --- Subsection: General Ledger & Financial Accounts ---
+    # Core financial account structures, including GL accounts and financial institutions.
+    
+    ## --- Subsection: Revenue Recognition & Prepaid Expenses ---
+    # Models handling revenue recognition schedules and prepaid expense amortization.
+    
+    # ========== SECTION: OPERATIONAL ENTITIES ==========
+    # Defines non-financial operational models such as user roles, firms, and access control.
+    
+    ## --- Subsection: User & Permissions ---
+    # Models governing user access, roles, and security structures.
+    
+    ## --- Subsection: Firms & Relationships ---
+    # Defines firms, clients, and inter-entity relationships.
+    
+    # ========== SECTION: SYSTEM & METADATA ==========
+    # Defines internal system components used for tracking changes, metadata, and 
+    # effective dating.
+    
+    ## --- Subsection: Effective Dates & Status Tracking ---
+    # Defines time-based validity and lifecycle status tracking.
+    
+    ## --- Subsection: System Metadata ---
+    # Metadata structures used for logging, auditing, and versioning.
+
+    
+    
+    
+    
+    
+    
     # EFFECTIVE DATE
     EffectiveDate:
       type: object
