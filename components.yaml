@@ -363,7 +363,7 @@ components:
     #  User Role at Company
     CompanyRole:
       type: object
-      title: UserRole
+      title: CompanyRole
       description: >-
         Defines a user's role within a company, categorizing their relationship and function.
       properties:
