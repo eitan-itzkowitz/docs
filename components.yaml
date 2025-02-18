@@ -543,13 +543,136 @@ components:
           - other
           - fixedFee
 
-    # ========== SECTION: ENTITY MAPPING & RELATIONSHIPS ==========
+    # ========== SECTION: ENTITY ASSIGNMMENTS ==========
+    # Enables assignments of entities to other entities.
 
-    ## --- Subsection: Entity to Entity Mapping ---
-    # Support mapping of entities to other entities.
-
+    # User To Company
+    AssignUserToCompany:
+      type: object
+      title: AssignUserToCompany
+      description: >-
+        Defines the assignment of a user to a company, specifying their role and
+        associated permission set.
     
+      required:
+        - userId
+        - companyId
+        - role
+        - permissionSet
+        - effectiveRange
+    
+      properties:
+        userId:
+          type: string
+          description: >-
+            The unique identifier of the user being assigned.
+    
+        companyId:
+          type: string
+          description: >-
+            The unique identifier of the company to which the user is being assigned.
+    
+        role:
+          $ref: "#/components/schemas/UserRole"
+          description: >-
+            The role of the user within the company.
+    
+        permissionSet:
+          $ref: "#/components/schemas/UserPermissionSet"
+          description: >-
+            The permissions granted to the user within the company.
+    
+        effectiveRange:
+          $ref: "#/components/schemas/EffectiveRange"
+          description: >-
+            The validity period for this assignment.
 
+    # User To Firm
+    AssignUserToFirm:
+      type: object
+      title: AssignUserToFirm
+      description: >-
+        Defines the assignment of a user to a firm, specifying their role and
+        associated permission set.
+    
+      required:
+        - userId
+        - firmId
+        - role
+        - permissionSet
+        - effectiveRange
+    
+      properties:
+        userId:
+          type: string
+          description: >-
+            The unique identifier of the user being assigned.
+    
+        firmId:
+          type: string
+          description: >-
+            The unique identifier of the firm to which the user is being assigned.
+    
+        role:
+          $ref: "#/components/schemas/FirmRole"
+          description: >-
+            The role of the user within the firm.
+    
+        permissionSet:
+          $ref: "#/components/schemas/FirmPermissionSet"
+          description: >-
+            The permissions granted to the user within the firm.
+    
+        effectiveRange:
+          $ref: "#/components/schemas/EffectiveRange"
+          description: >-
+            The validity period for this assignment.
+
+    # Company To Firm
+      AssignCompanyToFirm:
+        type: object
+        title: AssignCompanyToFirm
+        description: >-
+          Defines the relationship between a company and a firm, including the role
+          the firm plays in relation to the company.
+      
+        required:
+          - companyId
+          - firmId
+          - role
+          - effectiveRange
+      
+        properties:
+          companyId:
+            type: string
+            description: >-
+              The unique identifier of the company in the relationship.
+      
+          firmId:
+            type: string
+            description: >-
+              The unique identifier of the firm in the relationship.
+      
+          role:
+            type: string
+            description: >-
+              The firm's role in relation to the company.
+            enum:
+              - accounting
+              - audit
+              - tax
+              - advisory
+              - generalBackOffice
+              - other
+  
+      effectiveRange:
+        $ref: "#/components/schemas/EffectiveRange"
+        description: >-
+          The validity period for this company-firm relationship.
+     
+        ## --- Subsection: Entity to Entity Mapping ---
+        # Support association of entities to other entities.
+    
     # ========== SECTION: OBJECT MAPPING & RELATIONSHIPS ==========
     # Defines mappings between external and internal objects, account categorizations,
     # and data transformations.
