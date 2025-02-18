@@ -476,7 +476,7 @@ components:
 
     ## --- Subsection: Entity Attributes ---
     # Defines attributes that can be assigned to entities at Puzzle.
-  
+
     # LEGAL ENTITY TYPE
     LegalEntityType:
       type: string
@@ -559,14 +559,14 @@ components:
 
     ## --- Subsection: Object & Data Transformation ---
     # Defines cross-object relationships and transformation rules.
-    
+
     # ========== SECTION: ACCOUNTING STRUCTURES ==========
-    # Defines key accounting-related structures, including Chart of Accounts and 
+    # Defines key accounting-related structures, including Chart of Accounts and
     # revenue recognition rules.
 
     ## --- Subsection: General Ledger & Financial Accounts ---
     # Core financial account structures, including GL accounts and financial institutions.
-    
+
     ## --- Subsection: Revenue Recognition & Prepaid Expenses ---
     # Models handling revenue recognition schedules and prepaid expense amortization.
 
@@ -580,7 +580,7 @@ components:
     # Defines firms, clients, and inter-entity relationships.
 
     # ========== SECTION: SYSTEM & METADATA ==========
-    # Defines internal system components used for tracking changes, metadata, and 
+    # Defines internal system components used for tracking changes, metadata, and
     # effective dating.
 
     ## --- Subsection: Effective Dates & Status Tracking ---
