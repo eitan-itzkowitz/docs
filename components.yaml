@@ -488,30 +488,6 @@ components:
         - sCorp
         - soleProprietorship
         - professionalServiceCorporation
-        
-    # ========== SECTION: ENTITY MAPPING & RELATIONSHIPS ==========
-    
-    ## --- Subsection: Entity to Entity Mapping ---
-    # Support mapping of entities to underlying attributes.
-    
-    # ========== SECTION: OBJECT MAPPING & RELATIONSHIPS ==========
-    # Defines mappings between external and internal objects, account categorizations, 
-    # and data transformations.
-    
-    ## --- Subsection: External to Internal Mappings ---
-    # Maps external system objects (e.g., QBO, Stripe) to internal Puzzle objects.
-    
-    ## --- Subsection: Internal Mappings ---
-    # Maps internal objects within Puzzle to categories or other logical groupings.
-
-   
-    # Defines mappings between entities and entity attributes.
-    
-    ## --- Subsection: External to Internal Mappings ---
-    # Maps external system objects (e.g., QBO, Stripe) to internal Puzzle objects.
-    
-    ## --- Subsection: Internal Mappings ---
-    # Maps internal objects within Puzzle to categories or other logical groupings.
 
     # INDUSTRY
     Industry:
@@ -554,7 +530,32 @@ components:
           - usageBased
           - other
           - fixedFee
+
+    # ========== SECTION: ENTITY MAPPING & RELATIONSHIPS ==========
     
+    ## --- Subsection: Entity to Entity Mapping ---
+    # Support mapping of entities to underlying attributes.
+    
+    # ========== SECTION: OBJECT MAPPING & RELATIONSHIPS ==========
+    # Defines mappings between external and internal objects, account categorizations, 
+    # and data transformations.
+    
+    ## --- Subsection: External to Internal Mappings ---
+    # Maps external system objects (e.g., QBO, Stripe) to internal Puzzle objects.
+    
+    ## --- Subsection: Internal Mappings ---
+    # Maps internal objects within Puzzle to categories or other logical groupings.
+
+   
+    # Defines mappings between entities and entity attributes.
+    
+    ## --- Subsection: External to Internal Mappings ---
+    # Maps external system objects (e.g., QBO, Stripe) to internal Puzzle objects.
+    
+    ## --- Subsection: Internal Mappings ---
+    # Maps internal objects within Puzzle to categories or other logical groupings.
+
+
     ## --- Subsection: Object & Data Transformation ---
     # Defines cross-object relationships and transformation rules.
     
