@@ -41,7 +41,7 @@ components:
         - transportation
         - ecommerce
         - finance
-        
+
     # BILLING MODEL
     BillingModel:
       type: array
@@ -59,6 +59,35 @@ components:
           - usageBased
           - other
           - fixedFee
+
+    # MONETARY VALUE
+    MonetaryValue:
+      type: object
+      title: MonetaryValue
+      description: >-
+        A standardized format for monetary values, including amount and
+        currency.
+      required:
+        - amount
+        - currency
+      properties:
+        amount:
+          type: number
+          format: double
+          description: >-
+            The monetary amount, formatted as a numeric value with up to two
+            decimal places. Negative values represent credits or refunds.
+          examples:
+            - 1234.56
+            - -500
+        currency:
+          type: string
+          description: >-
+            The currency used, following the ISO 4217 standard (e.g., USD, EUR, GBP).
+          pattern: '^[A-Z]{3}$'
+          examples:
+            - USD
+            - EUR
     # ========== SECTION: OBJECTS ==========
     # Defines core business objects representing real-world entities.
     
@@ -112,34 +141,7 @@ components:
 
 
 
-    # MONETARY VALUE
-    MonetaryValue:
-      type: object
-      title: MonetaryValue
-      description: >-
-        A standardized format for monetary values, including amount and
-        currency.
-      required:
-        - amount
-        - currency
-      properties:
-        amount:
-          type: number
-          format: double
-          description: >-
-            The monetary amount, formatted as a numeric value with up to two
-            decimal places. Negative values represent credits or refunds.
-          examples:
-            - 1234.56
-            - -500
-        currency:
-          type: string
-          description: >-
-            The currency used, following the ISO 4217 standard (e.g., USD, EUR, GBP).
-          pattern: '^[A-Z]{3}$'
-          examples:
-            - USD
-            - EUR
+    
 
     # TAX RATE
     TaxRate:
