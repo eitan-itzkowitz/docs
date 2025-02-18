@@ -17,6 +17,7 @@ components:
         - sCorp
         - soleProprietorship
         - professionalServiceCorporation
+
     # INDUSTRY
     Industry:
       type: string
