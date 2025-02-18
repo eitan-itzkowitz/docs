@@ -190,35 +190,44 @@ components:
                 The longitude of the address.
               format: float
 
-    # EFFECTIVE DATE
-    EffectiveDate:
+    # EFFECTIVE RANGE
+    EffectiveRange:
       type: object
-      title: EffectiveDate
+      title: EffectiveRange
       description: >-
-        Defines the validity period for an entity (e.g., TaxRate, Reporting Class, Permissions).
-
-        **Effective Date Rules:**
-        - If no `effectiveDate` is set, the entity is assumed to be effective as of `createdAt`.
-        - If multiple entities have overlapping `effectiveDate` ranges, all applicable entities will be considered.
-        - If `effectiveDate` is in the future, the entity will not be applied until that date.
-        - Effective date ranges are inclusive of both start and end bounds.
-        - If an entity is superseded by another, the superseding entity takes precedence.
-
+        Defines a start and optional end date for time-based models, ensuring controlled 
+        validity periods for items such as Tax Rates, Reporting Classes, Permissions, 
+        and Categorization Assignments.
+    
+        **Effective Range Rules:**
+        - If `startDate` is not set, the item is assumed to be active as of `createdAt`.
+        - If `endDate` is missing, the item remains active indefinitely.
+        - Effective ranges **must be inclusive**—the item is valid from `startDate` through `endDate`.
+        - If multiple items have overlapping effective ranges, all are considered **active** unless a conflict resolution rule applies.
+        - If an item is superseded by another, the **newer item takes precedence** while preserving historical data.
+    
       properties:
-        effectiveDate:
+        startDate:
           type: string
           format: date-time
           description: >-
-            The start date when the entity becomes active.
-        expirationDate:
+            The date when the item becomes active.
+          example: "2024-01-01T00:00:00Z"
+    
+        endDate:
           type: string
           format: date-time
           description: >-
-            The optional end date when the entity expires.
+            The optional date when the item expires. If not set, the item is considered 
+            active indefinitely.
+          example: "2025-12-31T23:59:59Z"
+    
         supersededBy:
           type: string
           description: >-
-            If applicable, references the entity that replaces this one.
+            If applicable, references the item that replaces this one. Superseded items 
+            should remain in history for auditability.
+          example: "tax-rate-456"
 
     # ========== SECTION: ENTITIES ==========
     # Defines the entities ecosystem at Puzzle.
@@ -537,7 +546,9 @@ components:
     # ========== SECTION: ENTITY MAPPING & RELATIONSHIPS ==========
 
     ## --- Subsection: Entity to Entity Mapping ---
-    # Support mapping of entities to underlying attributes.
+    # Support mapping of entities to other entities.
+
+    
 
     # ========== SECTION: OBJECT MAPPING & RELATIONSHIPS ==========
     # Defines mappings between external and internal objects, account categorizations,
