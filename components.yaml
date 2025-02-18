@@ -604,12 +604,12 @@ components:
             type: string
             description: >-
               The unique identifier of the company in the relationship.
-  
+
           firmId:
             type: string
             description: >-
               The unique identifier of the firm in the relationship.
-  
+
           role:
             type: string
             description: >-
