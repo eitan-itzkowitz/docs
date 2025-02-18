@@ -127,7 +127,7 @@ components:
           description: >-
             If applicable, references the tax rate that supersedes this one. The superseding rate takes precedence.
 
-    # ========== SECTION: LISTS ==========
+    # ========== SECTION: LIST OPTIONS ==========
     # Defines reference lists embedded in other models.
 
     # LEGAL ENTITY TYPE
@@ -188,10 +188,10 @@ components:
           - fixedFee
     
     # ========== SECTION: ENTITIES ==========
-    # Defines entities within the Puzzle ecosystem.
+    # Defines the entities ecosystem at Puzzle.
     
-    ## --- Subsection: Puzzle Objects ---
-    # Primary entities within the system, including financial and operational structures.
+    ## --- Subsection: Core Entities ---
+    # Defines core entities within Puzzle.
     
     # COMPANY
     Company:
@@ -262,6 +262,10 @@ components:
             - generalBackOffice
           description: >-
             The industry or sector in which the firm operates.
+
+    ## --- Subsection: Entity Attributes ---
+    # Defines attributes that can be assigned to entities at Puzzle.
+    
     # ROLE
     Role:
       type: object
