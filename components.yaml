@@ -413,9 +413,19 @@ components:
     ## --- Subsection: Subobjects ---
     # Supporting objects that extend core objects with additional functionality.
     
-    # ========== SECTION: MAPPING & RELATIONSHIPS ==========
+    # ========== SECTION: OBJECT MAPPING & RELATIONSHIPS ==========
     # Defines mappings between external and internal objects, account categorizations, 
     # and data transformations.
+    
+    ## --- Subsection: External to Internal Mappings ---
+    # Maps external system objects (e.g., QBO, Stripe) to internal Puzzle objects.
+    
+    ## --- Subsection: Internal Mappings ---
+    # Maps internal objects within Puzzle to categories or other logical groupings.
+
+    # ========== SECTION: ENTITY MAPPING & RELATIONSHIPS ==========
+    # Defines mappings between entities and other entities.
+    Additionally defines mappings between entities and attributes.
     
     ## --- Subsection: External to Internal Mappings ---
     # Maps external system objects (e.g., QBO, Stripe) to internal Puzzle objects.
