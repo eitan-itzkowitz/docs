@@ -345,17 +345,17 @@ components:
     ## --- Subsection: Roles and Permissions ---
     # Defines roles and permissions that can be assigned to entities at Puzzle.
 
-    # ROLE
-    Role:
+    #  User Role at Company
+    CompanyRole:
       type: object
-      title: Role
+      title: UserRole
       description: >-
-        Defines a user's role within the system, categorizing their relationship to a company or firm.
+        Defines a user's role within a company, categorizing their relationship and function.
       properties:
         roleType:
           type: string
           description: >-
-            The user's relationship to the company or firm.
+            The user's relationship to the company.
           enum:
             - owner
             - executive
@@ -365,7 +365,7 @@ components:
         function:
           type: string
           description: >-
-            The primary area of expertise or responsibility for the user.
+            The primary area of expertise or responsibility for the user within the company.
           enum:
             - accounting
             - finance
@@ -374,114 +374,73 @@ components:
             - legal
             - admin
 
-    # PERMISSION
-    Permission:
+    # User Role at Firm
+    FirmRole:
       type: object
-      title: Permission
+      title: FirmRole
       description: >-
-        Defines user access control by specifying which financial modules
-        a user can interact with and their allowed actions.
-
-        Some permissions imply additional access:
-        - `finalize` → automatically grants `view` and `create`
-        - `edit` → automatically grants `view`
-        - `void` → automatically grants `edit`
-        - `delete` must always be explicitly assigned
+        Defines a user's role within a firm, specifying their position and function.
       properties:
-        group:
+        roleType:
           type: string
           description: >-
-            The financial data scope or module the permission applies to.
+            The user's relationship to the firm.
           enum:
-            - financialStatements
-            - generalLedger
-            - bankTransactions
-            - bills
-            - invoices
-            - inbox
-        actions:
-          type: array
-          description: >-
-            The allowed actions within the specified scope.
-          items:
-            type: object
-            properties:
-              action:
-                type: string
-                enum:
-                  - view
-                  - create
-                  - finalize
-                  - edit
-                  - void
-                  - delete
-              implies:
-                type: array
-                description: >-
-                  Actions automatically granted when this action is assigned.
-                items:
-                  type: string
-                  enum:
-                    - view
-                    - create
-                    - edit
-        displayName:
+            - partner
+            - manager
+            - staff
+            - contractor
+            - advisor
+        function:
           type: string
           description: >-
-            Defines how a user is identified when performing actions or
-            sending messages. Used for firm employees to send messages
-            on behalf of the firm if necessary.
+            The user's functional role within the firm.
           enum:
-            - self
-            - entityName
-            - other
+            - accounting
+            - tax
+            - audit
+            - advisory
+            - payroll
+            - consulting
+            - legal
 
-    # PERMISSION SET
-    PermissionSet:
+    # User Permissions for Company
+    CompanyPermissionSet:
       type: object
-      title: PermissionSet
+      title: UserPermissionSet
       description: >-
-        Defines a set of permissions assigned to a user for a specific entity (Company or Firm).
-        - A user can have multiple permission sets.
-        - Each user-entity pair can have only one permission set at a time.
-        - Permissions can be time-bound, allowing scheduled access changes.
-      required:
-        - id
-        - userId
-        - entityId
-        - entityType
-        - permissions
+        A set of permissions defining what a user can do within a company.
       properties:
-        id:
+        companyId:
           type: string
           description: >-
-            A unique identifier for the permission set.
-        userId:
-          type: string
-          description: >-
-            The user assigned to this permission set.
-          $ref: "#/components/schemas/User"
-        entityId:
-          type: string
-          description: >-
-            The entity this permission set applies to.
-        entityType:
-          type: string
-          enum:
-            - company
-            - firm
-          description: >-
-            Specifies whether this permission set applies to a Company or a Firm.
+            The company this permission set applies to.
         permissions:
           type: array
           items:
             $ref: "#/components/schemas/Permission"
           description: >-
-            A list of permissions assigned to the user for this entity.
-        effectivePeriod:
-          $ref: "#/components/schemas/EffectiveDate"
+            The list of permissions granted to the user within the company.
+
+    # User Permissions for Firm
+    FirmPermissionSet:
+      type: object
+      title: FirmPermissionSet
+      description: >-
+        A set of permissions defining what a user can do within a firm.
+      properties:
+        firmId:
+          type: string
           description: >-
-            The time period during which this permission set is active.
+            The firm this permission set applies to.
+        permissions:
+          type: array
+          items:
+            $ref: "#/components/schemas/Permission"
+          description: >-
+            The list of permissions granted to the user within the firm.
+
+
 
     ## --- Subsection: Entity Attributes ---
     # Defines attributes that can be assigned to entities at Puzzle.
@@ -573,12 +532,12 @@ components:
             The unique identifier of the company to which the user is being assigned.
     
         role:
-          $ref: "#/components/schemas/UserRole"
+          $ref: "#/components/schemas/CompanyRole"
           description: >-
             The role of the user within the company.
     
         permissionSet:
-          $ref: "#/components/schemas/UserPermissionSet"
+          $ref: "#/components/schemas/CompanyPermissionSet"
           description: >-
             The permissions granted to the user within the company.
     
