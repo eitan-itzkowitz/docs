@@ -130,8 +130,8 @@ components:
     # ========== SECTION: LISTS ==========
     # Defines reference lists embedded in other models.
 
-    # ENTITY TYPE
-    EntityType:
+    # LEGAL ENTITY TYPE
+    LegalEntityType:
       type: string
       title: EntityType
       description: >-
@@ -187,8 +187,8 @@ components:
           - other
           - fixedFee
     
-    # ========== SECTION: OBJECTS ==========
-    # Defines core business objects representing real-world entities.
+    # ========== SECTION: ENTITIES ==========
+    # Defines entities within the Puzzle ecosystem.
     
     ## --- Subsection: Puzzle Objects ---
     # Primary entities within the system, including financial and operational structures.
