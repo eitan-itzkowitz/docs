@@ -195,17 +195,17 @@ components:
       type: object
       title: EffectiveRange
       description: >-
-        Defines a start and optional end date for time-based models, ensuring controlled 
-        validity periods for items such as Tax Rates, Reporting Classes, Permissions, 
+        Defines a start and optional end date for time-based models, ensuring controlled
+        validity periods for items such as Tax Rates, Reporting Classes, Permissions,
         and Categorization Assignments.
-    
+
         **Effective Range Rules:**
         - If `startDate` is not set, the item is assumed to be active as of `createdAt`.
         - If `endDate` is missing, the item remains active indefinitely.
         - Effective ranges **must be inclusive**—the item is valid from `startDate` through `endDate`.
         - If multiple items have overlapping effective ranges, all are considered **active** unless a conflict resolution rule applies.
         - If an item is superseded by another, the **newer item takes precedence** while preserving historical data.
-    
+
       properties:
         startDate:
           type: string
@@ -213,19 +213,19 @@ components:
           description: >-
             The date when the item becomes active.
           example: "2024-01-01T00:00:00Z"
-    
+
         endDate:
           type: string
           format: date-time
           description: >-
-            The optional date when the item expires. If not set, the item is considered 
+            The optional date when the item expires. If not set, the item is considered
             active indefinitely.
           example: "2025-12-31T23:59:59Z"
-    
+
         supersededBy:
           type: string
           description: >-
-            If applicable, references the item that replaces this one. Superseded items 
+            If applicable, references the item that replaces this one. Superseded items
             should remain in history for auditability.
           example: "tax-rate-456"
 
@@ -439,8 +439,6 @@ components:
             $ref: "#/components/schemas/Permission"
           description: >-
             The list of permissions granted to the user within the firm.
-
-
 
     ## --- Subsection: Entity Attributes ---
     # Defines attributes that can be assigned to entities at Puzzle.
