@@ -189,6 +189,35 @@ components:
               description: >-
                 The longitude of the address.
               format: float
+        # EFFECTIVE DATE
+    EffectiveDate:
+      type: object
+      title: EffectiveDate
+      description: >-
+        Defines the validity period for an entity (e.g., TaxRate, Reporting Class, Permissions).
+
+        **Effective Date Rules:**
+        - If no `effectiveDate` is set, the entity is assumed to be effective as of `createdAt`.
+        - If multiple entities have overlapping `effectiveDate` ranges, all applicable entities will be considered.
+        - If `effectiveDate` is in the future, the entity will not be applied until that date.
+        - Effective date ranges are inclusive of both start and end bounds.
+        - If an entity is superseded by another, the superseding entity takes precedence.
+
+      properties:
+        effectiveDate:
+          type: string
+          format: date-time
+          description: >-
+            The start date when the entity becomes active.
+        expirationDate:
+          type: string
+          format: date-time
+          description: >-
+            The optional end date when the entity expires.
+        supersededBy:
+          type: string
+          description: >-
+            If applicable, references the entity that replaces this one.
 
     # ========== SECTION: ENTITIES ==========
     # Defines the entities ecosystem at Puzzle.
@@ -604,35 +633,6 @@ components:
     
     
     
-    # EFFECTIVE DATE
-    EffectiveDate:
-      type: object
-      title: EffectiveDate
-      description: >-
-        Defines the validity period for an entity (e.g., TaxRate, Reporting Class, Permissions).
-
-        **Effective Date Rules:**
-        - If no `effectiveDate` is set, the entity is assumed to be effective as of `createdAt`.
-        - If multiple entities have overlapping `effectiveDate` ranges, all applicable entities will be considered.
-        - If `effectiveDate` is in the future, the entity will not be applied until that date.
-        - Effective date ranges are inclusive of both start and end bounds.
-        - If an entity is superseded by another, the superseding entity takes precedence.
-
-      properties:
-        effectiveDate:
-          type: string
-          format: date-time
-          description: >-
-            The start date when the entity becomes active.
-        expirationDate:
-          type: string
-          format: date-time
-          description: >-
-            The optional end date when the entity expires.
-        supersededBy:
-          type: string
-          description: >-
-            If applicable, references the entity that replaces this one.
     # REPORTING CLASS
     ReportingClass:
       type: object
