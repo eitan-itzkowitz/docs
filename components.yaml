@@ -223,7 +223,7 @@ components:
     # ========== SECTION: ENTITIES ==========
     # Defines the entities ecosystem at Puzzle.
     
-    ## --- Subsection: Core Entities ---
+    ## --- Subsection: Puzzle Entities ---
     # Defines core entities within Puzzle.
     
     # COMPANY
@@ -266,6 +266,7 @@ components:
           type: string
           description: >-
             The company’s official website.
+
     # FIRM
     Firm:
       type: object
@@ -425,44 +426,6 @@ components:
             - self
             - entityName
             - other
-        # LEGAL ENTITY TYPE
-    LegalEntityType:
-      type: string
-      title: EntityType
-      description: >-
-        The legal entity type of the company, impacting tax reporting and
-        compliance.
-      enum:
-        - cCorp
-        - llc
-        - partnership
-        - sCorp
-        - soleProprietorship
-        - professionalServiceCorporation
-    
-    ## --- Subsection: Subobjects ---
-    # Supporting objects that extend core objects with additional functionality.
-    
-    # ========== SECTION: OBJECT MAPPING & RELATIONSHIPS ==========
-    # Defines mappings between external and internal objects, account categorizations, 
-    # and data transformations.
-    
-    ## --- Subsection: External to Internal Mappings ---
-    # Maps external system objects (e.g., QBO, Stripe) to internal Puzzle objects.
-    
-    ## --- Subsection: Internal Mappings ---
-    # Maps internal objects within Puzzle to categories or other logical groupings.
-
-    # ========== SECTION: ENTITY MAPPING & RELATIONSHIPS ==========
-    # Defines mappings between entities and other entities.
-    Additionally defines mappings between entities and attributes.
-    
-    ## --- Subsection: External to Internal Mappings ---
-    # Maps external system objects (e.g., QBO, Stripe) to internal Puzzle objects.
-    
-    ## --- Subsection: Internal Mappings ---
-    # Maps internal objects within Puzzle to categories or other logical groupings.
-
     # PERMISSION SET
     PermissionSet:
       type: object
@@ -509,7 +472,47 @@ components:
           $ref: "#/components/schemas/EffectiveDate"
           description: >-
             The time period during which this permission set is active.
-    # ROLE
+            
+    # LEGAL ENTITY TYPE
+    LegalEntityType:
+      type: string
+      title: EntityType
+      description: >-
+        The legal entity type of the company, impacting tax reporting and
+        compliance.
+      enum:
+        - cCorp
+        - llc
+        - partnership
+        - sCorp
+        - soleProprietorship
+        - professionalServiceCorporation
+        
+    # ========== SECTION: ENTITY MAPPING & RELATIONSHIPS ==========
+    
+    ## --- Subsection: Subobjects ---
+    # Supporting objects that extend core objects with additional functionality.
+    
+    # ========== SECTION: OBJECT MAPPING & RELATIONSHIPS ==========
+    # Defines mappings between external and internal objects, account categorizations, 
+    # and data transformations.
+    
+    ## --- Subsection: External to Internal Mappings ---
+    # Maps external system objects (e.g., QBO, Stripe) to internal Puzzle objects.
+    
+    ## --- Subsection: Internal Mappings ---
+    # Maps internal objects within Puzzle to categories or other logical groupings.
+
+   
+    # Defines mappings between entities and entity attributes.
+    
+    ## --- Subsection: External to Internal Mappings ---
+    # Maps external system objects (e.g., QBO, Stripe) to internal Puzzle objects.
+    
+    ## --- Subsection: Internal Mappings ---
+    # Maps internal objects within Puzzle to categories or other logical groupings.
+
+        # ROLE
     EntityRole:
       type: object
       title: EntityRole
