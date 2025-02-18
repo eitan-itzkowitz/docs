@@ -222,10 +222,10 @@ components:
 
     # ========== SECTION: ENTITIES ==========
     # Defines the entities ecosystem at Puzzle.
-    
+
     ## --- Subsection: Puzzle Entities ---
     # Defines core entities within Puzzle.
-    
+
     # COMPANY
     Company:
       type: object
@@ -335,7 +335,7 @@ components:
 
     ## --- Subsection: Roles and Permissions ---
     # Defines roles and permissions that can be assigned to entities at Puzzle.
-    
+
     # ROLE
     Role:
       type: object
@@ -476,7 +476,7 @@ components:
 
     ## --- Subsection: Entity Attributes ---
     # Defines attributes that can be assigned to entities at Puzzle.
-            
+  
     # LEGAL ENTITY TYPE
     LegalEntityType:
       type: string
@@ -535,29 +535,27 @@ components:
           - fixedFee
 
     # ========== SECTION: ENTITY MAPPING & RELATIONSHIPS ==========
-    
+
     ## --- Subsection: Entity to Entity Mapping ---
     # Support mapping of entities to underlying attributes.
-    
+
     # ========== SECTION: OBJECT MAPPING & RELATIONSHIPS ==========
-    # Defines mappings between external and internal objects, account categorizations, 
+    # Defines mappings between external and internal objects, account categorizations,
     # and data transformations.
-    
+
     ## --- Subsection: External to Internal Mappings ---
     # Maps external system objects (e.g., QBO, Stripe) to internal Puzzle objects.
-    
+
     ## --- Subsection: Internal Mappings ---
     # Maps internal objects within Puzzle to categories or other logical groupings.
 
-   
     # Defines mappings between entities and entity attributes.
-    
+
     ## --- Subsection: External to Internal Mappings ---
     # Maps external system objects (e.g., QBO, Stripe) to internal Puzzle objects.
-    
+
     ## --- Subsection: Internal Mappings ---
     # Maps internal objects within Puzzle to categories or other logical groupings.
-
 
     ## --- Subsection: Object & Data Transformation ---
     # Defines cross-object relationships and transformation rules.
@@ -565,28 +563,28 @@ components:
     # ========== SECTION: ACCOUNTING STRUCTURES ==========
     # Defines key accounting-related structures, including Chart of Accounts and 
     # revenue recognition rules.
-    
+
     ## --- Subsection: General Ledger & Financial Accounts ---
     # Core financial account structures, including GL accounts and financial institutions.
     
     ## --- Subsection: Revenue Recognition & Prepaid Expenses ---
     # Models handling revenue recognition schedules and prepaid expense amortization.
-    
+
     # ========== SECTION: OPERATIONAL ENTITIES ==========
     # Defines non-financial operational models such as user roles, firms, and access control.
-    
+
     ## --- Subsection: User & Permissions ---
     # Models governing user access, roles, and security structures.
-    
+
     ## --- Subsection: Firms & Relationships ---
     # Defines firms, clients, and inter-entity relationships.
-    
+
     # ========== SECTION: SYSTEM & METADATA ==========
     # Defines internal system components used for tracking changes, metadata, and 
     # effective dating.
-    
+
     ## --- Subsection: Effective Dates & Status Tracking ---
     # Defines time-based validity and lifecycle status tracking.
-    
+
     ## --- Subsection: System Metadata ---
     # Metadata structures used for logging, auditing, and versioning.
