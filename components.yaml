@@ -4,6 +4,20 @@ components:
     # ========== SECTION: CORE COMPONENTS ==========
     # Defines foundational components used across models.
     
+    # ENTITY TYPE
+    EntityType:
+      type: string
+      title: EntityType
+      description: >-
+        The legal entity type of the company, impacting tax reporting and
+        compliance.
+      enum:
+        - cCorp
+        - llc
+        - partnership
+        - sCorp
+        - soleProprietorship
+        - professionalServiceCorporation
     # ========== SECTION: OBJECTS ==========
     # Defines core business objects representing real-world entities.
     
@@ -55,21 +69,7 @@ components:
     ## --- Subsection: System Metadata ---
     # Metadata structures used for logging, auditing, and versioning.
 
-    # ENTITY TYPE
-    EntityType:
-      type: string
-      title: EntityType
-      description: >-
-        The legal entity type of the company, impacting tax reporting and
-        compliance.
-      enum:
-        - cCorp
-        - llc
-        - partnership
-        - sCorp
-        - soleProprietorship
-        - professionalServiceCorporation
-
+    
     # INDUSTRY
     Industry:
       type: string
