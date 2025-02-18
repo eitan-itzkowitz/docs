@@ -190,8 +190,9 @@ components:
     # ========== SECTION: OBJECTS ==========
     # Defines core business objects representing real-world entities.
     
-    ## --- Subsection: Core Objects ---
+    ## --- Subsection: Puzzle Objects ---
     # Primary entities within the system, including financial and operational structures.
+    
     # COMPANY
     Company:
       type: object
@@ -232,6 +233,35 @@ components:
           type: string
           description: >-
             The company’s official website.
+    # FIRM
+    Firm:
+      type: object
+      title: Firm
+      description: >-
+        Represents an external firm providing services to client companies, such as accounting, legal, or consulting firms.
+      required:
+        - id
+        - name
+        - industry
+      properties:
+        id:
+          type: string
+          description: >-
+            A unique identifier for the firm.
+        name:
+          type: string
+          description: >-
+            The registered name of the firm.
+        industry:
+          type: string
+          enum:
+            - accounting
+            - legal
+            - payroll
+            - consulting
+            - generalBackOffice
+          description: >-
+            The industry or sector in which the firm operates.
     
     ## --- Subsection: Subobjects ---
     # Supporting objects that extend core objects with additional functionality.
@@ -279,36 +309,7 @@ components:
     # Metadata structures used for logging, auditing, and versioning.
 
     
-    # FIRM
-    Firm:
-      type: object
-      title: Firm
-      description: >-
-        Represents an external firm providing services to client companies, such as accounting, legal, or consulting firms.
-      required:
-        - id
-        - name
-        - industry
-      properties:
-        id:
-          type: string
-          description: >-
-            A unique identifier for the firm.
-        name:
-          type: string
-          description: >-
-            The registered name of the firm.
-        industry:
-          type: string
-          enum:
-            - accounting
-            - legal
-            - payroll
-            - consulting
-            - generalBackOffice
-          description: >-
-            The industry or sector in which the firm operates.
-
+    
     # ROLE
     Role:
       type: object
