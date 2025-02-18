@@ -637,10 +637,10 @@ components:
               - generalBackOffice
               - other
 
-      effectiveRange:
-        $ref: "#/components/schemas/EffectiveRange"
-        description: >-
-          The validity period for this company-firm relationship.
+        effectiveRange:
+          $ref: "#/components/schemas/EffectiveRange"
+          description: >-
+            The validity period for this company-firm relationship.
 
         ## --- Subsection: Entity to Entity Mapping ---
         # Support association of entities to other entities.
