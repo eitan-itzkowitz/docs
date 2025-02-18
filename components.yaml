@@ -192,6 +192,46 @@ components:
     
     ## --- Subsection: Core Objects ---
     # Primary entities within the system, including financial and operational structures.
+    # COMPANY
+    Company:
+      type: object
+      title: Company
+      description: >-
+        Represents a company using the platform. Includes legal, financial, and operational details.
+      required:
+        - id
+        - name
+        - entityType
+        - industry
+      properties:
+        id:
+          type: string
+          description: >-
+            A unique identifier for the company.
+        name:
+          type: string
+          description: >-
+            The registered name of the company.
+        entityType:
+          $ref: "#/components/schemas/EntityType"
+          description: >-
+            The legal entity type of the company.
+        billingModel:
+          $ref: "#/components/schemas/BillingModel"
+          description: >-
+            The billing model defining the company's payment structure and subscription details.
+        industry:
+          $ref: "#/components/schemas/Industry"
+          description: >-
+            The industry or sector in which the company operates.
+        address:
+          type: string
+          description: >-
+            The company’s primary business address.
+        website:
+          type: string
+          description: >-
+            The company’s official website.
     
     ## --- Subsection: Subobjects ---
     # Supporting objects that extend core objects with additional functionality.
@@ -238,47 +278,7 @@ components:
     ## --- Subsection: System Metadata ---
     # Metadata structures used for logging, auditing, and versioning.
 
-    # COMPANY
-    Company:
-      type: object
-      title: Company
-      description: >-
-        Represents a company using the platform. Includes legal, financial, and operational details.
-      required:
-        - id
-        - name
-        - entityType
-        - industry
-      properties:
-        id:
-          type: string
-          description: >-
-            A unique identifier for the company.
-        name:
-          type: string
-          description: >-
-            The registered name of the company.
-        entityType:
-          $ref: "#/components/schemas/EntityType"
-          description: >-
-            The legal entity type of the company.
-        billingModel:
-          $ref: "#/components/schemas/BillingModel"
-          description: >-
-            The billing model defining the company's payment structure and subscription details.
-        industry:
-          $ref: "#/components/schemas/Industry"
-          description: >-
-            The industry or sector in which the company operates.
-        address:
-          type: string
-          description: >-
-            The company’s primary business address.
-        website:
-          type: string
-          description: >-
-            The company’s official website.
-
+    
     # FIRM
     Firm:
       type: object
