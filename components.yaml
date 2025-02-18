@@ -422,7 +422,7 @@ components:
     # User Permissions for Company
     CompanyPermissionSet:
       type: object
-      title: UserPermissionSet
+      title: CompanyPermissionSet
       description: >-
         A set of permissions defining what a user can do within a company.
       properties:
