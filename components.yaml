@@ -3,7 +3,6 @@ components:
   schemas:
     # ========== SECTION: CORE COMPONENTS ==========
     # Defines foundational components used across models.
-    
     # ENTITY TYPE
     EntityType:
       type: string
