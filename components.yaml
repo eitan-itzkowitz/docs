@@ -263,38 +263,6 @@ components:
           description: >-
             The industry or sector in which the firm operates.
 
-    ## --- Subsection: Entity Attributes ---
-    # Defines attributes that can be assigned to entities at Puzzle.
-    
-    # ROLE
-    Role:
-      type: object
-      title: Role
-      description: >-
-        Defines a user's role within the system, categorizing their relationship to a company or firm.
-      properties:
-        roleType:
-          type: string
-          description: >-
-            The user's relationship to the company or firm.
-          enum:
-            - owner
-            - executive
-            - employee
-            - contractor
-            - consultant
-        function:
-          type: string
-          description: >-
-            The primary area of expertise or responsibility for the user.
-          enum:
-            - accounting
-            - finance
-            - operations
-            - technology
-            - legal
-            - admin
-
     # USER
     User:
       type: object
@@ -330,6 +298,40 @@ components:
           format: date-time
           description: >-
             The date and time when the user was last updated.
+
+    ## --- Subsection: Entity Attributes ---
+    # Defines attributes that can be assigned to entities at Puzzle.
+    
+    # ROLE
+    Role:
+      type: object
+      title: Role
+      description: >-
+        Defines a user's role within the system, categorizing their relationship to a company or firm.
+      properties:
+        roleType:
+          type: string
+          description: >-
+            The user's relationship to the company or firm.
+          enum:
+            - owner
+            - executive
+            - employee
+            - contractor
+            - consultant
+        function:
+          type: string
+          description: >-
+            The primary area of expertise or responsibility for the user.
+          enum:
+            - accounting
+            - finance
+            - operations
+            - technology
+            - legal
+            - admin
+
+    
     # PERMISSION
     Permission:
       type: object
