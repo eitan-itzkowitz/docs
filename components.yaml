@@ -1,6 +1,60 @@
 ---
 components:
   schemas:
+    # ========== SECTION: CORE COMPONENTS ==========
+    # Defines foundational components used across models.
+    
+    # ========== SECTION: OBJECTS ==========
+    # Defines core business objects representing real-world entities.
+    
+    ## --- Subsection: Core Objects ---
+    # Primary entities within the system, including financial and operational structures.
+    
+    ## --- Subsection: Subobjects ---
+    # Supporting objects that extend core objects with additional functionality.
+    
+    # ========== SECTION: MAPPING & RELATIONSHIPS ==========
+    # Defines mappings between external and internal objects, account categorizations, 
+    # and data transformations.
+    
+    ## --- Subsection: External to Internal Mappings ---
+    # Maps external system objects (e.g., QBO, Stripe) to internal Puzzle objects.
+    
+    ## --- Subsection: Internal Mappings ---
+    # Maps internal objects within Puzzle to categories or other logical groupings.
+    
+    ## --- Subsection: Object & Data Transformation ---
+    # Defines cross-object relationships and transformation rules.
+    
+    # ========== SECTION: ACCOUNTING STRUCTURES ==========
+    # Defines key accounting-related structures, including Chart of Accounts and 
+    # revenue recognition rules.
+    
+    ## --- Subsection: General Ledger & Financial Accounts ---
+    # Core financial account structures, including GL accounts and financial institutions.
+    
+    ## --- Subsection: Revenue Recognition & Prepaid Expenses ---
+    # Models handling revenue recognition schedules and prepaid expense amortization.
+    
+    # ========== SECTION: OPERATIONAL ENTITIES ==========
+    # Defines non-financial operational models such as user roles, firms, and access control.
+    
+    ## --- Subsection: User & Permissions ---
+    # Models governing user access, roles, and security structures.
+    
+    ## --- Subsection: Firms & Relationships ---
+    # Defines firms, clients, and inter-entity relationships.
+    
+    # ========== SECTION: SYSTEM & METADATA ==========
+    # Defines internal system components used for tracking changes, metadata, and 
+    # effective dating.
+    
+    ## --- Subsection: Effective Dates & Status Tracking ---
+    # Defines time-based validity and lifecycle status tracking.
+    
+    ## --- Subsection: System Metadata ---
+    # Metadata structures used for logging, auditing, and versioning.
+
     # ENTITY TYPE
     EntityType:
       type: string
