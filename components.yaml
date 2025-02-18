@@ -41,6 +41,24 @@ components:
         - transportation
         - ecommerce
         - finance
+        
+    # BILLING MODEL
+    BillingModel:
+      type: array
+      title: BillingModel
+      description: >-
+        Represents the types of billing structures a company can have.
+      items:
+        type: string
+        enum:
+          - annualSubscription
+          - monthlySubscription
+          - addOns
+          - hourlyBilling
+          - transactionBased
+          - usageBased
+          - other
+          - fixedFee
     # ========== SECTION: OBJECTS ==========
     # Defines core business objects representing real-world entities.
     
@@ -92,56 +110,7 @@ components:
     ## --- Subsection: System Metadata ---
     # Metadata structures used for logging, auditing, and versioning.
 
-    
-   
 
-    # CONTRACT TERMS (NEW)
-    ContractTerms:
-      type: object
-      title: ContractTerms
-      description: >-
-        Defines contract-related terms associated with a billing model.
-      properties:
-        contractLengthMonths:
-          type: integer
-          description: >-
-            Duration of the contract in months.
-          example: 12
-        paymentTerms:
-          type: string
-          description: >-
-            Payment terms associated with the billing type.
-          enum:
-            - prepaid
-            - postpaid
-        autoRenewal:
-          type: boolean
-          description: >-
-            Whether the contract auto-renews at the end of the term.
-          example: true
-        cancellationPolicy:
-          type: string
-          description: >-
-            Policy regarding contract cancellation.
-          example: "Requires 30 days' notice for termination."
-
-    # BILLING MODEL
-    BillingModel:
-      type: array
-      title: BillingModel
-      description: >-
-        Represents the types of billing structures a company can have.
-      items:
-        type: string
-        enum:
-          - annualSubscription
-          - monthlySubscription
-          - addOns
-          - hourlyBilling
-          - transactionBased
-          - usageBased
-          - other
-          - fixedFee
 
     # MONETARY VALUE
     MonetaryValue:
