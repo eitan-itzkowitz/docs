@@ -189,7 +189,8 @@ components:
               description: >-
                 The longitude of the address.
               format: float
-        # EFFECTIVE DATE
+
+    # EFFECTIVE DATE
     EffectiveDate:
       type: object
       title: EffectiveDate
