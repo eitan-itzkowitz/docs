@@ -17,6 +17,29 @@ components:
         - sCorp
         - soleProprietorship
         - professionalServiceCorporation
+    # INDUSTRY
+    Industry:
+      type: string
+      title: Industry
+      description: >-
+        Represents the industry or sector the company operates in.
+      enum:
+        - realEstate
+        - restaurant
+        - healthcare
+        - other
+        - consumerOnPremise
+        - retail
+        - professionalServices
+        - homeServices
+        - legal
+        - saas
+        - manufacturing
+        - shortTermRental
+        - construction
+        - transportation
+        - ecommerce
+        - finance
     # ========== SECTION: OBJECTS ==========
     # Defines core business objects representing real-world entities.
     
@@ -69,29 +92,7 @@ components:
     # Metadata structures used for logging, auditing, and versioning.
 
     
-    # INDUSTRY
-    Industry:
-      type: string
-      title: Industry
-      description: >-
-        Represents the industry or sector the company operates in.
-      enum:
-        - realEstate
-        - restaurant
-        - healthcare
-        - other
-        - consumerOnPremise
-        - retail
-        - professionalServices
-        - homeServices
-        - legal
-        - saas
-        - manufacturing
-        - shortTermRental
-        - construction
-        - transportation
-        - ecommerce
-        - finance
+   
 
     # CONTRACT TERMS (NEW)
     ContractTerms:
