@@ -513,51 +513,6 @@ components:
     ## --- Subsection: Internal Mappings ---
     # Maps internal objects within Puzzle to categories or other logical groupings.
 
-    # ROLE
-    EntityRole:
-      type: object
-      title: EntityRole
-      description: >-
-        Defines a user's role within a specific entity (Company or Firm).
-        - A user can have multiple entity roles.
-        - Each user-entity pair can have only one assigned role at a time.
-        - Roles can be time-bound, allowing scheduled transitions between roles.
-      required:
-        - id
-        - userId
-        - entityId
-        - entityType
-        - role
-      properties:
-        id:
-          type: string
-          description: >-
-            A unique identifier for the entity role assignment.
-        userId:
-          type: string
-          description: >-
-            The user assigned to this role.
-          $ref: "#/components/schemas/User"
-        entityId:
-          type: string
-          description: >-
-            The entity this role applies to.
-        entityType:
-          type: string
-          enum:
-            - company
-            - firm
-          description: >-
-            Specifies whether this role applies to a Company or a Firm.
-        role:
-          $ref: "#/components/schemas/Role"
-          description: >-
-            The user’s designated role within the entity.
-        effectivePeriod:
-          $ref: "#/components/schemas/EffectiveDate"
-          description: >-
-            The time period during which this role is active.
-    
     # INDUSTRY
     Industry:
       type: string
@@ -632,12 +587,6 @@ components:
     ## --- Subsection: System Metadata ---
     # Metadata structures used for logging, auditing, and versioning.
 
-    
-    
-    
-    
-    
-    
     # REPORTING CLASS
     ReportingClass:
       type: object
