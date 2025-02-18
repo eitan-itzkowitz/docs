@@ -426,6 +426,7 @@ components:
             - self
             - entityName
             - other
+
     # PERMISSION SET
     PermissionSet:
       type: object
@@ -490,8 +491,8 @@ components:
         
     # ========== SECTION: ENTITY MAPPING & RELATIONSHIPS ==========
     
-    ## --- Subsection: Subobjects ---
-    # Supporting objects that extend core objects with additional functionality.
+    ## --- Subsection: Entity to Entity Mapping ---
+    # Support mapping of entities to underlying attributes.
     
     # ========== SECTION: OBJECT MAPPING & RELATIONSHIPS ==========
     # Defines mappings between external and internal objects, account categorizations, 
@@ -512,7 +513,7 @@ components:
     ## --- Subsection: Internal Mappings ---
     # Maps internal objects within Puzzle to categories or other logical groupings.
 
-        # ROLE
+    # ROLE
     EntityRole:
       type: object
       title: EntityRole
