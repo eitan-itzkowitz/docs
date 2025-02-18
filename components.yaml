@@ -1,4 +1,28 @@
 ---
+# TODO: USER & FIRM ACCESS CONTROL REFINEMENTS
+# ------------------------------------------------------------------------------
+# 🎯 **Clarify how user and firm roles relate**
+#    - Define `FirmRole` and `UserRole` distinctly
+#    - Ensure `UserRole` specifies its entity context (`firm` vs. `company`)
+#    - Establish role inheritance rules where applicable
+#
+# 🎯 **Control firm-driven user access**
+#    - Define `FirmRole.allowsUserManagement` (boolean)
+#    - Add `FirmRole.allowedUserRoles` to restrict role assignments
+#    - Require `requiresFirmAdmin` for adding/removing users
+#
+# 🎯 **Ensure structured user-firm assignments**
+#    - Implement `AssignUserToCompany` and `AssignUserToFirm`
+#    - Explicitly link permissions via `UserPermissionSet`
+#    - Track role assignment source with `assignedBy`
+#
+# 🎯 **Improve effective dating for roles & permissions**
+#    - Use `EffectiveRange` (`startDate`, `endDate`)
+#    - Maintain `supersededBy` for clean transitions
+#
+# ------------------------------------------------------------------------------
+# ✅ **This structure ensures firms can manage users securely without overreach.**
+
 components:
   schemas:
     # ========== SECTION: CORE COMPONENTS ==========
