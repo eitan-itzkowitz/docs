@@ -333,8 +333,8 @@ components:
           description: >-
             The date and time when the user was last updated.
 
-    ## --- Subsection: Entity Attributes ---
-    # Defines attributes that can be assigned to entities at Puzzle.
+    ## --- Subsection: Roles and Permissions ---
+    # Defines roles and permissions that can be assigned to entities at Puzzle.
     
     # ROLE
     Role:
@@ -473,6 +473,9 @@ components:
           $ref: "#/components/schemas/EffectiveDate"
           description: >-
             The time period during which this permission set is active.
+
+    ## --- Subsection: Entity Attributes ---
+    # Defines attributes that can be assigned to entities at Puzzle.
             
     # LEGAL ENTITY TYPE
     LegalEntityType:
