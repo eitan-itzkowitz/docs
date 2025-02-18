@@ -19,9 +19,6 @@
 # 🎯 **Improve effective dating for roles & permissions**
 #    - Use `EffectiveRange` (`startDate`, `endDate`)
 #    - Maintain `supersededBy` for clean transitions
-#
-# ------------------------------------------------------------------------------
-# ✅ **This structure ensures firms can manage users securely without overreach.**
 
 components:
   schemas:
