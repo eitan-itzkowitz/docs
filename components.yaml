@@ -190,53 +190,6 @@ components:
                 The longitude of the address.
               format: float
 
-    # ========== SECTION: LIST OPTIONS ==========
-    # Defines reference lists embedded in other models.
-
-
-
-    # INDUSTRY
-    Industry:
-      type: string
-      title: Industry
-      description: >-
-        Represents the industry or sector the company operates in.
-      enum:
-        - realEstate
-        - restaurant
-        - healthcare
-        - other
-        - consumerOnPremise
-        - retail
-        - professionalServices
-        - homeServices
-        - legal
-        - saas
-        - manufacturing
-        - shortTermRental
-        - construction
-        - transportation
-        - ecommerce
-        - finance
-
-    # BILLING MODEL
-    BillingModel:
-      type: array
-      title: BillingModel
-      description: >-
-        Represents the types of billing structures a company can have.
-      items:
-        type: string
-        enum:
-          - annualSubscription
-          - monthlySubscription
-          - addOns
-          - hourlyBilling
-          - transactionBased
-          - usageBased
-          - other
-          - fixedFee
-    
     # ========== SECTION: ENTITIES ==========
     # Defines the entities ecosystem at Puzzle.
     
@@ -381,7 +334,6 @@ components:
             - legal
             - admin
 
-    
     # PERMISSION
     Permission:
       type: object
@@ -561,6 +513,48 @@ components:
           $ref: "#/components/schemas/EffectiveDate"
           description: >-
             The time period during which this role is active.
+    
+    # INDUSTRY
+    Industry:
+      type: string
+      title: Industry
+      description: >-
+        Represents the industry or sector the company operates in.
+      enum:
+        - realEstate
+        - restaurant
+        - healthcare
+        - other
+        - consumerOnPremise
+        - retail
+        - professionalServices
+        - homeServices
+        - legal
+        - saas
+        - manufacturing
+        - shortTermRental
+        - construction
+        - transportation
+        - ecommerce
+        - finance
+
+    # BILLING MODEL
+    BillingModel:
+      type: array
+      title: BillingModel
+      description: >-
+        Represents the types of billing structures a company can have.
+      items:
+        type: string
+        enum:
+          - annualSubscription
+          - monthlySubscription
+          - addOns
+          - hourlyBilling
+          - transactionBased
+          - usageBased
+          - other
+          - fixedFee
     
     ## --- Subsection: Object & Data Transformation ---
     # Defines cross-object relationships and transformation rules.
